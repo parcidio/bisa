@@ -1,0 +1,14 @@
+flutter_native_splash:
+  color: "#51960A"
+  color_dark: "#51960A"
+  # image: assets/logos/dona_logo_white.png
+  branding: assets/logos/dona_logo_black.png
+  image_dark: assets/logos/dona_logo_white.png
+
+  android_12:
+    color: "#51960A"
+    color_dark: "#51960A"
+    image: assets/logos/dona_logo_white.png
+    image_dark: assets/logos/dona_logo_white.png
+
+  web: false
