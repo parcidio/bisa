@@ -29,91 +29,85 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
-    return PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
-        child: Column(
-          
-          children: [
-            AppBar(
-                automaticallyImplyLeading: false,
-                leading: showAvatar
-                        ?   AdvancedAvatar(
-                      statusSize: 16,
-                      name: 'Parcidio Andre',
-                      image: NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
-                      foregroundDecoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 2.0,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
+      child: AppBar( 
+                  automaticallyImplyLeading: false,
+                  leading: showAvatar
+                          ?   AdvancedAvatar(
+                        statusSize: 16,
+                        name: 'Parcidio Andre',
+                        image: NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
+                        foregroundDecoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      decoration:  const BoxDecoration(
-                        color: Colors.transparent,                 
-                         shape: BoxShape.circle,
-                        
-                      ),
-                      children: [
-                     
-                        AlignCircular(
-                          alignment: Alignment.topRight,
-                          child: Container(
-                            width: 18,
-                            height: 18,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.transparent,
-                                width: 0.5,
+                        decoration:  const BoxDecoration(
+                          color: Colors.transparent,                 
+                           shape: BoxShape.circle,
+                          
+                        ),
+                        children: [
+                       
+                          AlignCircular(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              width: 18,
+                              height: 18,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.transparent,
+                                  width: 0.5,
+                                ),
+                                color: AppColors.primary,
+                                shape: BoxShape.circle,
                               ),
-                              color: AppColors.primary,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Text(
-                              '1',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                              child: const Text(
+                                '1',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      
-                      ],
-                   
-                      )
-                        :
-                        !showBackArrow
-                    ? IconButton(
-                        onPressed: () => Get.back(),
-                        icon: const Icon(
-                          CupertinoIcons.arrow_left,
-                        ))
-                    : leadingIcon != null
-                        ? IconButton(
-                            onPressed: leadingOnPressed, icon: Icon(leadingIcon))
-                        : null,
-                title: title,
-                actions: actions),
-               
-              const AppSearchContainer(
+                        
+                        ],
+                     
+                        )
+                          :
+                          !showBackArrow
+                      ? IconButton(
+                          onPressed: () => Get.back(),
+                          icon: const Icon(
+                            CupertinoIcons.arrow_left,
+                          ))
+                      : leadingIcon != null
+                          ? IconButton(
+                              onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                          : null,
+                  title: title,
+                  actions: actions,
+                  bottom:   PreferredSize(
+                            preferredSize: Size.fromHeight(100),
+                            child:  AppSearchContainer(
                               text: 'Encontre os',
                               secondText: 'Melhores Produtos',
                               showBorder: true,
                               showBackground: true,
                               padding: EdgeInsets.zero,
-                            ), 
-                           
-               
-          ],
-        ),
-      ),
+                            ),
+                            // child:  PreferredSize( preferredSize: Size.fromHeight(100), child: Text("bottom"),),
+                            ),
+                  ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(AppDeviceUtils.getAppBarHeight());
+  Size get preferredSize => Size.fromHeight(AppDeviceUtils.getAppBarHeight() +50 );
 }

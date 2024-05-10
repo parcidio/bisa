@@ -1,3 +1,4 @@
+import 'package:dona/app.dart';
 import 'package:dona/common/widgets/appbar/appbar.dart';
 import 'package:dona/common/widgets/appbar/tabbar.dart';
 import 'package:dona/common/widgets/brand/brand_card_horizontal.dart';
@@ -37,7 +38,14 @@ class StoreScreen extends StatelessWidget {
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
-        appBar: AppAppBar(title: const Text('Store'), actions: [
+        // appBar: AppBar(title: Text("Title"),bottom: PreferredSize( preferredSize: Size.fromHeight(100), child:  AppSearchContainer(
+        //                     text: 'Encontre os',
+        //                     secondText: 'Melhores Produtos',
+        //                     showBorder: true,
+        //                     showBackground: true,
+        //                     padding: EdgeInsets.zero,
+        //                   )),),
+        appBar: AppAppBar(title:  Text('Store'), actions: [
           AppCartMenuIcon(
             onPressed: () {},
             iconColor: AppColors.black,
