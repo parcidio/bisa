@@ -12,6 +12,7 @@ import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -37,14 +38,7 @@ class StoreScreen extends StatelessWidget {
     ];
     return DefaultTabController(
       length: categories.length,
-      child: Scaffold(
-        // appBar: AppBar(title: Text("Title"),bottom: PreferredSize( preferredSize: Size.fromHeight(100), child:  AppSearchContainer(
-        //                     text: 'Encontre os',
-        //                     secondText: 'Melhores Produtos',
-        //                     showBorder: true,
-        //                     showBackground: true,
-        //                     padding: EdgeInsets.zero,
-        //                   )),),
+      child: Scaffold(       
         appBar: AppAppBar(title:  Text('Store'), actions: [
           AppCartMenuIcon(
             onPressed: () {},
@@ -62,43 +56,66 @@ class StoreScreen extends StatelessWidget {
                   backgroundColor: AppHelperFuncions.isDarkMode(context)
                       ? AppColors.black
                       : AppColors.white,
-                  expandedHeight: 440,
+                  expandedHeight: 520,
                   flexibleSpace: Padding(
                     padding: const EdgeInsets.all(AppSizes.defaultSpace),
                     child: ListView(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          // Searchbar
-                          // const SizedBox(
-                          //   height: AppSizes.spaceBetweenItems,
-                          // ),
-                          // // const AppSearchContainer(
-                          // //   text: 'Search in store',
-                          // //   showBorder: true,
-                          // //   showBackground: false,
-                          // //   padding: EdgeInsets.zero,
-                          // // ),
-                          const SizedBox(
-                            height: AppSizes.spaceBetweenSections,
+                             CarouselSlider(
+                            options: CarouselOptions(
+                              height: 200,
+                            
+                                aspectRatio: 16/9,
+                                viewportFraction: .4,
+                                initialPage: 0,
+                                enableInfiniteScroll: true,
+                                reverse: false,
+                                autoPlay: true,
+                                autoPlayInterval: Duration(seconds: 3),
+                                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                // enlargeCenterPage: true,
+                                enlargeFactor: 0.3,
+                              
+                                scrollDirection: Axis.horizontal,
+                            ),
+                            items: [1,2,3,4,5].map((i) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.amber
+                                    ),
+                                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                                  );
+                                },
+                              );
+                            }).toList(),
                           ),
+                          // Brands
+                          // const SizedBox(
+                          //   height: AppSizes.spaceBetweenSections,
+                          // ),
                           // Featured brands
                           const AppSectionHeading(
                             title: "Featured brands",
                           ),
                           const SizedBox(
-                            height: AppSizes.spaceBetweenItems / 1.5,
+                            height: AppSizes.spaceBetweenItems/10,
                           ),
-
                           AppGridLayout(
-                              itemCount: brands.length,
-                              mainAxisExtent: 80,
-                              itemBuilder: (_, index) {
-                                return AppBrandCardHorizontal(
-                                    brandIcon: brands[index]['logo'],
-                                    brandName: brands[index]['name'],
-                                    details: brands[index]['details']);
-                              })
+                            itemCount: brands.length,
+                            mainAxisExtent: 80,
+                            itemBuilder: (_, index) {
+                              return AppBrandCardHorizontal(
+                                  brandIcon: brands[index]['logo'],
+                                  brandName: brands[index]['name'],
+                                  details: brands[index]['details']);
+                            }),     
                         ]),
                   ),
                   bottom: AppTabBar(tabs: categories),

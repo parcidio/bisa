@@ -1,3 +1,4 @@
+import "package:dona/utils/constants/colors.dart";
 import "package:dona/utils/theme/custom_themes/appbar_theme.dart";
 import "package:dona/utils/theme/custom_themes/bottom_sheet_theme.dart";
 import "package:dona/utils/theme/custom_themes/checkbox_theme.dart";
@@ -16,8 +17,8 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: 'Poppins',
       brightness: Brightness.light,
-      primaryColor: Colors.blue,
-      scaffoldBackgroundColor: Colors.white,
+      primaryColor: AppColors.primary,
+      scaffoldBackgroundColor: AppColors.white,
       textTheme: AppTextTheme.lightTextTheme,
       elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
       checkboxTheme: AppCheckboxTheme.lihgtCheckboxThemeData,
@@ -32,8 +33,8 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: 'Poppins',
       brightness: Brightness.dark,
-      primaryColor: Colors.blue,
-      scaffoldBackgroundColor: Colors.black,
+      primaryColor: AppColors.primary,
+      scaffoldBackgroundColor: AppColors.black,
       textTheme: AppTextTheme.darkTextTheme,
       elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
       checkboxTheme: AppCheckboxTheme.darkCheckboxThemeData,

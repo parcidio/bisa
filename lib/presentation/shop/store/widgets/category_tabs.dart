@@ -37,7 +37,7 @@ class AppCategoryTab extends StatelessWidget {
                 height: AppSizes.spaceBetweenItems,
               ),
               AppGridLayout(
-                  itemCount: 4,
+                  itemCount: 21,
                   itemBuilder: (_, index) => const AppProductCardVertical()),
               const SizedBox(
                 height: AppSizes.spaceBetweenSections,
