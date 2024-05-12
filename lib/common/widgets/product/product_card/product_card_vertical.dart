@@ -10,6 +10,7 @@ import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -116,7 +117,7 @@ class AppProductCardVertical extends StatelessWidget {
             ]),
           ),
           const Spacer(),
-          Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Padding(
@@ -130,12 +131,12 @@ class AppProductCardVertical extends StatelessWidget {
               ),
               Positioned(
                 child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Iconsax.add),
+                  onPressed: (){},
+                  icon: const Icon(CupertinoIcons.add),
                   color: AppColors.white,
                   style: const ButtonStyle(
                       backgroundColor:
-                          MaterialStatePropertyAll<Color>(AppColors.black)),
+                          MaterialStatePropertyAll<Color>(AppColors.primary)),
                 ),
               ),
             ],

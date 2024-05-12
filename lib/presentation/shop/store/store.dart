@@ -13,6 +13,8 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -39,7 +41,7 @@ class StoreScreen extends StatelessWidget {
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(       
-        appBar: AppAppBar(title:  Text('Store'), actions: [
+        appBar: AppAppBar(title:  const Text('Store'), actions: [
           AppCartMenuIcon(
             onPressed: () {},
             iconColor: AppColors.black,
@@ -57,50 +59,80 @@ class StoreScreen extends StatelessWidget {
                       ? AppColors.black
                       : AppColors.white,
                   expandedHeight: 520,
-                  flexibleSpace: Padding(
-                    padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                    child: ListView(
+                  flexibleSpace:  ListView(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
+                            Padding(
+                    padding: const EdgeInsets.symmetric(vertical: AppSizes.defaultSpace),
+                    child:
                              CarouselSlider(
                             options: CarouselOptions(
                               height: 200,
                             
                                 aspectRatio: 16/9,
-                                viewportFraction: .4,
+                                viewportFraction: .5,
                                 initialPage: 0,
                                 enableInfiniteScroll: true,
                                 reverse: false,
                                 autoPlay: true,
-                                autoPlayInterval: Duration(seconds: 3),
-                                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                autoPlayInterval: const Duration(seconds: 3),
+                                autoPlayAnimationDuration: const Duration(milliseconds: 800),
                                 autoPlayCurve: Curves.fastOutSlowIn,
                                 // enlargeCenterPage: true,
+                                
                                 enlargeFactor: 0.3,
                               
                                 scrollDirection: Axis.horizontal,
                             ),
-                            items: [1,2,3,4,5].map((i) {
+                            items: [1,2,3,4,5].map((item) {
                               return Builder(
                                 builder: (BuildContext context) {
                                   return Container(
                                     width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.amber
+                                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                                    decoration: const BoxDecoration(
+                                      // color: AppColors.grey,
+                                    shape: BoxShape.circle,
                                     ),
-                                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                                    child:
+                                      const Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          Image(
+                                          fit: BoxFit.cover,
+                                          // color: AppColors.primary,
+                                          // colorBlendMode: BlendMode.color,
+                                          image: NetworkImage("https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",)),
+                                          
+                                          // Padding(
+                                          //   padding: const EdgeInsets.symmetric(horizontal:AppSizes.defaultItems, vertical: AppSizes.defaultItems),
+                                          //   child: Column(
+                                          //     children: [
+                                          //       Container(
+                                          //         alignment: Alignment.topLeft,
+                                          //       decoration: BoxDecoration(color: AppColors.primary,),
+                                          //         child: Padding(
+                                          //           padding: const EdgeInsets.all(2),
+                                          //           child: Text("Novidades", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),),
+                                          //         )),
+                                          //       SizedBox(height: AppSizes.spaceBetweenItems/2),
+                                          //  Text("10% off Black friday", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),),
+                                          //     ],
+                                          //   ),
+                                          // ),
+                                        ]
+                                      )
+                               
                                   );
                                 },
                               );
                             }).toList(),
                           ),
-                          // Brands
-                          // const SizedBox(
-                          //   height: AppSizes.spaceBetweenSections,
-                          // ),
-                          // Featured brands
+                            ),
+                         Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+                    child: Column(children: [                 
                           const AppSectionHeading(
                             title: "Featured brands",
                           ),
@@ -117,7 +149,7 @@ class StoreScreen extends StatelessWidget {
                                   details: brands[index]['details']);
                             }),     
                         ]),
-                  ),
+                  ),   ],) ,
                   bottom: AppTabBar(tabs: categories),
                 )
               ];

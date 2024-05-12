@@ -42,7 +42,7 @@ class AppSizes {
   //Product item dimensions
   static const double productImageSize = 120.0;
   static const double spaceBetweenItems = 16.0;
-  static const double productImageRadius = 16.0;
+  static const double productImageRadius = 6.0;
   static const double productItemHeight = 160.0;
 
   //Inputfield

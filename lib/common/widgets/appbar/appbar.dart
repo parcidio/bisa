@@ -37,7 +37,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                           ?   AdvancedAvatar(
                         statusSize: 16,
                         name: 'Parcidio Andre',
-                        image: NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
+                        image: const NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
                         foregroundDecoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -93,14 +93,14 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                           : null,
                   title: title,
                   actions: actions,
-                  bottom:   PreferredSize(
+                  bottom:   const PreferredSize(
                             preferredSize: Size.fromHeight(100),
                             child:  AppSearchContainer(
                               text: 'Encontre os',
                               secondText: 'Melhores Produtos',
                               showBorder: true,
                               showBackground: true,
-                              padding: EdgeInsets.zero,
+                              padding: EdgeInsets.zero,                           
                             ),
                             // child:  PreferredSize( preferredSize: Size.fromHeight(100), child: Text("bottom"),),
                             ),

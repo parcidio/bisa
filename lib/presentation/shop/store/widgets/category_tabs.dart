@@ -23,12 +23,8 @@ class AppCategoryTab extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(AppSizes.defaultSpace),
-            child: Column(children: [
-              
-              // products
-              const SizedBox(
-                height: AppSizes.spaceBetweenItems,
-              ),
+            child: Column(children: [              
+              // products              
               AppSectionHeading(
                 title: "You might like",
                 onPressed: () {},

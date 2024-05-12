@@ -4,7 +4,6 @@ import 'package:dona/utils/device/device._utility.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AppSearchContainer extends StatelessWidget {
   const AppSearchContainer({
