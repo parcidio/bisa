@@ -66,70 +66,45 @@ class StoreScreen extends StatelessWidget {
                             Padding(
                     padding: const EdgeInsets.symmetric(vertical: AppSizes.defaultSpace),
                     child:
-                             CarouselSlider(
-                            options: CarouselOptions(
-                              height: 200,
-                            
-                                aspectRatio: 16/9,
-                                viewportFraction: .5,
-                                initialPage: 0,
-                                enableInfiniteScroll: true,
-                                reverse: false,
-                                autoPlay: true,
-                                autoPlayInterval: const Duration(seconds: 3),
-                                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                // enlargeCenterPage: true,
-                                
-                                enlargeFactor: 0.3,
-                              
-                                scrollDirection: Axis.horizontal,
-                            ),
-                            items: [1,2,3,4,5].map((item) {
-                              return Builder(
-                                builder: (BuildContext context) {
-                                  return Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                                    decoration: const BoxDecoration(
-                                      // color: AppColors.grey,
-                                    shape: BoxShape.circle,
-                                    ),
-                                    child:
-                                      const Stack(
-                                        fit: StackFit.expand,
-                                        children: [
-                                          Image(
-                                          fit: BoxFit.cover,
-                                          // color: AppColors.primary,
-                                          // colorBlendMode: BlendMode.color,
-                                          image: NetworkImage("https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",)),
-                                          
-                                          // Padding(
-                                          //   padding: const EdgeInsets.symmetric(horizontal:AppSizes.defaultItems, vertical: AppSizes.defaultItems),
-                                          //   child: Column(
-                                          //     children: [
-                                          //       Container(
-                                          //         alignment: Alignment.topLeft,
-                                          //       decoration: BoxDecoration(color: AppColors.primary,),
-                                          //         child: Padding(
-                                          //           padding: const EdgeInsets.all(2),
-                                          //           child: Text("Novidades", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),),
-                                          //         )),
-                                          //       SizedBox(height: AppSizes.spaceBetweenItems/2),
-                                          //  Text("10% off Black friday", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),),
-                                          //     ],
-                                          //   ),
-                                          // ),
-                                        ]
-                                      )
-                               
-                                  );
-                                },
-                              );
-                            }).toList(),
-                          ),
-                            ),
+                           CarouselSlider(
+  options: CarouselOptions(
+    height: 200,
+    aspectRatio: 16 / 9,
+    viewportFraction: 0.5,
+    initialPage: 0,
+    enableInfiniteScroll: true,
+    reverse: false,
+    autoPlay: true,
+    autoPlayInterval: const Duration(seconds: 3),
+    autoPlayAnimationDuration: const Duration(milliseconds: 800),
+    autoPlayCurve: Curves.fastOutSlowIn,
+    enlargeFactor: 0.3,
+    scrollDirection: Axis.horizontal,
+  ),
+  items: [1, 2, 3, 4, 5].map((item) {
+    return Builder(
+      builder: (BuildContext context) {
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppSizes.cardRadiusSm), // Adjust the radius as needed
+            child: Image(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }).toList(),
+),
+ ),
                          Padding(
                     padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
                     child: Column(children: [                 

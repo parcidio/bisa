@@ -20,7 +20,7 @@ class AppProductDetails extends StatelessWidget {
         child: Column(
           children: [
             // product image
-            const AppProductImageSlider(),
+            // const AppProductImageSlider(), // making the screen to go blank
             // product details
             Padding(
               padding: const EdgeInsets.only(

@@ -16,7 +16,7 @@ class NavigationMenu extends StatelessWidget {
     Color iconColor = darkMode ? AppColors.white:AppColors.black;
     Color backgroundColor = darkMode ? AppColors.black : AppColors.white;
 
-    return Scaffold(
+    return Scaffold(      
       bottomNavigationBar: Obx(
         () => NavigationBar(
             height: 80,
