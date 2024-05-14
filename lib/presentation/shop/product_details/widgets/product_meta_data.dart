@@ -51,18 +51,36 @@ class AppProductMetaData extends StatelessWidget {
              const SizedBox(
               height: AppSizes.spaceBetweenItems/5,
             ),
-            AppRoundedContainer(
-              radius: AppSizes.sm,
-              backgroundColor: AppColors.secondary.withOpacity(0.8),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppSizes.sm, vertical: AppSizes.xs),
-              child: Text(
-                '25% Off',
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .apply(color: AppColors.black),
-              ),
+            Row(
+              children: [
+                AppRoundedContainer(
+                  radius: AppSizes.sm,
+                  backgroundColor: AppColors.secondary.withOpacity(0.8),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                  child: Text(
+                    '25% Off',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge!
+                        .apply(color: AppColors.black),
+                  ),
+                ),
+                SizedBox(width: AppSizes.spaceBetweenItems,),
+                AppRoundedContainer(
+                  radius: AppSizes.sm,
+                  backgroundColor: AppColors.secondary.withOpacity(0.8),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                  child: Text(
+                    'Disponivel',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge!
+                        .apply(color: AppColors.black),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -70,38 +88,13 @@ class AppProductMetaData extends StatelessWidget {
           height: AppSizes.spaceBetweenItems / 1.5,
         ),
         //Title
-        AppProductTitleText(title: "Red Nike sneakers"),
+        AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),       
         const SizedBox(
-          height: AppSizes.spaceBetweenItems / 1.5,
+          height: AppSizes.spaceBetweenItems / 4,
         ),
-        //Stock status
-        Row(
-          children: [
-            AppProductTitleText(title: "Status"),
-            const SizedBox(
-              width: AppSizes.spaceBetweenItems,
-            ),
-            Text('In stock', style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
-        const SizedBox(
-          height: AppSizes.spaceBetweenItems / 1.5,
-        ),
-        //Brand
-
-        Row(
-          children: [
-            AppCircularImage(
-              image: AppImages.nike,
-              width: 60,
-              height: 60,
-              isSvg: true,
-              overlayColor: isDark ? AppColors.white : AppColors.black,
-            ),
-          ],
-        ),
+        //Supplier
         const AppBrandTextTitleWithVerticalIcon(
-          title: 'Nike',
+          title: 'Ojiaenda',
           brandTextSize: TextSizes.medium,
         ),
       ],

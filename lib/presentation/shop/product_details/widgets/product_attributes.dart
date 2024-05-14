@@ -16,62 +16,6 @@ class AppProductAttribute extends StatelessWidget {
     final isDark = AppHelperFuncions.isDarkMode(context);
     return Column(
       children: [
-        AppRoundedContainer(
-          padding: const EdgeInsets.all(AppSizes.md),
-          backgroundColor: isDark ? AppColors.darkGrey : AppColors.grey,
-          child: Column(
-            children: [
-              // Title, Price and Stock status
-              Row(
-                children: [
-                  const AppSectionHeading(
-                    title: "Variation",
-                    showActionButton: false,
-                  ),
-                  const SizedBox(
-                    width: AppSizes.spaceBetweenItems,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Price
-                      const Row(
-                        children: [
-                          AppProductTitleText(
-                            title: 'Price : ',
-                            isSmallSize: true,
-                          ),
-                          AppProductPriceText(
-                            price: '250',
-                            priceWas: '300',
-                          ),
-                        ],
-                      ),
-                      // Stock
-                      Row(
-                        children: [
-                          const AppProductTitleText(
-                            title: 'Stock : ',
-                            isSmallSize: true,
-                          ),
-                          Text(
-                            "in stock",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          )
-                        ],
-                      ),
-                      // variation description
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: AppSizes.spaceBetweenItems,
-        ),
-
         // attributes
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

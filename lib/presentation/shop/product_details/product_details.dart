@@ -42,7 +42,7 @@ class AppProductDetails extends StatelessWidget {
                   // Rating and Share button
                   const AppRatingShare(),
                   // Attributes
-                  // const AppProductAttribute(),
+                  const AppProductAttribute(),
                   const SizedBox(
                     height: AppSizes.spaceBetweenSections,
                   ),
