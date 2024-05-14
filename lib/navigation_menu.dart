@@ -33,19 +33,22 @@ class NavigationMenu extends StatelessWidget {
             destinations:  [     
               NavigationDestination( icon: Icon(CupertinoIcons.bag,  color: iconColor ), label: 'Loja', selectedIcon: Icon(CupertinoIcons.bag_fill, color: AppColors.primary)),        
               NavigationDestination(icon: Icon(CupertinoIcons.tag, color: iconColor), label: 'Serviços', selectedIcon: Icon(CupertinoIcons.tag_fill, color: AppColors.primary)),
+              NavigationDestination(icon: Icon(CupertinoIcons.person_3, color: iconColor), label: 'Groupos', selectedIcon: Icon(CupertinoIcons.person_3_fill, color: AppColors.primary)),
               NavigationDestination(icon: Icon(CupertinoIcons.gift, color: iconColor), label: 'Promoções', selectedIcon: Icon(CupertinoIcons.gift_fill, color: AppColors.primary)),
               NavigationDestination(icon: Icon(CupertinoIcons.text_bubble, color: iconColor), label: 'Bater papo', selectedIcon: Icon(CupertinoIcons.text_bubble_fill, color: AppColors.primary)),
             ]),
       ),
-      body: Obx(() => controller.screens[controller.selectedIndex.value]),
-    );
+      body:
+            Obx(() => controller.screens[controller.selectedIndex.value]),
+      );
+    }
   }
-}
 
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [ 
     const StoreScreen(),
+    const SettingsScreen(),
     const SettingsScreen(),
     const SettingsScreen(),
     const SettingsScreen(),

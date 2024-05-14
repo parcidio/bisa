@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -45,7 +46,54 @@ class StoreScreen extends StatelessWidget {
           AppCartMenuIcon(
             onPressed: () {},
             iconColor: AppColors.black,
-          )
+          ),
+          SizedBox(width: AppSizes.spaceBetweenItems,),
+          AdvancedAvatar(
+                        statusSize: 16,
+                        name: 'Parcidio Andre',
+                        image: const NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
+                        foregroundDecoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        ),
+                        decoration:  const BoxDecoration(
+                          color: Colors.transparent,                 
+                           shape: BoxShape.circle,
+                          
+                        ),
+                        children: [
+                       
+                          AlignCircular(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              width: 18,
+                              height: 18,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.transparent,
+                                  width: 0.5,
+                                ),
+                                color: AppColors.primary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Text(
+                                '1',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        
+                        ],
+                     
+                        ),
         ]),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) {
@@ -69,17 +117,22 @@ class StoreScreen extends StatelessWidget {
                            CarouselSlider(
   options: CarouselOptions(
     height: 200,
-    aspectRatio: 16 / 9,
+    // aspectRatio: 16/8,
     viewportFraction: 0.5,
     initialPage: 0,
     enableInfiniteScroll: true,
     reverse: false,
     autoPlay: true,
-    autoPlayInterval: const Duration(seconds: 3),
-    autoPlayAnimationDuration: const Duration(milliseconds: 800),
+    autoPlayInterval: const Duration(seconds: 15),
+    autoPlayAnimationDuration: const Duration(milliseconds: 1000),
     autoPlayCurve: Curves.fastOutSlowIn,
     enlargeFactor: 0.3,
     scrollDirection: Axis.horizontal,
+    pauseAutoPlayInFiniteScroll: true,
+    pauseAutoPlayOnManualNavigate: true,
+    pauseAutoPlayOnTouch: true,
+
+
   ),
   items: [1, 2, 3, 4, 5].map((item) {
     return Builder(

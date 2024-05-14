@@ -24,11 +24,11 @@ class AppProductPriceText extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(currencySign + price,
+            Text("$currencySign $price",
                 maxLines: maxLines,
                 overflow: TextOverflow.ellipsis,
                 style: isLarge
-                    ? Theme.of(context).textTheme.titleLarge
+                    ? Theme.of(context).textTheme.headlineMedium
                     : Theme.of(context).textTheme.titleMedium),
             Text(
               '.$cents',
@@ -40,12 +40,12 @@ class AppProductPriceText extends StatelessWidget {
             ),
           ],
         ),
-        // if (priceWas?.trim() != '') ...[
+        if (priceWas?.trim() != '') ...[
         Row(
           children: [
             Text('$currencySign $priceWas',
                 maxLines: maxLines,
-                overflow: TextOverflow.ellipsis,
+                overflow: TextOverflow.ellipsis,                
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
@@ -76,7 +76,7 @@ class AppProductPriceText extends StatelessWidget {
           ],
         ),
       ],
-      // ],
+      ],
     );
   }
 }

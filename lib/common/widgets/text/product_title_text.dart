@@ -22,6 +22,6 @@ class AppProductTitleText extends StatelessWidget {
         textAlign: textAlign,
         style: isSmallSize
             ? Theme.of(context).textTheme.labelLarge
-            : Theme.of(context).textTheme.titleSmall);
+            : Theme.of(context).textTheme.titleLarge);
   }
 }

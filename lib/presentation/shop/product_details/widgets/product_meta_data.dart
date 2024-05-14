@@ -9,6 +9,7 @@ import 'package:dona/utils/constants/enums.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,28 +25,44 @@ class AppProductMetaData extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Price and Promotion
-        Row(
-          children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [           
+           
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const AppProductPriceText(              
+                  price: '150',
+                  isLarge: true,
+                  priceWas: '200',
+                ),
+                Row(children: [ // Share button
+          IconButton(
+          onPressed: () {},
+          icon: const Icon(CupertinoIcons.heart, size: AppSizes.iconMd),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(CupertinoIcons.share, size: AppSizes.iconMd),
+        )],)
+              ],
+            ),
+             const SizedBox(
+              height: AppSizes.spaceBetweenItems/5,
+            ),
             AppRoundedContainer(
               radius: AppSizes.sm,
               backgroundColor: AppColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(
                   horizontal: AppSizes.sm, vertical: AppSizes.xs),
               child: Text(
-                '25%',
+                '25% Off',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
                     .apply(color: AppColors.black),
               ),
-            ),
-            const SizedBox(
-              width: AppSizes.spaceBetweenItems,
-            ),
-            const AppProductPriceText(
-              price: '150',
-              isLarge: true,
-              priceWas: '200',
             ),
           ],
         ),

@@ -6,7 +6,9 @@ import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AppProductImageSlider extends StatelessWidget {
@@ -18,59 +20,30 @@ class AppProductImageSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
 
-    return AppCurvedWidget(
-      child: Container(
-        color: isDark ? AppColors.darkGrey : AppColors.light,
-        child: Stack(
-          children: [
-            // main image
-            const SizedBox(
-              child: Padding(
-                padding: EdgeInsets.all(AppSizes.productImageRadius * 3),
-                child: Center(
-                  child: Image(
-                    image: AssetImage(AppImages.productImage1),
-                  ),
-                ),
-              ),
-            ),
-            // image slider
-            Positioned(
-              right: 0,
-              bottom: 30,
-              left: AppSizes.defaultSpace,
-              child: SizedBox(
-                height: 80,
-                child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    separatorBuilder: (_, __) => const SizedBox(
-                          width: AppSizes.spaceBetweenItems,
+    return  Container(
+        color: isDark ? AppColors.darkGrey : AppColors.lightGrey,
+        child:             // main image
+           Stack(
+            children: [Image(
+                      image: AssetImage(AppImages.productImage1),
+                    ),
+                   
+                    Positioned(
+                      left: 10,
+                      bottom: 10,
+                      child: Container(
+                        decoration: BoxDecoration(color: AppColors.grey, borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg)),
+                        child:  Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace/2, vertical: AppSizes.defaultSpace/4 ),
+                          child: Text('1 / 8',),
                         ),
-                    itemCount: 10,
-                    itemBuilder: (_, index) => AppRoundedImage(
-                        width: 80,
-                        backgroundColor:
-                            isDark ? AppColors.dark : AppColors.white,
-                        border: Border.all(color: AppColors.dark),
-                        padding: const EdgeInsets.all(AppSizes.sm),
-                        imageUrl: AppImages.productImage2)),
-              ),
-            ),
-            AppAppBar(
-              showBackArrow: true,
-              actions: [
-                AppCircularIcon(
-                  onPressed: () {},
-                  icon: Iconsax.heart5,
-                  color: Colors.red,
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+                      ),
+                    ),
+                    
+                    ]
+           ),
+              
+          
     );
   }
 }
