@@ -24,7 +24,7 @@ final List itemList;
                   options: GroupButtonOptions(
   selectedShadow: const [],
   selectedTextStyle: TextStyle(
-    fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+    fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
     color: AppColors.white,
   ),
   selectedColor: AppColors.primary,

@@ -7,11 +7,12 @@ class AppSectionHeading extends StatelessWidget {
     required this.title,
     this.buttonTitle = "View all",
     this.showActionButton = true,
+    this.isSmall=false,
     this.onPressed,
   });
 
   final Color? textColor;
-  final bool showActionButton;
+  final bool showActionButton, isSmall;
   final String title, buttonTitle;
   final void Function()? onPressed;
 
@@ -22,7 +23,12 @@ class AppSectionHeading extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context)
+          style: isSmall ? Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .apply(color: textColor)
+              : 
+              Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: textColor),

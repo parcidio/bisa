@@ -28,7 +28,7 @@ class AppProductMetaData extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [           
-           
+           SizedBox(height: AppSizes.spaceBetweenItems/2,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

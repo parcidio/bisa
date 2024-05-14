@@ -44,7 +44,7 @@ class AppProductDetails extends StatelessWidget {
                   // Attributes
                   const AppProductAttribute(),
                   const SizedBox(
-                    height: AppSizes.spaceBetweenSections,
+                    height: AppSizes.spaceBetweenItems,
                   ),
                   // Checkout Button
                   SizedBox(

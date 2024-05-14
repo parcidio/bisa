@@ -61,7 +61,7 @@ class AppBottomAddToCart extends StatelessWidget {
             children: [
               Text('Adicionar',),
               SizedBox(width: AppSizes.spaceBetweenItems),
-              Icon(CupertinoIcons.bag_fill, ),
+              Icon(CupertinoIcons.bag, ),
             ],
           ))
           

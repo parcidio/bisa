@@ -23,14 +23,18 @@ class AppProductAttribute extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const AppSectionHeading(title: 'Tamanho'),           
+            SizedBox(height: AppSizes.spaceBetweenItems/2,),
+            const AppSectionHeading(title: 'Selecione o tamanho', showActionButton: false, isSmall: true, textColor: AppColors.darkGrey),           
+            SizedBox(height: AppSizes.spaceBetweenItems/2,),
             AppButtonGroup(itemList: ["30", "32", "34", "40", "41", "42"])
            ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             const AppSectionHeading(title: 'Cor'),           
+            SizedBox(height: AppSizes.spaceBetweenItems/2,),
+            AppSectionHeading(title: 'Selecione a cor', showActionButton: false,isSmall: true, textColor: AppColors.darkGrey),           
+            SizedBox(height: AppSizes.spaceBetweenItems/2,),
             AppButtonGroup(itemList: ["vermelho", "verde", "preto", "branco"])
             ]),
           ],
