@@ -29,42 +29,45 @@ class AppProductImageSlider extends StatelessWidget {
       color: isDark ? AppColors.darkGrey : AppColors.lightGrey,
       child: Stack(
         children: [
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200,
-              viewportFraction: 1,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: true,
-              autoPlay: false,
-              enlargeFactor: 0.3,
-              scrollDirection: Axis.horizontal,
-              pauseAutoPlayInFiniteScroll: true,
-              pauseAutoPlayOnManualNavigate: true,
-              pauseAutoPlayOnTouch: true,
-              aspectRatio: 16 / 9,
-              // onPageChanged: (){},  
-             
-            ),
-            items: [1, 2, 3, 4, 5].map((item) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",
+          Hero(
+            tag: 'product_detail',
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 200,
+                viewportFraction: 1,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: true,
+                autoPlay: false,
+                enlargeFactor: 0.3,
+                scrollDirection: Axis.horizontal,
+                pauseAutoPlayInFiniteScroll: true,
+                pauseAutoPlayOnManualNavigate: true,
+                pauseAutoPlayOnTouch: true,
+                aspectRatio: 16 / 9,
+                // onPageChanged: (){},  
+               
+              ),
+              items: [1, 2, 3, 4, 5].map((item) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
                       ),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
           ),
           Positioned(
             left: 10,

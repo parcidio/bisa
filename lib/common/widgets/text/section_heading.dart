@@ -36,7 +36,20 @@ class AppSectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: onPressed, child: Text(buttonTitle))
+          TextButton(onPressed: onPressed, child: Text(buttonTitle,
+          style: isSmall ? Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .apply(color: textColor)
+              : 
+              Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: textColor),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          
+          ))
       ],
     );
   }

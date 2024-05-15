@@ -6,10 +6,12 @@ import 'package:dona/presentation/shop/product_details/widgets/product_image_sli
 import 'package:dona/presentation/shop/product_details/widgets/product_meta_data.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_rating_share.dart';
 import 'package:dona/utils/constants/sizes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/product/cart/cart_menu_icon.dart';
 import '../../../utils/constants/colors.dart';
 
@@ -54,30 +56,95 @@ class AppProductDetails extends StatelessWidget {
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
+                  const Divider(),
+
                   // Description
                   const AppSectionHeading(
                     title: 'Description',
                     showActionButton: false,
                   ),
                   const SizedBox(
-                    height: AppSizes.spaceBetweenItems,
+                    height: AppSizes.spaceBetweenItems/2,
                   ),
                   const ReadMoreText(
                     'This method will save memory by building items once it becomes necessary. This way they won\'t be built if they\'re not currently meant to be visible on screen. It can be used to build different child item widgets related to content or by item index.',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
-                    trimCollapsedText: 'Show more',
-                    trimExpandedText: 'Show Less',
+                    trimCollapsedText: 'Mais',
+                    trimExpandedText: 'Menos',
                     lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
                     moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
                   ),
-                  // Reviews
-                  const Divider(),
+                   const Divider(),
+                  
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
+                  Container(
+      decoration: BoxDecoration(
+        color: AppColors.primary.withOpacity(.2),        
+        border: Border(
+          top: BorderSide(color: AppColors.primary.withOpacity(.5), width: 2.0),
+          bottom: BorderSide(color: AppColors.primary.withOpacity(.5), width: 2.0),
+        ),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(
+                CupertinoIcons.cube_box,
+                color: Colors.black,
+              ),
+              SizedBox(width: 8.0),
+                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text.rich(TextSpan(children: [               
+                                         
+                                         TextSpan(
+                                             text: ' Frete para ',
+                                             style: Theme.of(context).textTheme.bodyMedium!.apply(
+                                                 color:  AppColors.primary,
+                                                 )),
+                                         TextSpan(
+                                             text: ' Benguela ',
+                                             style: Theme.of(context).textTheme.bodyMedium!.apply(
+                                                 color: AppColors.primary,
+                                                 decoration: TextDecoration.underline,
+                                                 decorationColor:
+                             AppColors.primary)),
+                                         
+                                                 ])),
+                                                 Text(
+                       ' 5046.65 KZ ',
+                      style: Theme.of(context).textTheme.bodyMedium!.apply(
+                          color: AppColors.primary,
+                          ))
+                         ],
+                       ),
+            ],
+          ),
+        Icon(
+            CupertinoIcons.right_chevron,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    ),
+
+     const SizedBox(
+                    height: AppSizes.spaceBetweenItems,
+                  ),
+                  LeadTimeCard(deliveryDays: 4,dispatchDays: 2, minQuantity: 1, maxQuantity: 20, ),
+                  // Reviews
+                 
+
+
                   Row(
                     children: [
                       const AppSectionHeading(

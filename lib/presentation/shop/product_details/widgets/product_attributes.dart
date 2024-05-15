@@ -1,9 +1,5 @@
-import 'package:dona/common/button_group/button_group.dart';
-import 'package:dona/common/widgets/chips/choice_chip.dart';
-import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:dona/common/widgets/product/product_card/product_price_text.dart';
-import 'package:dona/common/widgets/text/product_title_text.dart';
-import 'package:dona/common/widgets/text/section_heading.dart';
+import 'package:dona/common/widgets/button_group/button_group.dart';
+  import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
@@ -17,14 +13,14 @@ class AppProductAttribute extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
     final controller = GroupButtonController();
-    return Column(
+    return const Column(
       children: [
         // attributes
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: AppSizes.spaceBetweenItems/2,),
-            const AppSectionHeading(title: 'Selecione o tamanho', showActionButton: false, isSmall: true, textColor: AppColors.darkGrey),           
+            AppSectionHeading(title: 'Selecione o tamanho', buttonTitle: 'Mais', isSmall: true, textColor: AppColors.darkGrey),           
             SizedBox(height: AppSizes.spaceBetweenItems/2,),
             AppButtonGroup(itemList: ["30", "32", "34", "40", "41", "42"])
            ],
@@ -33,7 +29,7 @@ class AppProductAttribute extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: AppSizes.spaceBetweenItems/2,),
-            AppSectionHeading(title: 'Selecione a cor', showActionButton: false,isSmall: true, textColor: AppColors.darkGrey),           
+            AppSectionHeading(title: 'Selecione a cor', buttonTitle: 'Mais', isSmall: true, textColor: AppColors.darkGrey),           
             SizedBox(height: AppSizes.spaceBetweenItems/2,),
             AppButtonGroup(itemList: ["vermelho", "verde", "preto", "branco"])
             ]),

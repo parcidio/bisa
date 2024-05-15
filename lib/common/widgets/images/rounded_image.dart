@@ -44,11 +44,14 @@ class AppRoundedImage extends StatelessWidget {
               borderRadius: applyImageRadius
                   ? BorderRadius.circular(borderRadius)
                   : BorderRadius.zero,
-              child: Image(
-                  fit: fit,
-                  image: isNetworkImage
-                      ? NetworkImage(imageUrl)
-                      : AssetImage(imageUrl) as ImageProvider))),
+              child: Hero(
+                tag: 'product_detail',
+                child: Image(
+                    fit: fit,
+                    image: isNetworkImage
+                        ? NetworkImage(imageUrl)
+                        : AssetImage(imageUrl) as ImageProvider),
+              ))),
     );
   }
 }
