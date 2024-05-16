@@ -1,23 +1,26 @@
 import 'package:dona/utils/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../../presentation/shop/cart/cart.dart';
 
 class AppCartMenuIcon extends StatelessWidget {
   const AppCartMenuIcon({
     super.key,
     this.iconColor = AppColors.white,
-    required this.onPressed,
+  
   });
 
   final Color? iconColor;
-  final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => const AppCartScreen()),
           icon: const Icon(CupertinoIcons.bag),
           color: iconColor,
         ),

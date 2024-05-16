@@ -34,8 +34,7 @@ class AppHomeAppbar extends StatelessWidget {
         ],
       ),
       actions: [
-        AppCartMenuIcon(
-          onPressed: () {},
+        AppCartMenuIcon(      
           iconColor: AppColors.white,
         )
       ],

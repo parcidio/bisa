@@ -43,8 +43,7 @@ class StoreScreen extends StatelessWidget {
       length: categories.length,
       child: Scaffold(       
         appBar: AppAppBar(title:  const Text('Store'), actions: [
-          AppCartMenuIcon(
-            onPressed: () {},
+          AppCartMenuIcon(           
             iconColor: AppColors.black,
           ),
           SizedBox(width: AppSizes.spaceBetweenItems,),

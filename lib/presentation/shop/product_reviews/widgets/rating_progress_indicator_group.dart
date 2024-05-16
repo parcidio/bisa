@@ -11,31 +11,38 @@ class AppRatingProgressIndicatorGroup extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          flex: 3,
+          flex: 1,
           child: Text(
             "4.8",
             style: Theme.of(context).textTheme.displayLarge,
           ),
         ),
-        AppRatingProgressIndicator(
-          text: '5',
-          value: 1.0,
-        ),
-        AppRatingProgressIndicator(
-          text: '4',
-          value: 0.8,
-        ),
-        AppRatingProgressIndicator(
-          text: '3',
-          value: 0.6,
-        ),
-        AppRatingProgressIndicator(
-          text: '2',
-          value: 0.4,
-        ),
-        AppRatingProgressIndicator(
-          text: '1',
-          value: 0.2,
+        Expanded(
+          flex: 2,
+          child: Column(
+            children: [
+              AppRatingProgressIndicator(
+                text: '5',
+                value: 1.0,
+              ),
+              AppRatingProgressIndicator(
+                text: '4',
+                value: 0.8,
+              ),
+              AppRatingProgressIndicator(
+                text: '3',
+                value: 0.6,
+              ),
+              AppRatingProgressIndicator(
+                text: '2',
+                value: 0.4,
+              ),
+              AppRatingProgressIndicator(
+                text: '1',
+                value: 0.2,
+              ),
+            ],
+          ),
         ),
       ],
     );

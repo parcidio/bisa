@@ -1,5 +1,4 @@
 import 'package:dona/common/widgets/appbar/appbar.dart';
-import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/presentation/shop/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_attributes.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_image_slider.dart';
@@ -8,12 +7,13 @@ import 'package:dona/presentation/shop/product_details/widgets/product_rating_sh
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/product/cart/cart_menu_icon.dart';
+import '../../../common/widgets/product/ratings/RatingBarIndicator.dart';
 import '../../../utils/constants/colors.dart';
+import '../product_reviews/widgets/rating_progress_indicator_group.dart';
 
 class AppProductDetails extends StatelessWidget {
   const AppProductDetails({super.key});
@@ -22,11 +22,10 @@ class AppProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(showSearchBar: false, showBackArrow: true,  actions: [
-          AppCartMenuIcon(
-            onPressed: () {},
+          AppCartMenuIcon(           
             iconColor: AppColors.black,
           )]),
-      bottomNavigationBar: AppBottomAddToCart(),
+      bottomNavigationBar: const AppBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [               
@@ -59,10 +58,14 @@ class AppProductDetails extends StatelessWidget {
                   const Divider(),
 
                   // Description
-                  const AppSectionHeading(
-                    title: 'Description',
-                    showActionButton: false,
-                  ),
+                 Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Divider(),
+          Text(
+            'Descricao',
+             style: Theme.of(context).textTheme.titleMedium
+          ),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems/2,
                   ),
@@ -72,11 +75,13 @@ class AppProductDetails extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Mais',
                     trimExpandedText: 'Menos',
+
                     lessStyle:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
                     moreStyle:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
                   ),
+        ]),
                    const Divider(),
                   
                   const SizedBox(
@@ -90,17 +95,17 @@ class AppProductDetails extends StatelessWidget {
           bottom: BorderSide(color: AppColors.primary.withOpacity(.5), width: 2.0),
         ),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Icon(
+              const Icon(
                 CupertinoIcons.cube_box,
                 color: Colors.black,
               ),
-              SizedBox(width: 8.0),
+              const SizedBox(width: 8.0),
                        Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                          children: [
@@ -129,7 +134,7 @@ class AppProductDetails extends StatelessWidget {
                        ),
             ],
           ),
-        Icon(
+        const Icon(
             CupertinoIcons.right_chevron,
             color: Colors.black,
           ),
@@ -140,23 +145,11 @@ class AppProductDetails extends StatelessWidget {
      const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
-                  LeadTimeCard(deliveryDays: 4,dispatchDays: 2, minQuantity: 1, maxQuantity: 20, ),
+                  LeadTimeCard(deliveryDays: 3,dispatchDays: 0, quantity: 2, ),
                   // Reviews
                  
 
 
-                  Row(
-                    children: [
-                      const AppSectionHeading(
-                        title: "Reviews (200)",
-                        showActionButton: false,
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Iconsax.arrow_right3,
-                              size: AppSizes.iconMd))
-                    ],
-                  ),
                   const SizedBox(
                     height: AppSizes.spaceBetweenSections,
                   ),

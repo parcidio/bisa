@@ -2,17 +2,14 @@ import 'package:dona/common/widgets/button_group/button_group.dart';
   import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
-import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:group_button/group_button.dart';
 
 class AppProductAttribute extends StatelessWidget {
   const AppProductAttribute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = AppHelperFuncions.isDarkMode(context);
-    final controller = GroupButtonController();
+    
     return const Column(
       children: [
         // attributes

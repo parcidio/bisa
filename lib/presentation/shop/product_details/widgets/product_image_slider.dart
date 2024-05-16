@@ -1,20 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dona/common/widgets/appbar/appbar.dart';
-import 'package:dona/common/widgets/custom_shapes/curved_edges/curved_egdes_widget.dart';
-import 'package:dona/common/widgets/icons/circular_icon.dart';
-import 'package:dona/common/widgets/images/rounded_image.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/images/circular_image.dart';
-import '../../../../common/widgets/text/brand_title_text_with_vertical_icon.dart';
-import '../../../../utils/constants/enums.dart';
 
 class AppProductImageSlider extends StatelessWidget {
   const AppProductImageSlider({

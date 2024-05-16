@@ -13,35 +13,28 @@ class AppRatingProgressIndicator extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 7,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
-                  text,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+        Expanded(
+            flex: 6,
+            child: SizedBox(
+              width: AppDeviceUtils.getScreenWidth(context) * .8,
+              child: LinearProgressIndicator(
+                value: value,
+                minHeight: 10,
+                backgroundColor: AppColors.grey,
+                borderRadius: BorderRadius.circular(5),
+                valueColor: const AlwaysStoppedAnimation(AppColors.secondary),
               ),
-              Expanded(
-                  flex: 11,
-                  child: SizedBox(
-                    width: AppDeviceUtils.getScreenWidth(context) * .8,
-                    child: LinearProgressIndicator(
-                      value: value,
-                      minHeight: 10,
-                      backgroundColor: AppColors.primary,
-                      borderRadius: BorderRadius.circular(5),
-                      valueColor: const AlwaysStoppedAnimation(AppColors.grey),
-                    ),
-                  ))
-            ],
-          )
-        ],
-      ),
+            ))
+      ],
     );
   }
 }

@@ -9,10 +9,11 @@ class AppSectionHeading extends StatelessWidget {
     this.showActionButton = true,
     this.isSmall=false,
     this.onPressed,
+    this.isMedium =false,
   });
 
   final Color? textColor;
-  final bool showActionButton, isSmall;
+  final bool showActionButton, isSmall, isMedium;
   final String title, buttonTitle;
   final void Function()? onPressed;
 
@@ -41,7 +42,7 @@ class AppSectionHeading extends StatelessWidget {
               .textTheme
               .titleSmall!
               .apply(color: textColor)
-              : 
+              :               
               Theme.of(context)
               .textTheme
               .headlineSmall!
@@ -52,5 +53,5 @@ class AppSectionHeading extends StatelessWidget {
           ))
       ],
     );
-  }
+  }  
 }

@@ -2,7 +2,6 @@
 import 'package:dona/common/widgets/custom_shapes/containers/searchbar_container.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/device/device._utility.dart';
-import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   @override
   Widget build(BuildContext context) {
-    final isDark = AppHelperFuncions.isDarkMode(context);
+  
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
       child: AppBar( 
@@ -46,8 +45,8 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                   bottom:   showSearchBar? const PreferredSize(
                             preferredSize: Size.fromHeight(100),
                             child:  AppSearchContainer(
-                              text: 'Encontre os',
-                              secondText: 'Melhores Produtos',
+                              text: 'Encontre os ',
+                              secondText: ' Melhores Produtos',
                               showBorder: true,
                               showBackground: true,
                               padding: EdgeInsets.zero,                           

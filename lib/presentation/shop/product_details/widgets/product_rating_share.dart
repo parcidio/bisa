@@ -3,7 +3,9 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
+
+import '../../product_reviews/product_reviews.dart';
 
 class AppRatingShare extends StatelessWidget {
   const AppRatingShare({
@@ -18,31 +20,37 @@ class AppRatingShare extends StatelessWidget {
         Row(
           // Rating
           children: [
-         RatingBar(
-   initialRating: 3.5,
-   direction: Axis.horizontal,
-   allowHalfRating: true,
-   itemCount: 5,
-   itemSize: AppSizes.iconSm,
-   ratingWidget: RatingWidget(
-     full: Icon(CupertinoIcons.star_fill, color: AppColors.secondary),
-     half: Icon(CupertinoIcons.star_lefthalf_fill, color: AppColors.secondary),
-     empty: Icon(CupertinoIcons.star, color: AppColors.secondary),
-   ),
-   itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-   onRatingUpdate: (rating) {
-     print(rating);
-   },
-),
-            const SizedBox(
-              width: AppSizes.spaceBetweenItems / 2,
+            GestureDetector(
+              onTap: () => Get.to(() => const ProductReviewsScreen()),
+              child: Row(
+              children: [
+                       RatingBar(
+                 initialRating: 3.5,
+                 direction: Axis.horizontal,
+                 allowHalfRating: true,
+                 itemCount: 5,
+                 itemSize: AppSizes.iconSm,
+                 ratingWidget: RatingWidget(
+                   full: Icon(CupertinoIcons.star_fill, color: AppColors.secondary),
+                   half: Icon(CupertinoIcons.star_lefthalf_fill, color: AppColors.secondary),
+                   empty: Icon(CupertinoIcons.star, color: AppColors.secondary),
+                 ),
+                 itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                 onRatingUpdate: (rating) {
+                   print(rating);
+                 },
+              ),
+                const SizedBox(
+                  width: AppSizes.spaceBetweenItems / 2,
+                ),
+                Text.rich(TextSpan(children: [
+                  TextSpan(
+                      text: '4.6', style: Theme.of(context).textTheme.bodyLarge),
+                   TextSpan(text: ' (203 revisão)', style: Theme.of(context).textTheme.labelLarge)
+                ])),
+              ],
             ),
-            Text.rich(TextSpan(children: [
-              TextSpan(
-                  text: '4.6', style: Theme.of(context).textTheme.bodyLarge),
-               TextSpan(text: ' (203 revisão)', style: Theme.of(context).textTheme.labelLarge)
-            ])),
-          ],
+        )],
         ),
        
       ],
