@@ -16,75 +16,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-          child: Column(children: [
-        const AppPrimaryHeaderContainer(
-          child: Column(
-            children: [
-              // appbar
-              AppHomeAppbar(),
-              SizedBox(
-                height: AppSizes.spaceBetweenSections,
-              ),
-              // searchbar
-              AppSearchContainer(
-                text: "Search in the store",
-              ),
-              SizedBox(
-                height: AppSizes.spaceBetweenSections,
-              ),
-              // categories
-              Padding(
-                padding: EdgeInsets.only(left: AppSizes.defaultSpace),
-                child: Column(children: [
-                  // Heading
-                  AppSectionHeading(
-                    title: 'Popular Categories',
-                    textColor: Colors.white,
-                    showActionButton: false,
-                  ),
-                  SizedBox(
-                    height: AppSizes.spaceBetweenItems,
-                  ),
-                  // categories
-                  AppHomeCategories(),
-                  SizedBox(height: AppSizes.spaceBetweenSections)
-                ]),
-              )
-            ],
-          ),
-        ),
-        // Body
-        Padding(
-            padding: const EdgeInsets.all(AppSizes.defaultItems),
-            child: Column(
-              children: [
-                const AppPrompSlider(
-                  banners: [
-                    AppImages.promoBanner2,
-                    AppImages.promoBanner2,
-                    AppImages.promoBanner2
-                  ],
-                ),
-                const SizedBox(
-                  height: AppSizes.spaceBetweenSections,
-                ),
-                // Heading
-                const AppSectionHeading(
-                  title: "Popular products",
-                ),
-                const SizedBox(
-                  height: AppSizes.spaceBetweenItems,
-                ),
+        body: SingleChildScrollView(
 
-                // Product vertical list
-                AppGridLayout(
-                  itemCount: 4,
-                  itemBuilder: (_, index) => const AppProductCardVertical(),
-                ),
-              ],
-            ))
-      ])),
-    );
+            // Body
+            child: Padding(
+                padding: const EdgeInsets.all(AppSizes.defaultItems),
+                child: Column(
+                  children: [
+                    // Product vertical list
+                    AppGridLayout(
+                      itemCount: 4,
+                      itemBuilder: (_, index) => const AppProductCardVertical(),
+                    ),
+                  ],
+                ))));
   }
 }

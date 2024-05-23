@@ -41,64 +41,62 @@ class StoreScreen extends StatelessWidget {
     ];
     return DefaultTabController(
       length: categories.length,
-      child: Scaffold(       
-        appBar: AppAppBar(title:  const Text('Store'), actions: [
-          AppCartMenuIcon(           
+      child: Scaffold(
+        appBar: AppAppBar(title: const Text('Store'), actions: [
+          const AppCartMenuIcon(
             iconColor: AppColors.black,
           ),
-          SizedBox(width: AppSizes.spaceBetweenItems,),
+          const SizedBox(
+            width: AppSizes.spaceBetweenItems,
+          ),
           AdvancedAvatar(
-                        statusSize: 16,
-                        name: 'Parcidio Andre',
-                        image: const NetworkImage('https://avatars.githubusercontent.com/u/44862147?v=4'),
-                        foregroundDecoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 2.0,
-                          ),
-                        ),
-                        decoration:  const BoxDecoration(
-                          color: Colors.transparent,                 
-                           shape: BoxShape.circle,
-                          
-                        ),
-                        children: [
-                       
-                          AlignCircular(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                              width: 18,
-                              height: 18,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.transparent,
-                                  width: 0.5,
-                                ),
-                                color: AppColors.primary,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Text(
-                                '1',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        
-                        ],
-                     
-                        ),
+            statusSize: 16,
+            name: 'Parcidio Andre',
+            image: const NetworkImage(
+                'https://avatars.githubusercontent.com/u/44862147?v=4'),
+            foregroundDecoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white,
+                width: 2.0,
+              ),
+            ),
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+            ),
+            children: [
+              AlignCircular(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: 18,
+                  height: 18,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.transparent,
+                      width: 0.5,
+                    ),
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Text(
+                    '1',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ]),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                
                   automaticallyImplyLeading: false,
                   pinned: true,
                   floating: true,
@@ -106,77 +104,80 @@ class StoreScreen extends StatelessWidget {
                       ? AppColors.black
                       : AppColors.white,
                   expandedHeight: 520,
-                  flexibleSpace:  ListView(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                            Padding(
-                    padding: const EdgeInsets.symmetric(vertical: AppSizes.defaultSpace),
-                    child:
-                           CarouselSlider(
-  options: CarouselOptions(
-    height: 200,
-    // aspectRatio: 16/8,
-    viewportFraction: 0.5,
-    initialPage: 0,
-    enableInfiniteScroll: true,
-    reverse: false,
-    autoPlay: true,
-    autoPlayInterval: const Duration(seconds: 15),
-    autoPlayAnimationDuration: const Duration(milliseconds: 1000),
-    autoPlayCurve: Curves.fastOutSlowIn,
-    enlargeFactor: 0.3,
-    scrollDirection: Axis.horizontal,
-    pauseAutoPlayInFiniteScroll: true,
-    pauseAutoPlayOnManualNavigate: true,
-    pauseAutoPlayOnTouch: true,
-
-
-  ),
-  items: [1, 2, 3, 4, 5].map((item) {
-    return Builder(
-      builder: (BuildContext context) {
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppSizes.cardRadiusSm), // Adjust the radius as needed
-            child: Image(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }).toList(),
-),
- ),
-                         Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
-                    child: Column(children: [                 
+                  flexibleSpace: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: AppSizes.defaultSpace),
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: 200,
+                            viewportFraction: 0.5,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: true,
+                            autoPlayInterval: const Duration(seconds: 15),
+                            autoPlayAnimationDuration:
+                                const Duration(milliseconds: 1000),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeFactor: 0.3,
+                            scrollDirection: Axis.horizontal,
+                            pauseAutoPlayInFiniteScroll: true,
+                            pauseAutoPlayOnManualNavigate: true,
+                            pauseAutoPlayOnTouch: true,
+                          ),
+                          items: [1, 2, 3, 4, 5].map((item) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(AppSizes
+                                        .cardRadiusSm), // Adjust the radius as needed
+                                    child: const Image(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3JtMzYyLTAxYS1tb2NrdXAuanBn.jpg",
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSizes.defaultSpace),
+                        child: Column(children: [
                           const AppSectionHeading(
                             title: "Featured brands",
                           ),
                           const SizedBox(
-                            height: AppSizes.spaceBetweenItems/10,
+                            height: AppSizes.spaceBetweenItems / 10,
                           ),
                           AppGridLayout(
-                            itemCount: brands.length,
-                            mainAxisExtent: 80,
-                            itemBuilder: (_, index) {
-                              return AppBrandCardHorizontal(
-                                  brandIcon: brands[index]['logo'],
-                                  brandName: brands[index]['name'],
-                                  details: brands[index]['details']);
-                            }),     
+                              itemCount: brands.length,
+                              mainAxisExtent: 80,
+                              itemBuilder: (_, index) {
+                                return AppBrandCardHorizontal(
+                                    brandIcon: brands[index]['logo'],
+                                    brandName: brands[index]['name'],
+                                    details: brands[index]['details']);
+                              }),
                         ]),
-                  ),   ],) ,
+                      ),
+                    ],
+                  ),
                   bottom: AppTabBar(tabs: categories),
                 )
               ];
