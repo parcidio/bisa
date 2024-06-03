@@ -4,9 +4,12 @@ import 'package:dona/presentation/password_configuration/forget_password.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../../common/widgets/login_signup/form_divider.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -67,12 +70,13 @@ class LoginForm extends StatelessWidget {
                 child: const Text(AppTexts.signIn)),
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems),
-
+          FormDivider(text: AppTexts.orSignInWith.capitalize!),
+          const SizedBox(height: AppSizes.spaceBetweenItems),
           // Create account button
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton(
-                onPressed: () => Get.to(() => const SignupScreen()),
+            child: ElevatedButton(
+                onPressed: () => Get.to(() => const NavigationMenu()),
                 child: const Text(AppTexts.createAccount)),
           ),
         ],

@@ -9,12 +9,13 @@ import 'package:flutter/material.dart';
 class AppCategoryTab extends StatelessWidget {
   const AppCategoryTab({
     super.key,
-    required this.brandIcon,
+    this.brandIcon,
     required this.brandName,
     required this.brandDetail,
   });
 
-  final String brandIcon, brandName, brandDetail;
+  final String brandName, brandDetail;
+  final String? brandIcon;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -23,8 +24,8 @@ class AppCategoryTab extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(AppSizes.defaultSpace),
-            child: Column(children: [              
-              // products              
+            child: Column(children: [
+              // products
               AppSectionHeading(
                 title: "You might like",
                 onPressed: () {},

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/device/device._utility.dart';
@@ -14,7 +15,7 @@ class AppSearchContainer extends StatelessWidget {
     this.showBorder = true,
     this.iconPrefix,
     this.iconSuffix,
-    this.text = "Search...",
+    this.text = "Pesquisa...",
     this.secondText = "",
     this.padding =
         const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
@@ -30,35 +31,31 @@ class AppSearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDarkMode = AppHelperFuncions.isDarkMode(context);
     return PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
-      child: Padding(
-          padding: padding,
-          child: Container(
-            width: AppDeviceUtils.getScreenWidth(context),
-            padding: const EdgeInsets.all(AppSizes.sm),
-            decoration: BoxDecoration(
-                color: showBackground
-                    ? isDarkMode
-                        ? AppColors.dark
-                        : AppColors.light
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(AppSizes.cardRadiusXs),
-                ),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Row(children: [
-                  const Icon(CupertinoIcons.search, color: AppColors.darkGrey),
-                  const SizedBox(width: AppSizes.spaceBetweenItems),
-                  Text("$text ", style: Theme.of(context).textTheme.bodySmall),                
-                  Text(secondText, style: Theme.of(context).textTheme.labelLarge)
-                ])),
-                showIconSuffix
-                    ? Icon(iconSuffix, color: AppColors.darkerGrey)
-                    : const SizedBox(),
-              ],
+      preferredSize: Size.fromHeight(100.0),
+      child: Container(
+        height: 40,
+        margin: EdgeInsets.only(bottom: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: TextField(
+          cursorColor: AppColors.black,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: Icon(CupertinoIcons.search, color: AppColors.darkGrey),
+            hintText: '$text $secondText',
+            hintStyle: TextStyle(color: Colors.grey),
+            filled: true,
+            fillColor: showBackground
+                ? isDarkMode
+                    ? AppColors.dark
+                    : AppColors.light
+                : Colors.transparent,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(AppSizes.cardRadiusXs),
+              borderSide: BorderSide.none,
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

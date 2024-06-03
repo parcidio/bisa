@@ -1,4 +1,4 @@
-
+import 'package:animate_do/animate_do.dart';
 import 'package:dona/common/widgets/custom_shapes/containers/searchbar_container.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/device/device._utility.dart';
@@ -25,38 +25,46 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   @override
   Widget build(BuildContext context) {
-  
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
-      child: AppBar( 
-                  automaticallyImplyLeading: false,
-                  leading: showBackArrow
-                      ? IconButton(
-                          onPressed: () => Get.back(),
-                          icon: const Icon(
-                            CupertinoIcons.arrow_left,
-                          ))
-                      : leadingIcon != null
-                          ? IconButton(
-                              onPressed: leadingOnPressed, icon: Icon(leadingIcon))
-                          : null,
-                  title: title,
-                  actions: actions,
-                  bottom:   showSearchBar? const PreferredSize(
-                            preferredSize: Size.fromHeight(100),
-                            child:  AppSearchContainer(
-                              text: 'Encontre os ',
-                              secondText: ' Melhores Produtos',
-                              showBorder: true,
-                              showBackground: true,
-                              padding: EdgeInsets.zero,                           
-                            ),
-                            // child:  PreferredSize( preferredSize: Size.fromHeight(100), child: Text("bottom"),),
-                            ): null,
-                  ),
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.sm),
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        leading: showBackArrow
+            ? IconButton(
+                onPressed: () => Get.back(),
+                icon: const Icon(
+                  CupertinoIcons.arrow_left,
+                ))
+            : leadingIcon != null
+                ? IconButton(
+                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                : null,
+        title: FadeInRight(
+            duration: Duration(milliseconds: 500),
+            child: Container(
+                height: 40,
+                margin: EdgeInsets.only(bottom: 10),
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: title)),
+        actions: actions,
+        bottom: showSearchBar
+            ? const PreferredSize(
+                preferredSize: Size.fromHeight(100),
+                child: AppSearchContainer(
+                  text: 'Encontre os ',
+                  secondText: 'melhores precos...',
+                  showBorder: true,
+                  showBackground: true,
+                  padding: EdgeInsets.zero,
+                ),
+              )
+            : null,
+      ),
     );
   }
 
   @override
-  Size get preferredSize => showSearchBar ? Size.fromHeight(AppDeviceUtils.getAppBarHeight()  +50): Size.fromHeight(AppDeviceUtils.getAppBarHeight());
+  Size get preferredSize => showSearchBar
+      ? Size.fromHeight(AppDeviceUtils.getAppBarHeight() + 50)
+      : Size.fromHeight(AppDeviceUtils.getAppBarHeight());
 }

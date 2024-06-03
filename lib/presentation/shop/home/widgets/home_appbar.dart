@@ -1,8 +1,11 @@
 import 'package:dona/common/widgets/appbar/appbar.dart';
-import 'package:dona/common/widgets/product/cart/cart_menu_icon.dart';
+import 'package:dona/common/widgets/product/cart/menu_icon.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/text_strings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../utils/constants/sizes.dart';
 
 class AppHomeAppbar extends StatelessWidget {
   const AppHomeAppbar({
@@ -34,9 +37,26 @@ class AppHomeAppbar extends StatelessWidget {
         ],
       ),
       actions: [
-        AppCartMenuIcon(      
-          iconColor: AppColors.white,
-        )
+        const AppMenuIcon(
+          icon: Icon(
+            CupertinoIcons.add_circled_solid,
+            size: AppSizes.iconSm,
+          ),
+          iconColor: AppColors.primary,
+        ),
+        const SizedBox(
+          width: AppSizes.spaceBetweenItems,
+        ),
+        const AppMenuIcon(
+          icon: Icon(
+            CupertinoIcons.cart,
+            size: AppSizes.iconSm,
+          ),
+          iconColor: AppColors.black,
+        ),
+        const SizedBox(
+          width: AppSizes.spaceBetweenItems,
+        ),
       ],
     );
   }

@@ -54,7 +54,13 @@ dependencies:
   readmore: ^3.0.0
   flutter_rating_bar: ^4.0.1
   flutter_advanced_avatar: ^1.5.0
-  group_button: ^5.3.4
+  group_button: ^5.3.4  
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  align_positioned: ^4.0.1
+  animate_do: ^3.3.4
+  pattern_formatter: ^3.0.0
+  bouncing_widget: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +96,7 @@ flutter:
     - assets/images/products/
     - assets/icons/brands/
     - assets/icons/categories/
+    - assets/users/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

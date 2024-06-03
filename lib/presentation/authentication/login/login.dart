@@ -24,12 +24,12 @@ class LoginScreen extends StatelessWidget {
                 // Form
                 const LoginForm(),
                 // Divider
-                FormDivider(text: AppTexts.orSignInWith.capitalize!),
-                const SizedBox(
-                  height: AppSizes.spaceBetweenSections,
-                ),
+                // FormDivider(text: AppTexts.orSignInWith.capitalize!),
+                // const SizedBox(
+                //   height: AppSizes.spaceBetweenSections,
+                // ),
                 // Footer
-                const SocialButtons()
+                // const SocialButtons()
               ],
             )),
       ),

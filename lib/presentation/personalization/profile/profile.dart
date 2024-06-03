@@ -1,11 +1,5 @@
-import 'package:dona/common/widgets/appbar/appbar.dart';
-import 'package:dona/common/widgets/images/circular_image.dart';
-import 'package:dona/common/widgets/text/section_heading.dart';
-import 'package:dona/presentation/personalization/profile/widgets/profile_menu.dart';
-import 'package:dona/utils/constants/image_strings.dart';
-import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -13,110 +7,95 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppAppBar(
-        title: Text('Profile'),
-        showBackArrow: true,
+      appBar: AppBar(
+        title: const Text('Profile'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSizes.defaultSpace),
-          child: Column(children: [
-            // Profile picture
-            SizedBox(
-              width: double.infinity,
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const AppCircularImage(
-                    isSvg: false,
-                    image: AppImages.profile,
-                    width: 80,
-                    height: 80,
+                  AdvancedAvatar(
+                    size: 80,
+                    name: 'Parcidio André',
+                    image: const NetworkImage(
+                        'https://avatars.githubusercontent.com/u/44862147?v=4'),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text('change profile picture'))
+                  const SizedBox(height: 8.0),
+                  const Text(
+                    'Parcidio André',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4.0),
+                  const Text(
+                    'parcidioandre@gmail.com',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ],
               ),
             ),
-
-            // Details
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems / 2,
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('Informações de perfil'),
+              onTap: () {
+                // Handle profile info tap
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.devices),
+              title: const Text('Dispositivos'),
+              subtitle: const Text("Parcidio's S24 Ultra e mais 1 dispositivo"),
+              onTap: () {
+                // Handle devices tap
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.location_on),
+              title: const Text('Locais'),
+              onTap: () {
+                // Handle locations tap
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.security),
+              title: const Text('Segurança e privacidade'),
+              trailing: const Icon(Icons.warning, color: Colors.orange),
+              onTap: () {
+                // Handle security and privacy tap
+              },
             ),
             const Divider(),
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems,
-            ),
-            const AppSectionHeading(
-              title: "Profile information",
-              showActionButton: false,
-            ),
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems,
-            ),
-
-            AppProfileMenu(
-              title: "Name",
-              value: 'Parciido Andre',
-              onPressed: () {},
-            ),
-            AppProfileMenu(
-              title: "Account type",
-              value: 'personal',
-              onPressed: () {},
-            ),
-            AppProfileMenu(
-              title: "User ID",
-              value: '454893',
-              icon: Iconsax.copy,
-              onPressed: () {},
-            ),
-
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems / 2,
-            ),
-            const Divider(),
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems,
-            ),
-
-            AppProfileMenu(
-              title: "Email",
-              value: 'parcidioandre@gmail.com',
-              onPressed: () {},
-            ),
-            AppProfileMenu(
-              title: "Phone",
-              value: '+264 816165751',
-              onPressed: () {},
-            ),
-            AppProfileMenu(
-              title: "Gender",
-              value: 'Name',
-              onPressed: () {},
-            ),
-            AppProfileMenu(
-              title: "Date of birth",
-              value: '21 May 200',
-              onPressed: () {},
-            ),
-            const Divider(),
-            const SizedBox(
-              height: AppSizes.spaceBetweenItems,
-            ),
-
-            Center(
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Delete account",
-                  style: TextStyle(color: Colors.red),
-                ),
+            ListTile(
+              leading: const Icon(Icons.cloud, color: Colors.blue),
+              title: const Text('Samsung Cloud'),
+              subtitle: const Text(
+                'Sincronizar • Fazer cópia de segurança • Restaurar',
               ),
-            )
-          ]),
+              onTap: () {
+                // Handle Samsung Cloud tap
+              },
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: ProfileScreen(),
+  ));
 }

@@ -1,11 +1,15 @@
+import 'package:dona/presentation/personalization/profile/profile.dart';
 import 'package:dona/presentation/personalization/settings/settings.dart';
 import 'package:dona/presentation/shop/home/home.dart';
 import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/colors.dart';
+import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'presentation/shop/contacts/contacts.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -20,31 +24,70 @@ class NavigationMenu extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-            height: 80,
+            height: 70,
             elevation: 0,
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) =>
                 controller.selectedIndex.value = index,
             backgroundColor: backgroundColor,
-            indicatorShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0)),
+            // indicatorShape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
             destinations: [
-              NavigationDestination(
-                  icon: Icon(CupertinoIcons.bag, color: iconColor),
-                  label: 'Loja',
-                  selectedIcon:
-                      Icon(CupertinoIcons.bag_fill, color: AppColors.primary)),
-              NavigationDestination(
-                  icon: Icon(CupertinoIcons.tag, color: iconColor),
-                  label: 'Praça',
-                  selectedIcon:
-                      Icon(CupertinoIcons.tag_fill, color: AppColors.primary)),
-              NavigationDestination(
-                  icon: Icon(CupertinoIcons.gift, color: iconColor),
-                  label: 'Promoções',
-                  selectedIcon:
-                      Icon(CupertinoIcons.gift_fill, color: AppColors.primary)),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: NavigationDestination(
+                    icon: Text('Praças',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.darkGrey,
+                                offset: Offset(0, -10))
+                          ],
+                        )),
+                    label: '',
+                    selectedIcon: Text('Praças',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.black, offset: Offset(0, -10))
+                          ],
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.dark,
+                          decorationThickness: 4,
+                        ))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: NavigationDestination(
+                    icon: Text('Bancadas',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.darkGrey,
+                                offset: Offset(0, -10))
+                          ],
+                        )),
+                    label: '',
+                    selectedIcon: Text('Bancadas',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.black, offset: Offset(0, -10))
+                          ],
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.dark,
+                          decorationThickness: 4,
+                        ))),
+              ),
             ]),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
@@ -57,6 +100,5 @@ class NavigationController extends GetxController {
   final screens = [
     const StoreScreen(),
     const HomeScreen(),
-    const SettingsScreen(),
   ];
 }
