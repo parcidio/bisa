@@ -1,5 +1,5 @@
-import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:dona/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import '../../../common/widgets/appbar/appbar.dart';
@@ -9,6 +9,13 @@ import '../../../utils/constants/sizes.dart';
 import './send_money.dart';
 import 'package:flutter/material.dart';
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dona/utils/constants/image_strings.dart';
+import '../../../common/widgets/appbar/tabbar.dart';
+import '../../../common/widgets/brand/brand_card_horizontal.dart';
+import '../../../utils/helpers/helper_functions.dart';
+import '../store/widgets/category_tabs.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -17,6 +24,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int tabHight = 100;
+  List<Map<String, String>> brands = [
+    {"logo": AppImages.zara, "name": "Congolenses", "details": "504 products"},
+    {
+      "logo": AppImages.dior,
+      "name": "hoji ya henda ",
+      "details": "404 products"
+    },
+    {"logo": AppImages.adidas, "name": "Kikolo", "details": "400 products"},
+    {"logo": AppImages.jordan, "name": "Kikuxi", "details": "102 products"},
+    {"logo": AppImages.jordan, "name": "Trinta", "details": "1402 products"},
+  ];
+  List<Map<String, String>> categories = [
+    {"icon": AppImages.shoeIcon, "title": "shoe"},
+    {"icon": AppImages.babyIcon, "title": "baby"},
+    {"icon": AppImages.clothIcon, "title": "clothes"},
+    {"icon": AppImages.foodIcon, "title": "food"},
+    {"icon": AppImages.furnitureIcon, "title": "furniture"},
+    {"icon": AppImages.sportIcon, "title": "sports"},
+    {"icon": AppImages.electronicIcon, "title": "electronics"},
+    {"icon": AppImages.animalIcon, "title": "animals"},
+    {"icon": AppImages.cosmeticIcon, "title": "cosmetics"},
+  ];
   List<dynamic> _contacts = [
     {
       'name': 'John',
@@ -41,12 +71,26 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'name': 'Kabir Singh',
       'avatar': 'assets/users/avatar-6.png',
-    }
+    },
+    {
+      'name': 'Kabir Singh',
+      'avatar': 'assets/users/avatar-6.png',
+    },
+    {
+      'name': 'Kabir Singh',
+      'avatar': 'assets/users/avatar-6.png',
+    },
+    {
+      'name': 'Kabir Singh',
+      'avatar': 'assets/users/avatar-6.png',
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      length: categories.length,
+      child: Scaffold(
         appBar: AppAppBar(title: const Text('Bancadas'), actions: [
           const AppMenuIcon(
             icon: Icon(
@@ -113,188 +157,180 @@ class _HomeScreenState extends State<HomeScreen> {
             width: AppSizes.spaceBetweenItems,
           ),
         ]),
-        body: SingleChildScrollView(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-              SizedBox(
-                height: 50,
-              ),
-              FadeInUp(
-                duration: Duration(milliseconds: 500),
-                child: Container(
-                  width: double.infinity,
-                  height: 300,
-                  padding: EdgeInsets.all(90.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.grey.shade200, width: 1.0),
-                  ),
-                  child: Stack(
+        body: NestedScrollView(
+            headerSliverBuilder: (_, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  floating: true,
+                  snap: true,
+                  backgroundColor: AppHelperFuncions.isDarkMode(context)
+                      ? AppColors.black
+                      : AppColors.white,
+                  expandedHeight: tabHight + 120,
+                  flexibleSpace: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      for (double i = 0; i < 360; i += 60)
-                        AnimChain(
-                                initialDelay: Duration(milliseconds: i.toInt()))
-                            .next(
-                              wait: Duration(milliseconds: 1000),
-                              widget: AnimatedAlignPositioned(
-                                dx: 0,
-                                dy: 150,
-                                duration: Duration(seconds: 1),
-                                rotateDegrees: 0,
-                                touch: Touch.middle,
-                                child: user(0, i),
-                              ),
-                            )
-                            .next(
-                              wait: Duration(seconds: 2),
-                              widget: AnimatedAlignPositioned(
-                                dx: i / 360,
-                                dy: 150,
-                                duration: Duration(seconds: 1),
-                                rotateDegrees: i,
-                                touch: Touch.middle,
-                                child: user(0, i),
-                              ),
-                            ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 80,
-              ),
-              FadeInRight(
-                duration: Duration(milliseconds: 500),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, bottom: 15.0, top: 10.0),
-                  child: Text(
-                    'Most Recent',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                padding: EdgeInsets.only(left: 20),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _contacts.length,
-                  itemBuilder: (context, index) {
-                    return FadeInRight(
-                      duration: Duration(milliseconds: (index * 100) + 500),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SendMoney(
-                                      name: _contacts[index]['name'],
-                                      avatar: _contacts[index]['avatar'])));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(right: 20),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Colors.blueGrey[100],
-                                backgroundImage:
-                                    AssetImage(_contacts[index]['avatar']),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                _contacts[index]['name'],
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              FadeInRight(
-                duration: Duration(milliseconds: 500),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, bottom: 15.0, top: 10.0),
-                  child: Text(
-                    'All Contacts',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height - 200,
-                padding: EdgeInsets.only(left: 20),
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: _contacts.length,
-                  itemBuilder: (context, index) {
-                    return FadeInRight(
-                      duration: Duration(milliseconds: (index * 100) + 500),
-                      child: Container(
-                        margin: EdgeInsets.only(bottom: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor: Colors.red[100],
-                                  backgroundImage:
-                                      AssetImage(_contacts[index]['avatar']),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  _contacts[index]['name'],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: AppSizes.defaultSpace),
+                        child: Column(
+                          children: [
+                            FadeInRight(
+                              duration: Duration(milliseconds: 500),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, bottom: 15.0, top: 10.0),
+                                child: Text(
+                                  'Mais recentes',
                                   style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600),
+                                      fontSize: 16,
+                                      color: Colors.grey.shade900,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                              ],
-                            ),
-                            Spacer(),
-                            IconButton(
-                              icon: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Colors.black,
-                                size: 15,
                               ),
-                              onPressed: () {},
+                            ),
+                            Container(
+                              height: 90,
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: _contacts.length,
+                                itemBuilder: (context, index) {
+                                  return FadeInRight(
+                                    duration: Duration(
+                                        milliseconds: (index * 100) + 500),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => SendMoney(
+                                                    name: _contacts[index]
+                                                        ['name'],
+                                                    avatar: _contacts[index]
+                                                        ['avatar'])));
+                                      },
+                                      child: Container(
+                                        margin:
+                                            const EdgeInsets.only(right: 20),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            CircleAvatar(
+                                              radius: 30,
+                                              backgroundColor:
+                                                  Colors.blueGrey[100],
+                                              backgroundImage: AssetImage(
+                                                  _contacts[index]['avatar']),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              _contacts[index]['name'],
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
-            ])));
+                    ],
+                  ),
+                  bottom: AppTabBar(tabs: categories),
+                )
+              ];
+            },
+            body: TabBarView(
+              children: [
+                SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      FadeInRight(
+                        duration: const Duration(milliseconds: 500),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 20.0,
+                            bottom: 15.0,
+                          ),
+                          child: Text(
+                            'Todas',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey.shade900,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height - 200,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: AppGridLayout(
+                          itemCount: _contacts.length,
+                          itemBuilder: (context, index) {
+                            return FadeInDown(
+                              duration:
+                                  Duration(milliseconds: (index * 100) + 500),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      color: AppColors.black,
+                                    )),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 30,
+                                        backgroundColor: Colors.red[100],
+                                        backgroundImage: AssetImage(
+                                            _contacts[index]['avatar']),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        _contacts[index]['name'],
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ]))
+              ],
+            )),
+      ),
+    );
   }
 
   user(int index, double number) {
     index = number ~/ 60;
     return FadeInRight(
-      delay: Duration(seconds: 1),
+      delay: const Duration(seconds: 1),
       duration: Duration(milliseconds: (index * 100) + 500),
       child: GestureDetector(
         onTap: () {
@@ -306,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       avatar: _contacts[index]['avatar'])));
         },
         child: Container(
-          margin: EdgeInsets.only(right: 20),
+          margin: const EdgeInsets.only(right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
