@@ -144,7 +144,7 @@ class StoreScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: AppSizes.defaultSpace),
+                            vertical: AppSizes.defaultSpace / 2),
                         child: CarouselSlider(
                           options: CarouselOptions(
                               viewportFraction: 0.6,

@@ -10,13 +10,20 @@ class MapScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        center: LatLng(11.2027, 17.8739),
-        zoom: 9.2,
+        center: LatLng(-8.8390, 13.2894), // Coordinates for Luanda, Angola
+        zoom: 12.0, // Adjusted zoom level for better focus
       ),
       children: [
         TileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate:
+              'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', // URL for grayish tiles
           userAgentPackageName: 'com.example.app',
+          subdomains: [
+            'a',
+            'b',
+            'c',
+            'd'
+          ], // Add subdomains for the tile server
         ),
         // RichAttributionWidget(
         //   attributions: [
