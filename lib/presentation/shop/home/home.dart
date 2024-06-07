@@ -9,12 +9,9 @@ import '../../../utils/constants/sizes.dart';
 import './send_money.dart';
 import 'package:flutter/material.dart';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
-import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../store/widgets/category_tabs.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -278,42 +275,36 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      Container(
-                        height: MediaQuery.of(context).size.height - 200,
+                      SingleChildScrollView(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: AppGridLayout(
+                          itemCountRow: 3,
+                          mainAxisExtent: 100,
                           itemCount: _contacts.length,
                           itemBuilder: (context, index) {
                             return FadeInDown(
                               duration:
                                   Duration(milliseconds: (index * 100) + 500),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                      color: AppColors.black,
-                                    )),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 30,
-                                        backgroundColor: Colors.red[100],
-                                        backgroundImage: AssetImage(
-                                            _contacts[index]['avatar']),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        _contacts[index]['name'],
-                                        style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ],
-                                  ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: Colors.red[100],
+                                      backgroundImage: AssetImage(
+                                          _contacts[index]['avatar']),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      _contacts[index]['name'],
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
                                 ),
                               ),
                             );

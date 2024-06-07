@@ -8,6 +8,7 @@ import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
+import '../../../common/widgets/text/section_heading.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../store/widgets/category_tabs.dart';
@@ -20,18 +21,30 @@ class StoreScreen extends StatelessWidget {
     int tabHight = 100;
     List<Map<String, String>> brands = [
       {
-        "logo": AppImages.zara,
+        "logo": AppImages.greenAppLogo,
         "name": "Congolenses",
         "details": "504 products"
       },
       {
-        "logo": AppImages.dior,
+        "logo": AppImages.darkAppLogo,
         "name": "hoji ya henda ",
         "details": "404 products"
       },
-      {"logo": AppImages.adidas, "name": "Kikolo", "details": "400 products"},
-      {"logo": AppImages.jordan, "name": "Kikuxi", "details": "102 products"},
-      {"logo": AppImages.jordan, "name": "Trinta", "details": "1402 products"},
+      {
+        "logo": AppImages.darkAppLogo,
+        "name": "Kikolo",
+        "details": "400 products"
+      },
+      {
+        "logo": AppImages.darkAppLogo,
+        "name": "Kikuxi",
+        "details": "102 products"
+      },
+      {
+        "logo": AppImages.darkAppLogo,
+        "name": "Trinta",
+        "details": "1402 products"
+      },
     ];
     List<Map<String, String>> categories = [
       {"icon": AppImages.shoeIcon, "title": "shoe"},

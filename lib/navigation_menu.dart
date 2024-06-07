@@ -1,6 +1,7 @@
 import 'package:dona/presentation/personalization/profile/profile.dart';
 import 'package:dona/presentation/personalization/settings/settings.dart';
 import 'package:dona/presentation/shop/home/home.dart';
+import 'package:dona/presentation/shop/map/map.dart';
 import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
@@ -24,7 +25,7 @@ class NavigationMenu extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-            height: 70,
+            height: 50,
             elevation: 0,
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) =>
@@ -37,7 +38,7 @@ class NavigationMenu extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: NavigationDestination(
-                    icon: Text('Praças',
+                    icon: Text('Praça',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -48,7 +49,34 @@ class NavigationMenu extends StatelessWidget {
                           ],
                         )),
                     label: '',
-                    selectedIcon: Text('Praças',
+                    selectedIcon: Text('Praça',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.black, offset: Offset(0, -10))
+                          ],
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.dark,
+                          decorationThickness: 4,
+                        ))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: NavigationDestination(
+                    icon: Text('Mapa',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.darkGrey,
+                                offset: Offset(0, -10))
+                          ],
+                        )),
+                    label: '',
+                    selectedIcon: Text('Mapa',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -99,6 +127,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const StoreScreen(),
+    const MapScreen(),
     const HomeScreen(),
   ];
 }

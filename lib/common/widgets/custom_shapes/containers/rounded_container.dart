@@ -11,7 +11,7 @@ class AppRoundedContainer extends StatelessWidget {
     this.padding,
     this.margin,
     this.showBorder = false,
-    this.radius = AppSizes.cardRadiusLg,
+    this.radius = AppSizes.cardRadiusSm,
     this.backgroundColor = AppColors.white,
     this.borderColor = AppColors.borderPrimary,
   });
@@ -22,7 +22,7 @@ class AppRoundedContainer extends StatelessWidget {
   final double radius;
   final bool showBorder;
   final Color borderColor;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 

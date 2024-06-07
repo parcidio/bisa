@@ -24,20 +24,22 @@ class AppBrandCardHorizontal extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: AppRoundedContainer(
+        backgroundColor: Colors.amber[100],
         showBorder: showBorder,
         padding: const EdgeInsets.all(AppSizes.sm),
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         child: Row(children: [
-          Flexible(
-            child: AppCircularImage(
-              fit: BoxFit.scaleDown,
-              image: brandIcon,
-              backgroundColor: Colors.transparent,
-              overlayColor: AppHelperFuncions.isDarkMode(context)
-                  ? AppColors.white
-                  : AppColors.black,
-            ),
-          ),
+          // Flexible(
+          //   child: AppCircularImage(
+          //     fit: BoxFit.scaleDown,
+          //     isSvg: false,
+          //     image: brandIcon,
+          //     backgroundColor: Colors.transparent,
+          //     overlayColor: AppHelperFuncions.isDarkMode(context)
+          //         ? AppColors.white
+          //         : AppColors.black,
+          //   ),
+          // ),
 
           /// Text
 
