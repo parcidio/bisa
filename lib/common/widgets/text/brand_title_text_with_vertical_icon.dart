@@ -14,6 +14,7 @@ class AppBrandTextTitleWithVerticalIcon extends StatelessWidget {
     this.iconColor = AppColors.primary,
     this.textAlign = TextAlign.center,
     this.brandTextSize = TextSizes.small,
+    this.isVerified = false,
   });
 
   final String title;
@@ -21,6 +22,7 @@ class AppBrandTextTitleWithVerticalIcon extends StatelessWidget {
   final Color? textColor, iconColor;
   final TextAlign? textAlign;
   final TextSizes brandTextSize;
+  final bool isVerified;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,10 @@ class AppBrandTextTitleWithVerticalIcon extends StatelessWidget {
         ),
       ),
       const SizedBox(width: AppSizes.spaceBetweenItems),
-      const Icon(Iconsax.verify5,
-          color: AppColors.primary, size: AppSizes.iconXs),
+      isVerified
+          ? Icon(Iconsax.verify5,
+              color: AppColors.primary, size: AppSizes.iconXs)
+          : SizedBox(),
     ]);
   }
 }

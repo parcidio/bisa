@@ -25,7 +25,7 @@ class AppTabBar extends StatelessWidget implements PreferredSizeWidget {
           labelColor: isDark ? AppColors.white : AppColors.primary,
           tabs: tabs
               .map((category) => Tab(
-                    child: Text(category['title']),
+                    child: Text(category['title'] + "  " + category['icon']),
                   ))
               .toList()),
     );

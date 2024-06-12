@@ -7,6 +7,7 @@ import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
+import '../../../common/widgets/custom_shapes/containers/searchbar_container.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../common/widgets/text/section_heading.dart';
 import '../../../utils/constants/colors.dart';
@@ -47,85 +48,82 @@ class StoreScreen extends StatelessWidget {
       },
     ];
     List<Map<String, String>> categories = [
-      {"icon": AppImages.shoeIcon, "title": "shoe"},
-      {"icon": AppImages.babyIcon, "title": "baby"},
-      {"icon": AppImages.clothIcon, "title": "clothes"},
-      {"icon": AppImages.foodIcon, "title": "food"},
-      {"icon": AppImages.furnitureIcon, "title": "furniture"},
-      {"icon": AppImages.sportIcon, "title": "sports"},
-      {"icon": AppImages.electronicIcon, "title": "electronics"},
-      {"icon": AppImages.animalIcon, "title": "animals"},
-      {"icon": AppImages.cosmeticIcon, "title": "cosmetics"},
+      {"icon": "", "title": "Tudo"},
+      {"icon": "👟", "title": "Shoe"},
+      {"icon": "👶", "title": "Baby"},
+      {"icon": "👗", "title": "Clothes"},
+      {"icon": "🍔", "title": "Food"},
+      {"icon": "🛋️", "title": "Furniture"},
+      {"icon": "🏅", "title": "Sports"},
+      {"icon": "📱", "title": "Electronics"},
+      {"icon": "🐾", "title": "Animals"},
+      {"icon": "💄", "title": "Cosmetics"},
     ];
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
-        appBar: AppAppBar(title: const Text('Parças'), actions: [
-          const AppMenuIcon(
-            icon: Icon(
-              CupertinoIcons.add,
-              size: AppSizes.iconMd,
-            ),
-            iconColor: AppColors.primary,
-          ),
-          const AppMenuIcon(
-            icon: Icon(
-              CupertinoIcons.bag,
-              size: AppSizes.iconSm,
-            ),
-            iconColor: AppColors.black,
-          ),
-          const SizedBox(
-            width: AppSizes.spaceBetweenItems,
-          ),
-          AdvancedAvatar(
-            statusSize: 5,
-            size: AppSizes.iconMd,
-            name: 'Parcidio Andre',
-            image: const NetworkImage(
-                'https://avatars.githubusercontent.com/u/44862147?v=4'),
-            foregroundDecoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 1.0,
+        appBar: AppAppBar(
+            showSearchBar: false,
+            title: const Text('Parça'),
+            actions: [
+              const AppMenuIcon(
+                icon: Icon(
+                  CupertinoIcons.bag,
+                  size: AppSizes.iconSm,
+                ),
+                iconColor: AppColors.black,
               ),
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-              shape: BoxShape.circle,
-            ),
-            children: [
-              AlignCircular(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.transparent,
-                      width: 0.5,
-                    ),
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Text(
-                    '1',
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
+              const SizedBox(
+                width: AppSizes.spaceBetweenItems,
+              ),
+              AdvancedAvatar(
+                statusSize: 5,
+                size: AppSizes.iconMd,
+                name: 'Parcidio Andre',
+                image: const NetworkImage(
+                    'https://avatars.githubusercontent.com/u/44862147?v=4'),
+                foregroundDecoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.0,
                   ),
                 ),
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                  shape: BoxShape.circle,
+                ),
+                children: [
+                  AlignCircular(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.transparent,
+                          width: 0.5,
+                        ),
+                        color: AppColors.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Text(
+                        '1',
+                        style: TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          const SizedBox(
-            width: AppSizes.spaceBetweenItems,
-          ),
-        ]),
+              const SizedBox(
+                width: AppSizes.spaceBetweenItems,
+              ),
+            ]),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) {
               return [
@@ -137,7 +135,7 @@ class StoreScreen extends StatelessWidget {
                   backgroundColor: AppHelperFuncions.isDarkMode(context)
                       ? AppColors.black
                       : AppColors.white,
-                  expandedHeight: tabHight + 40,
+                  expandedHeight: tabHight + 70,
                   flexibleSpace: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -145,44 +143,56 @@ class StoreScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: AppSizes.defaultSpace / 2),
-                        child: CarouselSlider(
-                          options: CarouselOptions(
-                              viewportFraction: 0.6,
-                              initialPage: 0,
-                              enableInfiniteScroll: true,
-                              reverse: false,
-                              autoPlay: true,
-                              autoPlayInterval: const Duration(seconds: 5),
-                              autoPlayAnimationDuration:
-                                  const Duration(milliseconds: 1000),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeFactor: 0.2,
-                              scrollDirection: Axis.horizontal,
-                              pauseAutoPlayInFiniteScroll: true,
-                              pauseAutoPlayOnManualNavigate: true,
-                              pauseAutoPlayOnTouch: true,
-                              enlargeCenterPage: true),
-                          items: brands.map((item) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(AppSizes
-                                          .cardRadiusSm), // Adjust the radius as needed
-                                      child: AppBrandCardHorizontal(
-                                          brandIcon: item['logo']!,
-                                          brandName: item['name']!,
-                                          details: item['details']!)),
+                        child: Column(
+                          children: [
+                            AppSearchContainer(
+                              text: 'Encontre os ',
+                              secondText: 'melhores precos...',
+                              showBorder: true,
+                              showBackground: true,
+                              padding: EdgeInsets.zero,
+                            ),
+                            CarouselSlider(
+                              options: CarouselOptions(
+                                  viewportFraction: 0.6,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: false,
+                                  reverse: false,
+                                  autoPlay: false,
+                                  autoPlayInterval: const Duration(seconds: 5),
+                                  autoPlayAnimationDuration:
+                                      const Duration(milliseconds: 1000),
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enlargeFactor: 0,
+                                  scrollDirection: Axis.horizontal,
+                                  pauseAutoPlayInFiniteScroll: true,
+                                  pauseAutoPlayOnManualNavigate: true,
+                                  pauseAutoPlayOnTouch: true,
+                                  enlargeCenterPage: false),
+                              items: brands.map((item) {
+                                return Builder(
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              AppSizes
+                                                  .cardRadiusSm), // Adjust the radius as needed
+                                          child: AppBrandCardHorizontal(
+                                              brandIcon: item['logo']!,
+                                              brandName: item['name']!,
+                                              details: item['details']!)),
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }).toList(),
+                              }).toList(),
+                            ),
+                          ],
                         ),
                       ),
                     ],

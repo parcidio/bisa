@@ -91,13 +91,6 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppAppBar(title: const Text('Bancadas'), actions: [
           const AppMenuIcon(
             icon: Icon(
-              CupertinoIcons.add,
-              size: AppSizes.iconMd,
-            ),
-            iconColor: AppColors.primary,
-          ),
-          const AppMenuIcon(
-            icon: Icon(
               CupertinoIcons.bag,
               size: AppSizes.iconSm,
             ),
@@ -165,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor: AppHelperFuncions.isDarkMode(context)
                       ? AppColors.black
                       : AppColors.white,
-                  expandedHeight: tabHight + 120,
+                  expandedHeight: 0,
                   flexibleSpace: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -174,74 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(
                             vertical: AppSizes.defaultSpace),
                         child: Column(
-                          children: [
-                            FadeInRight(
-                              duration: Duration(milliseconds: 500),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, bottom: 15.0, top: 10.0),
-                                child: Text(
-                                  'Mais recentes',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey.shade900,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 90,
-                              padding: const EdgeInsets.only(left: 5),
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: _contacts.length,
-                                itemBuilder: (context, index) {
-                                  return FadeInRight(
-                                    duration: Duration(
-                                        milliseconds: (index * 100) + 500),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => SendMoney(
-                                                    name: _contacts[index]
-                                                        ['name'],
-                                                    avatar: _contacts[index]
-                                                        ['avatar'])));
-                                      },
-                                      child: Container(
-                                        margin:
-                                            const EdgeInsets.only(right: 20),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            CircleAvatar(
-                                              radius: 30,
-                                              backgroundColor:
-                                                  Colors.blueGrey[100],
-                                              backgroundImage: AssetImage(
-                                                  _contacts[index]['avatar']),
-                                            ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              _contacts[index]['name'],
-                                              style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
+                          children: [],
                         ),
                       ),
                     ],

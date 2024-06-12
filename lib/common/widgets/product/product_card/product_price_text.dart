@@ -28,7 +28,7 @@ class AppProductPriceText extends StatelessWidget {
                 maxLines: maxLines,
                 overflow: TextOverflow.ellipsis,
                 style: isLarge
-                    ? Theme.of(context).textTheme.headlineMedium
+                    ? Theme.of(context).textTheme.titleLarge
                     : Theme.of(context).textTheme.titleMedium),
             Text(
               '.$cents',
@@ -41,41 +41,41 @@ class AppProductPriceText extends StatelessWidget {
           ],
         ),
         if (priceWas?.trim() != '') ...[
-        Row(
-          children: [
-            Text('$currencySign $priceWas',
-                maxLines: maxLines,
-                overflow: TextOverflow.ellipsis,                
+          Row(
+            children: [
+              Text('$currencySign $priceWas',
+                  maxLines: maxLines,
+                  overflow: TextOverflow.ellipsis,
+                  style: isLarge
+                      ? Theme.of(context).textTheme.labelMedium!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null)
+                      : Theme.of(context).textTheme.labelSmall!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null)),
+              Text(
+                '.$centsWas',
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
                             lineThrough ? TextDecoration.lineThrough : null)
                     : Theme.of(context).textTheme.labelSmall!.apply(
                         decoration:
-                            lineThrough ? TextDecoration.lineThrough : null)),
-            Text(
-              '.$centsWas',
-              style: isLarge
-                  ? Theme.of(context).textTheme.labelMedium!.apply(
-                      decoration:
-                          lineThrough ? TextDecoration.lineThrough : null)
-                  : Theme.of(context).textTheme.labelSmall!.apply(
-                      decoration:
-                          lineThrough ? TextDecoration.lineThrough : null),
-            ),
-            Text(
-              unit.trim() != '' ? '' : '/$unit',
-              style: isLarge
-                  ? Theme.of(context).textTheme.labelMedium!.apply(
-                      decoration:
-                          lineThrough ? TextDecoration.lineThrough : null)
-                  : Theme.of(context).textTheme.labelSmall!.apply(
-                      decoration:
-                          lineThrough ? TextDecoration.lineThrough : null),
-            ),
-          ],
-        ),
-      ],
+                            lineThrough ? TextDecoration.lineThrough : null),
+              ),
+              Text(
+                unit.trim() != '' ? '' : '/$unit',
+                style: isLarge
+                    ? Theme.of(context).textTheme.labelMedium!.apply(
+                        decoration:
+                            lineThrough ? TextDecoration.lineThrough : null)
+                    : Theme.of(context).textTheme.labelSmall!.apply(
+                        decoration:
+                            lineThrough ? TextDecoration.lineThrough : null),
+              ),
+            ],
+          ),
+        ],
       ],
     );
   }

@@ -24,7 +24,7 @@ class AppBrandCardHorizontal extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: AppRoundedContainer(
-        backgroundColor: Colors.amber[100],
+        backgroundColor: Colors.transparent,
         showBorder: showBorder,
         padding: const EdgeInsets.all(AppSizes.sm),
         // backgroundColor: Colors.transparent,

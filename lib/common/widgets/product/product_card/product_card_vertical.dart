@@ -112,12 +112,12 @@ class AppProductCardVertical extends StatelessWidget {
                 height: AppSizes.spaceBetweenItems / 2,
               ),
               const AppBrandTextTitleWithVerticalIcon(
-                title: 'Nike',
+                title: 'Golf 2',
               ),
             ]),
           ),
           const Spacer(),
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Padding(
@@ -131,7 +131,8 @@ class AppProductCardVertical extends StatelessWidget {
               ),
               Positioned(
                 child: IconButton(
-                  onPressed: (){},
+                  iconSize: AppSizes.iconXs,
+                  onPressed: () {},
                   icon: const Icon(CupertinoIcons.add),
                   color: AppColors.white,
                   style: const ButtonStyle(

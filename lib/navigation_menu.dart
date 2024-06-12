@@ -65,7 +65,7 @@ class NavigationMenu extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: NavigationDestination(
-                    icon: Text('Mapa',
+                    icon: Text('Explorar',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class NavigationMenu extends StatelessWidget {
                           ],
                         )),
                     label: '',
-                    selectedIcon: Text('Mapa',
+                    selectedIcon: Text('Explorar',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -89,33 +89,33 @@ class NavigationMenu extends StatelessWidget {
                           decorationThickness: 4,
                         ))),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: NavigationDestination(
-                    icon: Text('Bancadas',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.darkGrey,
-                                offset: Offset(0, -10))
-                          ],
-                        )),
-                    label: '',
-                    selectedIcon: Text('Bancadas',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.black, offset: Offset(0, -10))
-                          ],
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppColors.dark,
-                          decorationThickness: 4,
-                        ))),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 20),
+              //   child: NavigationDestination(
+              //       icon: Text('Bancadas',
+              //           style: TextStyle(
+              //             color: Colors.transparent,
+              //             fontWeight: FontWeight.bold,
+              //             shadows: [
+              //               Shadow(
+              //                   color: AppColors.darkGrey,
+              //                   offset: Offset(0, -10))
+              //             ],
+              //           )),
+              //       label: '',
+              //       selectedIcon: Text('Bancadas',
+              //           style: TextStyle(
+              //             color: Colors.transparent,
+              //             fontWeight: FontWeight.bold,
+              //             shadows: [
+              //               Shadow(
+              //                   color: AppColors.black, offset: Offset(0, -10))
+              //             ],
+              //             decoration: TextDecoration.underline,
+              //             decorationColor: AppColors.dark,
+              //             decorationThickness: 4,
+              //           ))),
+              // ),
             ]),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
@@ -128,6 +128,6 @@ class NavigationController extends GetxController {
   final screens = [
     const StoreScreen(),
     const MapScreen(),
-    const HomeScreen(),
+    // const HomeScreen(),
   ];
 }
