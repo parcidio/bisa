@@ -18,8 +18,8 @@ class AppBottomAddToCart extends StatelessWidget {
           horizontal: AppSizes.defaultSpace,
           vertical: AppSizes.defaultSpace / 2),
       decoration: BoxDecoration(
-          color: isDark ? AppColors.dark : AppColors.light,
-        ),
+        color: isDark ? AppColors.dark : AppColors.light,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,11 +28,11 @@ class AppBottomAddToCart extends StatelessWidget {
               AppCircularIcon(
                 onPressed: () {},
                 icon: CupertinoIcons.minus,
-                height: 40,
-                width: 40,
+                height: 35,
+                width: 35,
+                size: AppSizes.iconSm,
                 color: AppColors.white,
                 backgroundColor: AppColors.primary,
-                
               ),
               const SizedBox(
                 width: AppSizes.spaceBetweenItems,
@@ -42,29 +42,34 @@ class AppBottomAddToCart extends StatelessWidget {
                 width: AppSizes.spaceBetweenItems,
               ),
               AppCircularIcon(
-            onPressed: () {},
-            icon: CupertinoIcons.add,
-            height: 40,
-            width: 40,
-            color: AppColors.white,
+                onPressed: () {},
+                icon: CupertinoIcons.add,
+                height: 35,
+                width: 35,
+                size: AppSizes.iconSm,
+                color: AppColors.white,
                 backgroundColor: AppColors.primary,
-          ),
+              ),
             ],
           ),
           SizedBox(width: AppSizes.spaceBetweenItems),
-      ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              // padding: const EdgeInsets.all(AppSizes.md),
-              backgroundColor: AppColors.primary,),
-          child:  Row(
-            children: [
-              Text('Adicionar',),
-              SizedBox(width: AppSizes.spaceBetweenItems),
-              Icon(CupertinoIcons.bag, ),
-            ],
-          ))
-          
+          ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(AppSizes.sm),
+                backgroundColor: AppColors.primary,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    'Adicionar',
+                  ),
+                  SizedBox(width: AppSizes.spaceBetweenItems),
+                  Icon(
+                    CupertinoIcons.bag,
+                  ),
+                ],
+              ))
         ],
       ),
     );

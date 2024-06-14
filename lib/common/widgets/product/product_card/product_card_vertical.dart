@@ -116,31 +116,34 @@ class AppProductCardVertical extends StatelessWidget {
               ),
             ]),
           ),
-          const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: AppSizes.sm),
-                child: AppProductPriceText(
+          // const Spacer(),
+          SizedBox(
+            height: AppSizes.spaceBetweenItems / 2,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.sm),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppProductPriceText(
                   price: '500',
                   cents: '04',
                   isLarge: true,
                   priceWas: '600',
                 ),
-              ),
-              Positioned(
-                child: IconButton(
-                  iconSize: AppSizes.iconXs,
-                  onPressed: () {},
-                  icon: const Icon(CupertinoIcons.add),
-                  color: AppColors.white,
-                  style: const ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll<Color>(AppColors.primary)),
+                Positioned(
+                  child: AppCircularIcon(
+                    onPressed: () {},
+                    icon: CupertinoIcons.add,
+                    height: 35,
+                    width: 35,
+                    size: AppSizes.iconSm,
+                    color: AppColors.white,
+                    backgroundColor: AppColors.primary,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ]),
       ),

@@ -73,7 +73,7 @@ class StoreScreen extends StatelessWidget {
               const AppMenuIcon(
                 icon: Icon(
                   CupertinoIcons.bag,
-                  size: AppSizes.iconSm,
+                  size: AppSizes.iconMd,
                 ),
                 iconColor: AppColors.black,
               ),
@@ -82,7 +82,7 @@ class StoreScreen extends StatelessWidget {
               ),
               AdvancedAvatar(
                 statusSize: 5,
-                size: AppSizes.iconMd,
+                size: AppSizes.iconLg,
                 name: 'Parcidio Andre',
                 image: const NetworkImage(
                     'https://avatars.githubusercontent.com/u/44862147?v=4'),

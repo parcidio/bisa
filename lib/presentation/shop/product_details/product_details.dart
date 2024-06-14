@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dona/common/widgets/appbar/appbar.dart';
 import 'package:dona/presentation/shop/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_attributes.dart';
@@ -12,8 +13,11 @@ import 'package:readmore/readmore.dart';
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
 import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
+import '../../../common/widgets/layouts/grid_layout.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
+import '../../../common/widgets/product/product_card/product_card_vertical.dart';
 import '../../../common/widgets/product/ratings/RatingBarIndicator.dart';
+import '../../../common/widgets/text/section_heading.dart';
 import '../../../domain/entities/entities.dart';
 import '../../../utils/constants/colors.dart';
 import '../product_reviews/widgets/rating_progress_indicator_group.dart';
@@ -24,13 +28,115 @@ class AppProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List products = [
+      {
+        "name": "Produto 1",
+        "place": "Praça 1",
+        "rating": 4.5,
+        "price": 100,
+        "cent": 99,
+        "previousPrice": 120,
+        "previousCent": 99,
+        "discount": 16.5,
+      },
+      {
+        "name": "Produto 2",
+        "place": "Praça 2",
+        "rating": 4.0,
+        "price": 80,
+        "cent": 49,
+        "previousPrice": 90,
+        "previousCent": 49,
+        "discount": 11.0,
+      },
+      {
+        "name": "Produto 3",
+        "place": "Mercado 1",
+        "rating": 4.8,
+        "price": 150,
+        "cent": 0,
+        "previousPrice": 180,
+        "previousCent": 0,
+        "discount": 16.7,
+      },
+      {
+        "name": "Produto 4",
+        "place": "Praça 3",
+        "rating": 4.2,
+        "price": 60,
+        "cent": 99,
+        "previousPrice": 75,
+        "previousCent": 99,
+        "discount": 19.7,
+      },
+      {
+        "name": "Produto 5",
+        "place": "Mercado 2",
+        "rating": 4.7,
+        "price": 110,
+        "cent": 49,
+        "previousPrice": 130,
+        "previousCent": 49,
+        "discount": 15.4,
+      },
+      {
+        "name": "Produto 6",
+        "place": "Praça 4",
+        "rating": 4.3,
+        "price": 90,
+        "cent": 0,
+        "previousPrice": 100,
+        "previousCent": 0,
+        "discount": 10.0,
+      },
+      {
+        "name": "Produto 7",
+        "place": "Mercado 3",
+        "rating": 4.6,
+        "price": 70,
+        "cent": 49,
+        "previousPrice": 85,
+        "previousCent": 49,
+        "discount": 17.5,
+      },
+      {
+        "name": "Produto 8",
+        "place": "Praça 5",
+        "rating": 4.1,
+        "price": 55,
+        "cent": 99,
+        "previousPrice": 65,
+        "previousCent": 99,
+        "discount": 15.2,
+      },
+      {
+        "name": "Produto 9",
+        "place": "Mercado 4",
+        "rating": 4.9,
+        "price": 130,
+        "cent": 0,
+        "previousPrice": 150,
+        "previousCent": 0,
+        "discount": 13.3,
+      },
+      {
+        "name": "Produto 10",
+        "place": "Praça 6",
+        "rating": 4.4,
+        "price": 85,
+        "cent": 49,
+        "previousPrice": 95,
+        "previousCent": 49,
+        "discount": 10.5,
+      },
+    ];
     return Scaffold(
       appBar:
           const AppAppBar(showSearchBar: false, showBackArrow: true, actions: [
         AppMenuIcon(
           icon: Icon(
-            CupertinoIcons.cart,
-            size: AppSizes.iconSm,
+            CupertinoIcons.bag,
+            size: AppSizes.iconMd,
           ),
           iconColor: AppColors.black,
         ),
@@ -81,7 +187,6 @@ class AppProductDetails extends StatelessWidget {
                   ),
 
                   // Description
-                  const Divider(),
 
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
@@ -153,20 +258,66 @@ class AppProductDetails extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBetweenItems,
-                  ),
                   LeadTimeCard(
                     deliveryDays: 3,
                     dispatchDays: 0,
                     quantity: 2,
                   ),
-                  // Reviews
-
+                  const Divider(),
                   const SizedBox(
-                    height: AppSizes.spaceBetweenSections,
+                    height: AppSizes.spaceBetweenItems / 2,
                   ),
+                  const AppSectionHeading(
+                      title: 'Produtos relacionados',
+                      buttonTitle: 'Mais',
+                      isSmall: true,
+                      textColor: AppColors.darkGrey),
+
+                  // Reviews
                 ],
+              ),
+            ),
+            Container(
+              color: AppColors.light,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: AppSizes.spaceBetweenItems),
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                      height: 280,
+                      viewportFraction: .5,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 5),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 1000),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeFactor: 0,
+                      scrollDirection: Axis.horizontal,
+                      pauseAutoPlayInFiniteScroll: true,
+                      pauseAutoPlayOnManualNavigate: true,
+                      pauseAutoPlayOnTouch: true,
+                      enlargeCenterPage: false),
+                  items: products.map((item) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(AppSizes
+                                  .cardRadiusSm), // Adjust the radius as needed
+                              child: const AppProductCardVertical()),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ],
