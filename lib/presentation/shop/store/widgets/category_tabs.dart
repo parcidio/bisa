@@ -6,6 +6,8 @@ import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../utils/constants/colors.dart';
+
 class AppCategoryTab extends StatelessWidget {
   const AppCategoryTab({
     super.key,
@@ -25,16 +27,19 @@ class AppCategoryTab extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(AppSizes.defaultSpace),
             child: Column(children: [
-              // products
-              AppSectionHeading(
-                title: "You might like",
-                onPressed: () {},
-              ),
+              const AppSectionHeading(
+                  title: 'Os produtos da praça',
+                  // buttonTitle: 'Mais',
+                  isSmall: true,
+                  textColor: AppColors.darkGrey),
               const SizedBox(
                 height: AppSizes.spaceBetweenItems,
               ),
+              // Builder(builder: (context) {
+              //   return AppProductCardVertical();
+              // }),
               AppGridLayout(
-                  itemCount: 21,
+                  itemCount: 22,
                   itemBuilder: (_, index) => const AppProductCardVertical()),
               const SizedBox(
                 height: AppSizes.spaceBetweenSections,

@@ -8,8 +8,12 @@ import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/custom_shapes/containers/searchbar_container.dart';
+import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
+import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
+import '../../../common/widgets/product/product_card/product_card_vertical.dart';
 import '../../../common/widgets/text/section_heading.dart';
+import '../../../domain/entities/magazine.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../store/widgets/category_tabs.dart';
@@ -64,7 +68,7 @@ class StoreScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppAppBar(
             showSearchBar: false,
-            title: const Text('Parça'),
+            title: const Text('Praça'),
             actions: [
               const AppMenuIcon(
                 icon: Icon(
@@ -198,11 +202,16 @@ class StoreScreen extends StatelessWidget {
                     ],
                   ),
                   bottom: AppTabBar(tabs: categories),
-                )
+                ),
               ];
             },
             body: const TabBarView(
               children: [
+                AppCategoryTab(
+                  brandIcon: AppImages.adidas,
+                  brandName: "Adidas",
+                  brandDetail: "504 products",
+                ),
                 AppCategoryTab(
                   brandIcon: AppImages.adidas,
                   brandName: "Adidas",

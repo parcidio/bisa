@@ -10,10 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
+import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
+import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../common/widgets/product/ratings/RatingBarIndicator.dart';
+import '../../../domain/entities/entities.dart';
 import '../../../utils/constants/colors.dart';
 import '../product_reviews/widgets/rating_progress_indicator_group.dart';
+import 'widgets/product_description.dart';
 
 class AppProductDetails extends StatelessWidget {
   const AppProductDetails({super.key});
@@ -35,7 +39,16 @@ class AppProductDetails extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppProductImageSlider(),
+            // promo slider
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
+              child: InfiniteDragableSlider(
+                iteamCount: Magazine.fakeMagazinesValues.length,
+                itemBuilder: (context, index) => MagazineCoverImage(
+                    magazine: Magazine.fakeMagazinesValues[index]),
+              ),
+            ),
+            // const AppProductImageSlider(),
             // product details
             Padding(
               padding: const EdgeInsets.only(
@@ -46,10 +59,14 @@ class AppProductDetails extends StatelessWidget {
                 children: [
                   // Price, Title, Stock and Brand
                   const AppProductMetaData(),
+
                   // Rating and Share button
                   const AppRatingShare(),
+                  // Description
+                  const AppProductDescription(),
                   // Attributes
                   const AppProductAttribute(),
+
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
@@ -62,30 +79,8 @@ class AppProductDetails extends StatelessWidget {
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
-                  const Divider(),
 
                   // Description
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Divider(),
-                        Text('Descricao',
-                            style: Theme.of(context).textTheme.titleMedium),
-                        const SizedBox(
-                          height: AppSizes.spaceBetweenItems / 2,
-                        ),
-                        const ReadMoreText(
-                          'This method will save memory by building items once it becomes necessary. This way they won\'t be built if they\'re not currently meant to be visible on screen. It can be used to build different child item widgets related to content or by item index.',
-                          trimLines: 2,
-                          trimMode: TrimMode.Line,
-                          trimCollapsedText: 'Mais',
-                          trimExpandedText: 'Menos',
-                          lessStyle: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w700),
-                          moreStyle: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w700),
-                        ),
-                      ]),
                   const Divider(),
 
                   const SizedBox(

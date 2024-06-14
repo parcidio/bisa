@@ -91,6 +91,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/images/user/
+    - assets/images/vice/
     - assets/images/on_boarding_images/
     - assets/images/illustrations/
     - assets/images/banners/
@@ -98,6 +99,7 @@ flutter:
     - assets/icons/brands/
     - assets/icons/categories/
     - assets/users/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
