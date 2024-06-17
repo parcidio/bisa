@@ -11,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../../common/widgets/chart/line.dart';
+import '../../../common/widgets/card/place_card.dart';
+import '../../../common/widgets/chart/linechart.dart';
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
 import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
@@ -265,7 +266,13 @@ class AppProductDetails extends StatelessWidget {
                     dispatchDays: 0,
                     quantity: 2,
                   ),
+
                   const Divider(),
+                  AppPlaceCard(
+                    placeName: 'Luanda',
+                    compras: '1500',
+                    entregas: '100',
+                  ),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems / 2,
                   ),
@@ -279,6 +286,17 @@ class AppProductDetails extends StatelessWidget {
             ),
             LineChartSample3(),
 
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: AppSizes.defaultSpace,
+                  left: AppSizes.defaultSpace,
+                  bottom: AppSizes.defaultSpace),
+              child: const AppSectionHeading(
+                  title: 'Produtos relacionados',
+                  buttonTitle: 'Mais',
+                  isSmall: true,
+                  textColor: AppColors.darkGrey),
+            ),
             Container(
               color: AppColors.light,
               child: Padding(
@@ -287,7 +305,7 @@ class AppProductDetails extends StatelessWidget {
                 child: CarouselSlider(
                   options: CarouselOptions(
                       height: 280,
-                      viewportFraction: .5,
+                      viewportFraction: .4,
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,

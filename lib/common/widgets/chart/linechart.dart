@@ -17,7 +17,7 @@ class LineChartSample3 extends StatefulWidget {
     Color? averageLineColor,
     Color? tooltipBgColor,
     Color? tooltipTextColor,
-  })  : lineColor = lineColor ?? AppColors.black,
+  })  : lineColor = lineColor ?? AppColors.primary,
         indicatorLineColor =
             indicatorLineColor ?? AppColors.primary.withOpacity(0.2),
         indicatorTouchedLineColor =
@@ -26,11 +26,12 @@ class LineChartSample3 extends StatefulWidget {
             indicatorSpotStrokeColor ?? AppColors.primary.withOpacity(0.5),
         indicatorTouchedSpotStrokeColor =
             indicatorTouchedSpotStrokeColor ?? AppColors.primary,
-        bottomTextColor = bottomTextColor ?? AppColors.primary.withOpacity(0.2),
+        bottomTextColor =
+            bottomTextColor ?? AppColors.textSecondary.withOpacity(0.2),
         bottomTouchedTextColor = bottomTouchedTextColor ?? AppColors.primary,
         averageLineColor =
-            averageLineColor ?? AppColors.secondary.withOpacity(0.8),
-        tooltipBgColor = tooltipBgColor ?? AppColors.secondary,
+            averageLineColor ?? AppColors.secondary.withOpacity(.5),
+        tooltipBgColor = tooltipBgColor ?? AppColors.softGrey,
         tooltipTextColor = tooltipTextColor ?? Colors.black;
 
   final Color lineColor;
@@ -45,7 +46,7 @@ class LineChartSample3 extends StatefulWidget {
   final Color tooltipTextColor;
 
   List<String> get weekDays =>
-      const ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+      const ['1 Jan', '15 Jan', '1 Feb', '15 Feb', '1 Mar', '15 Mar', '1 Abr'];
 
   List<double> get yValues => const [1.3, 1, 1.8, 1.5, 2.2, 1.8, 3];
 
@@ -65,6 +66,7 @@ class _LineChartSample3State extends State<LineChartSample3> {
     super.initState();
   }
 
+  // Y-axis labels
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     if (value % 1 != 0) {
       return Container();
@@ -79,13 +81,13 @@ class _LineChartSample3State extends State<LineChartSample3> {
         text = '';
         break;
       case 1:
-        text = '1k calories';
+        text = '10.000';
         break;
       case 2:
-        text = '2k calories';
+        text = '12.000';
         break;
       case 3:
-        text = '3k calories';
+        text = '13.000';
         break;
       default:
         return Container();
@@ -93,20 +95,19 @@ class _LineChartSample3State extends State<LineChartSample3> {
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
-      space: 6,
+      space: 12,
       fitInside: fitInsideLeftTitle
           ? SideTitleFitInsideData.fromTitleMeta(meta)
           : SideTitleFitInsideData.disable(),
-      child: Text(text, style: style, textAlign: TextAlign.center),
+      child: Text(text,
+          style: Theme.of(context).textTheme.labelMedium,
+          textAlign: TextAlign.center),
     );
   }
 
+  // X-axis labels
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     final isTouched = value == touchedValue;
-    final style = TextStyle(
-      color: isTouched ? widget.bottomTouchedTextColor : widget.bottomTextColor,
-      fontWeight: FontWeight.bold,
-    );
 
     if (value % 1 != 0) {
       return Container();
@@ -117,10 +118,9 @@ class _LineChartSample3State extends State<LineChartSample3> {
       fitInside: fitInsideBottomTitle
           ? SideTitleFitInsideData.fromTitleMeta(meta, distanceFromEdge: 0)
           : SideTitleFitInsideData.disable(),
-      child: Text(
-        widget.weekDays[value.toInt()],
-        style: style,
-      ),
+      child: Text(widget.weekDays[value.toInt()],
+          style: Theme.of(context).textTheme.labelMedium,
+          textAlign: TextAlign.center),
     );
   }
 
@@ -129,41 +129,8 @@ class _LineChartSample3State extends State<LineChartSample3> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        const SizedBox(height: 10),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              'Average Line',
-              style: TextStyle(
-                color: widget.averageLineColor.withOpacity(1),
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            const Text(
-              ' and ',
-              style: TextStyle(
-                color: AppColors.textPrimary,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            Text(
-              'Indicators',
-              style: TextStyle(
-                color: widget.indicatorLineColor.withOpacity(1),
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 18,
-        ),
         AspectRatio(
-          aspectRatio: 2,
+          aspectRatio: 1,
           child: Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 12),
             child: LineChart(
@@ -185,17 +152,17 @@ class _LineChartSample3State extends State<LineChartSample3> {
                           getDotPainter: (spot, percent, barData, index) {
                             if (index.isEven) {
                               return FlDotCirclePainter(
-                                radius: 8,
+                                radius: 2,
                                 color: Colors.white,
-                                strokeWidth: 5,
+                                strokeWidth: 1,
                                 strokeColor:
                                     widget.indicatorTouchedSpotStrokeColor,
                               );
                             } else {
-                              return FlDotSquarePainter(
-                                size: 16,
+                              return FlDotCirclePainter(
+                                radius: 2,
                                 color: Colors.white,
-                                strokeWidth: 5,
+                                strokeWidth: 1,
                                 strokeColor:
                                     widget.indicatorTouchedSpotStrokeColor,
                               );
@@ -227,33 +194,12 @@ class _LineChartSample3State extends State<LineChartSample3> {
                         }
 
                         return LineTooltipItem(
-                          '${widget.weekDays[flSpot.x.toInt()]} \n',
+                          '${flSpot.y.toString()} KZ',
                           TextStyle(
-                            color: widget.tooltipTextColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: flSpot.y.toString(),
-                              style: TextStyle(
-                                color: widget.tooltipTextColor,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                            const TextSpan(
-                              text: ' k ',
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                            const TextSpan(
-                              text: 'calories',
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.color),
                           textAlign: textAlign,
                         );
                       }).toList();
@@ -289,18 +235,18 @@ class _LineChartSample3State extends State<LineChartSample3> {
                       y: 1.8,
                       color: widget.averageLineColor,
                       strokeWidth: 3,
-                      dashArray: [20, 10],
+                      dashArray: [5, 10],
                     ),
                   ],
                 ),
                 lineBarsData: [
                   LineChartBarData(
-                    isStepLineChart: true,
+                    isStepLineChart: false,
                     spots: widget.yValues.asMap().entries.map((e) {
                       return FlSpot(e.key.toDouble(), e.value);
                     }).toList(),
-                    isCurved: false,
-                    barWidth: 4,
+                    isCurved: true,
+                    barWidth: 2,
                     color: widget.lineColor,
                     belowBarData: BarAreaData(
                       show: true,
@@ -317,7 +263,7 @@ class _LineChartSample3State extends State<LineChartSample3> {
                         show: true,
                         flLineStyle: FlLine(
                           color: widget.indicatorLineColor,
-                          strokeWidth: 2,
+                          strokeWidth: 1,
                         ),
                         checkToShowSpotLine: (spot) {
                           if (spot.x == 0 || spot.x == 6) {
@@ -332,15 +278,15 @@ class _LineChartSample3State extends State<LineChartSample3> {
                       show: true,
                       getDotPainter: (spot, percent, barData, index) {
                         if (index.isEven) {
-                          return FlDotCirclePainter(
-                            radius: 6,
+                          return FlDotSquarePainter(
+                            size: 2,
                             color: Colors.white,
                             strokeWidth: 3,
                             strokeColor: widget.indicatorSpotStrokeColor,
                           );
                         } else {
                           return FlDotSquarePainter(
-                            size: 12,
+                            size: 2,
                             color: Colors.white,
                             strokeWidth: 3,
                             strokeColor: widget.indicatorSpotStrokeColor,
@@ -404,14 +350,14 @@ class _LineChartSample3State extends State<LineChartSample3> {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 46,
+                      reservedSize: 50,
                       getTitlesWidget: leftTitleWidgets,
                     ),
                   ),
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 40,
+                      reservedSize: 50,
                       getTitlesWidget: bottomTitleWidgets,
                     ),
                   ),
@@ -419,31 +365,6 @@ class _LineChartSample3State extends State<LineChartSample3> {
               ),
             ),
           ),
-        ),
-        Column(
-          children: [
-            const Text('Fit Inside Title Option'),
-            const Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Left Title'),
-                Switch(
-                  value: fitInsideLeftTitle,
-                  onChanged: (value) => setState(() {
-                    fitInsideLeftTitle = value;
-                  }),
-                ),
-                const Text('Bottom Title'),
-                Switch(
-                  value: fitInsideBottomTitle,
-                  onChanged: (value) => setState(() {
-                    fitInsideBottomTitle = value;
-                  }),
-                )
-              ],
-            ),
-          ],
         ),
       ],
     );
