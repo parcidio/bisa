@@ -9,7 +9,9 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:fl_chart/fl_chart.dart';
 
+import '../../../common/widgets/chart/line.dart';
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
 import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
@@ -272,11 +274,11 @@ class AppProductDetails extends StatelessWidget {
                       buttonTitle: 'Mais',
                       isSmall: true,
                       textColor: AppColors.darkGrey),
-
-                  // Reviews
                 ],
               ),
             ),
+            LineChartSample3(),
+
             Container(
               color: AppColors.light,
               child: Padding(
