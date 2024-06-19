@@ -144,7 +144,7 @@ class AppProductDetails extends StatelessWidget {
           iconColor: AppColors.black,
         ),
       ]),
-      bottomNavigationBar: const AppBottomAddToCart(),
+      // bottomNavigationBar: const AppBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -175,7 +175,9 @@ class AppProductDetails extends StatelessWidget {
                   const AppProductDescription(),
                   // Attributes
                   const AppProductAttribute(),
-
+                  const SizedBox(
+                    height: AppSizes.spaceBetweenItems,
+                  ),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
@@ -270,20 +272,32 @@ class AppProductDetails extends StatelessWidget {
                   const Divider(),
                   AppPlaceCard(
                     placeName: 'Luanda',
-                    compras: '1500',
-                    entregas: '100',
+                    compras: 'Segunda - Sexta',
+                    entregas: '> 10 itens',
+                    horario: '6h-16h',
                   ),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems / 2,
                   ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Mais informacoes",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
                   const AppSectionHeading(
                       title: 'Produtos relacionados',
-                      buttonTitle: 'Mais',
+                      buttonTitle: '',
                       isSmall: true,
                       textColor: AppColors.darkGrey),
                 ],
               ),
             ),
+
             LineChartSample3(),
 
             Padding(

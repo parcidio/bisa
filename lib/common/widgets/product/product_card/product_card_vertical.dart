@@ -53,12 +53,20 @@ class AppProductCardVertical extends StatelessWidget {
                     backgroundColor: AppColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(
                         horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .apply(color: AppColors.black),
+                    child: Row(
+                      children: [
+                        Text(
+                          '2%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .apply(color: AppColors.black),
+                        ),
+                        Icon(
+                          CupertinoIcons.arrow_down_right,
+                          size: AppSizes.sm,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -131,17 +139,17 @@ class AppProductCardVertical extends StatelessWidget {
                   isLarge: true,
                   priceWas: '600',
                 ),
-                Positioned(
-                  child: AppCircularIcon(
-                    onPressed: () {},
-                    icon: CupertinoIcons.add,
-                    height: 35,
-                    width: 35,
-                    size: AppSizes.iconSm,
-                    color: AppColors.white,
-                    backgroundColor: AppColors.primary,
-                  ),
-                ),
+                // Positioned(
+                //   child: AppCircularIcon(
+                //     onPressed: () {},
+                //     icon: CupertinoIcons.add,
+                //     height: 35,
+                //     width: 35,
+                //     size: AppSizes.iconSm,
+                //     color: AppColors.white,
+                //     backgroundColor: AppColors.primary,
+                //   ),
+                // ),
               ],
             ),
           )

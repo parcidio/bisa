@@ -7,58 +7,84 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-class AppBrandCardHorizontal extends StatelessWidget {
+class AppBrandCardHorizontal extends StatefulWidget {
   const AppBrandCardHorizontal({
     super.key,
     required this.brandIcon,
     required this.brandName,
     required this.details,
     this.showBorder = true,
+    this.selected = false,
   });
 
   final String brandIcon;
   final String brandName, details;
-  final bool showBorder;
+  final bool showBorder, selected;
+
+  @override
+  _AppBrandCardHorizontalState createState() => _AppBrandCardHorizontalState();
+}
+
+class _AppBrandCardHorizontalState extends State<AppBrandCardHorizontal> {
+  late bool isSelected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isSelected = widget.selected;
+  }
+
+  void _toggleSelection() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
-      child: AppRoundedContainer(
-        backgroundColor: Colors.transparent,
-        showBorder: showBorder,
-        padding: const EdgeInsets.all(AppSizes.sm),
-        // backgroundColor: Colors.transparent,
-        child: Row(children: [
-          // Flexible(
-          //   child: AppCircularImage(
-          //     fit: BoxFit.scaleDown,
-          //     isSvg: false,
-          //     image: brandIcon,
-          //     backgroundColor: Colors.transparent,
-          //     overlayColor: AppHelperFuncions.isDarkMode(context)
-          //         ? AppColors.white
-          //         : AppColors.black,
-          //   ),
-          // ),
-
-          /// Text
-
-          Flexible(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+      onTap: _toggleSelection,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+              AppSizes.cardRadiusSm), // Adjust the radius as needed
+          child: AppRoundedContainer(
+            backgroundColor:
+                isSelected ? AppColors.primary : Colors.transparent,
+            showBorder: widget.showBorder,
+            padding: const EdgeInsets.all(AppSizes.sm),
+            child: Row(
               children: [
-                AppBrandTextTitleWithVerticalIcon(
-                  title: brandName,
-                  brandTextSize: TextSizes.large,
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppBrandTextTitleWithVerticalIcon(
+                        title: widget.brandName,
+                        brandTextSize: TextSizes.large,
+                        textColor:
+                            isSelected ? AppColors.light : AppColors.dark,
+                      ),
+                      Text(
+                        widget.details,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.labelMedium!.apply(
+                            color:
+                                isSelected ? AppColors.light : AppColors.dark),
+                      ),
+                    ],
+                  ),
                 ),
-                Text(details,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium),
               ],
             ),
           ),
-        ]),
+        ),
       ),
     );
   }

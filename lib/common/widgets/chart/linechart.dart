@@ -130,7 +130,7 @@ class _LineChartSample3State extends State<LineChartSample3> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1,
+          aspectRatio: 2,
           child: Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 12),
             child: LineChart(

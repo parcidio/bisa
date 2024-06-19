@@ -158,8 +158,9 @@ class StoreScreen extends StatelessWidget {
                             ),
                             CarouselSlider(
                               options: CarouselOptions(
-                                  viewportFraction: 0.6,
+                                  viewportFraction: 0.8,
                                   initialPage: 0,
+                                  // animateToClosest: true,
                                   enableInfiniteScroll: false,
                                   reverse: false,
                                   autoPlay: false,
@@ -176,22 +177,10 @@ class StoreScreen extends StatelessWidget {
                               items: brands.map((item) {
                                 return Builder(
                                   builder: (BuildContext context) {
-                                    return Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                              AppSizes
-                                                  .cardRadiusSm), // Adjust the radius as needed
-                                          child: AppBrandCardHorizontal(
-                                              brandIcon: item['logo']!,
-                                              brandName: item['name']!,
-                                              details: item['details']!)),
-                                    );
+                                    return AppBrandCardHorizontal(
+                                        brandIcon: item['logo']!,
+                                        brandName: item['name']!,
+                                        details: item['details']!);
                                   },
                                 );
                               }).toList(),

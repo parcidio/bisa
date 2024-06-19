@@ -39,8 +39,7 @@ class AppBrandTextTitleWithVerticalIcon extends StatelessWidget {
       ),
       const SizedBox(width: AppSizes.spaceBetweenItems),
       isVerified
-          ? Icon(Iconsax.verify5,
-              color: AppColors.primary, size: AppSizes.iconXs)
+          ? Icon(Iconsax.verify5, color: iconColor, size: AppSizes.iconXs)
           : SizedBox(),
     ]);
   }
