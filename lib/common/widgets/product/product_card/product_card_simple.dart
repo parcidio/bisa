@@ -17,10 +17,13 @@ import '../../icons/circular_icon.dart';
 
 class AppProductSimpleCard extends StatelessWidget {
   const AppProductSimpleCard(
-      {Key? key, required this.price, required this.unit})
+      {Key? key,
+      required this.price,
+      required this.unit,
+      required this.totalPrice})
       : super(key: key);
 
-  final double price;
+  final double price, totalPrice;
   final String unit;
 
   @override
@@ -73,7 +76,7 @@ class AppProductSimpleCard extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
             AppProductPriceText(
-              price: 1000,
+              price: totalPrice,
               unit: 'kg',
             ),
           ],

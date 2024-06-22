@@ -49,6 +49,7 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
             children: [
               AppProductSimpleCard(
                 price: widget.pricePerKg,
+                totalPrice: price,
                 unit: widget.unit,
               ),
               SizedBox(
