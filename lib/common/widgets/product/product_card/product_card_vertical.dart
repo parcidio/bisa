@@ -117,7 +117,7 @@ class AppProductCardVertical extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: AppSizes.spaceBetweenItems / 2,
+                height: AppSizes.spaceBetweenItems / 8,
               ),
               const AppBrandTextTitleWithVerticalIcon(
                 title: 'Golf 2',
@@ -134,22 +134,21 @@ class AppProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppProductPriceText(
-                  price: '500',
-                  cents: '04',
+                  price: 500.30,
                   isLarge: true,
-                  priceWas: '600',
+                  priceWas: 600.50,
                 ),
-                // Positioned(
-                //   child: AppCircularIcon(
-                //     onPressed: () {},
-                //     icon: CupertinoIcons.add,
-                //     height: 35,
-                //     width: 35,
-                //     size: AppSizes.iconSm,
-                //     color: AppColors.white,
-                //     backgroundColor: AppColors.primary,
-                //   ),
-                // ),
+                Positioned(
+                  child: AppCircularIcon(
+                    onPressed: () {},
+                    icon: CupertinoIcons.add,
+                    height: 32,
+                    width: 32,
+                    size: AppSizes.iconSm,
+                    color: AppColors.white,
+                    backgroundColor: AppColors.primary,
+                  ),
+                ),
               ],
             ),
           )

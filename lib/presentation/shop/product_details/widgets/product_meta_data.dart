@@ -21,29 +21,37 @@ class AppProductMetaData extends StatelessWidget {
         // Price and Promotion
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [           
-           SizedBox(height: AppSizes.spaceBetweenItems/2,),
+          children: [
+            SizedBox(
+              height: AppSizes.spaceBetweenItems / 2,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const AppProductPriceText(              
-                  price: '150',
+                const AppProductPriceText(
+                  price: 150,
                   isLarge: true,
-                  priceWas: '200',
+                  priceWas: 200,
                 ),
-                Row(children: [ // Share button
-          IconButton(
-          onPressed: () {},
-          icon: const Icon(CupertinoIcons.heart, size: AppSizes.iconMd),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(CupertinoIcons.share, size: AppSizes.iconMd),
-        )],)
+                Row(
+                  children: [
+                    // Share button
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(CupertinoIcons.heart,
+                          size: AppSizes.iconMd),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(CupertinoIcons.share,
+                          size: AppSizes.iconMd),
+                    )
+                  ],
+                )
               ],
             ),
-             const SizedBox(
-              height: AppSizes.spaceBetweenItems/5,
+            const SizedBox(
+              height: AppSizes.spaceBetweenItems / 5,
             ),
             Row(
               children: [
@@ -60,7 +68,9 @@ class AppProductMetaData extends StatelessWidget {
                         .apply(color: AppColors.black),
                   ),
                 ),
-                SizedBox(width: AppSizes.spaceBetweenItems,),
+                SizedBox(
+                  width: AppSizes.spaceBetweenItems,
+                ),
                 AppRoundedContainer(
                   radius: AppSizes.sm,
                   backgroundColor: AppColors.secondary.withOpacity(0.8),
@@ -82,7 +92,7 @@ class AppProductMetaData extends StatelessWidget {
           height: AppSizes.spaceBetweenItems / 1.5,
         ),
         //Title
-        AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),       
+        AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 4,
         ),

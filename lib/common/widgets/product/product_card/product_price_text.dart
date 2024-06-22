@@ -5,71 +5,77 @@ class AppProductPriceText extends StatelessWidget {
       {super.key,
       this.currencySign = 'kz',
       required this.price,
-      this.cents = '00',
-      this.priceWas,
-      this.centsWas = '00',
-      this.unit = 'set',
+      this.priceWas = 00,
+      this.unit = '',
       this.maxLines = 1,
       this.isLarge = false,
       this.lineThrough = true});
 
-  final String currencySign, price, cents, unit, centsWas;
-  final String? priceWas;
+  final String currencySign, unit;
+  final double price, priceWas;
   final int maxLines;
   final bool isLarge, lineThrough;
 
   @override
   Widget build(BuildContext context) {
+    List<int> separateMoneyAndCents(double value) {
+      int money = value.floor();
+      int cents = ((value - money) * 100).round();
+      return [money, cents];
+    }
+
+    var resultPrice = separateMoneyAndCents(price as double);
+    var resultPriceWas = separateMoneyAndCents(priceWas as double);
     return Column(
       children: [
         Row(
           children: [
-            Text("$currencySign $price",
+            Text("$currencySign ${resultPrice[0]}",
                 maxLines: maxLines,
                 overflow: TextOverflow.ellipsis,
                 style: isLarge
                     ? Theme.of(context).textTheme.titleLarge
                     : Theme.of(context).textTheme.titleMedium),
             Text(
-              '.$cents',
+              resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
               style: Theme.of(context).textTheme.labelMedium,
             ),
             Text(
-              unit.trim() != '' ? '' : '/$unit',
+              unit.trim() == '' ? '' : '/$unit',
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ],
         ),
-        if (priceWas?.trim() != '') ...[
+        if (priceWas != 0) ...[
           Row(
             children: [
-              Text('$currencySign $priceWas',
+              Text('$currencySign ${resultPriceWas[0]}',
                   maxLines: maxLines,
                   overflow: TextOverflow.ellipsis,
                   style: isLarge
-                      ? Theme.of(context).textTheme.labelMedium!.apply(
+                      ? Theme.of(context).textTheme.labelSmall!.apply(
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)
                       : Theme.of(context).textTheme.labelSmall!.apply(
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)),
               Text(
-                '.$centsWas',
+                resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
                             lineThrough ? TextDecoration.lineThrough : null)
-                    : Theme.of(context).textTheme.labelSmall!.apply(
+                    : Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
                             lineThrough ? TextDecoration.lineThrough : null),
               ),
               Text(
-                unit.trim() != '' ? '' : '/$unit',
+                unit.trim() == '' ? '' : '/$unit',
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
                             lineThrough ? TextDecoration.lineThrough : null)
-                    : Theme.of(context).textTheme.labelSmall!.apply(
+                    : Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
                             lineThrough ? TextDecoration.lineThrough : null),
               ),

@@ -31,16 +31,14 @@ class AppProductDetails extends StatelessWidget {
   const AppProductDetails({super.key});
 
   void _showWeightSelector(BuildContext context) async {
-    final selectedWeight = await showModalBottomSheet<double>(
+    await showModalBottomSheet<double>(
       context: context,
       isScrollControlled: true,
       builder: (context) => WeightSelectorBottomSheet(
-          pricePerKg: 1.32), // Replace with actual price per kg
+        pricePerKg: 200.05,
+        unit: 'kg',
+      ),
     );
-    if (selectedWeight != null) {
-      // Handle the selected weight, e.g., add to basket
-      print('Selected weight: $selectedWeight kg');
-    }
   }
 
   @override

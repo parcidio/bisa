@@ -6,11 +6,16 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../product/product_card/product_card_horizontal.dart';
+import '../product/product_card/product_card_simple.dart';
+import '../product/product_card/product_price_text.dart';
 
 class WeightSelectorBottomSheet extends StatefulWidget {
   final double pricePerKg;
+  final String unit;
 
-  const WeightSelectorBottomSheet({Key? key, required this.pricePerKg})
+  const WeightSelectorBottomSheet(
+      {Key? key, required this.pricePerKg, required this.unit})
       : super(key: key);
 
   @override
@@ -22,25 +27,33 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
   final double min = 1;
   final double max = 50;
   String selectedValue = '';
+  late double price;
 
   @override
   void initState() {
     selectedValue = min.toString();
+    price = widget.pricePerKg;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 200,
+        height: 300,
         padding: const EdgeInsets.all(16.0),
         decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
         child: Center(
           child: Column(
             children: [
+              AppProductSimpleCard(
+                price: widget.pricePerKg,
+                unit: widget.unit,
+              ),
+              SizedBox(
+                height: AppSizes.spaceBetweenSections,
+              ),
               SizedBox(
                 width: 500,
                 child: AnimatedWeightPicker(
@@ -48,14 +61,13 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
                   suffixTextColor: AppColors.darkGrey,
                   squeeze: 3,
                   division: .1,
-                  majorIntervalColor: AppColors.secondary,
-                  majorIntervalTextColor: AppColors.secondary,
                   selectedValueColor: AppColors.primary,
                   min: min,
                   max: max,
                   onChange: (newValue) {
                     setState(() {
                       selectedValue = newValue;
+                      price = widget.pricePerKg * double.parse(selectedValue);
                     });
                   },
                 ),
