@@ -14,14 +14,13 @@ class _AppCartScreenState extends State<AppCartScreen> {
   double _subtotal = 0;
   double _discount = 0;
 
-  
-
   @override
   Widget build(BuildContext context) {
     // Mock data for cart items
     final List<CartItem> cartItems = [
       CartItem(name: 'Product 1', price: 100, quantity: 2),
       CartItem(name: 'Product 2', price: 50, quantity: 1),
+      CartItem(name: 'Product 3', price: 75, quantity: 3),
       CartItem(name: 'Product 3', price: 75, quantity: 3),
     ];
 

@@ -8,6 +8,8 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/icons/circular_icon.dart';
+
 class AppProductMetaData extends StatelessWidget {
   const AppProductMetaData({
     super.key,
@@ -54,35 +56,69 @@ class AppProductMetaData extends StatelessWidget {
               height: AppSizes.spaceBetweenItems / 5,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppRoundedContainer(
-                  radius: AppSizes.sm,
-                  backgroundColor: AppColors.secondary.withOpacity(0.8),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                  child: Text(
-                    '25% Off',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .apply(color: AppColors.black),
-                  ),
+                Row(
+                  children: [
+                    AppRoundedContainer(
+                      radius: AppSizes.sm,
+                      backgroundColor: AppColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                      child: Text(
+                        'Poupe 25%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: AppColors.black),
+                      ),
+                    ),
+                    SizedBox(
+                      width: AppSizes.spaceBetweenItems,
+                    ),
+                    AppRoundedContainer(
+                      radius: AppSizes.sm,
+                      backgroundColor: AppColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                      child: Text(
+                        'Disponivel',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: AppColors.black),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: AppSizes.spaceBetweenItems,
-                ),
-                AppRoundedContainer(
-                  radius: AppSizes.sm,
-                  backgroundColor: AppColors.secondary.withOpacity(0.8),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                  child: Text(
-                    'Disponivel',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .apply(color: AppColors.black),
-                  ),
+                Row(
+                  children: [
+                    AppCircularIcon(
+                      onPressed: () {},
+                      icon: CupertinoIcons.minus,
+                      height: 32,
+                      width: 32,
+                      size: AppSizes.iconSm,
+                      color: AppColors.white,
+                      backgroundColor: AppColors.primary,
+                    ),
+                    const SizedBox(
+                      width: AppSizes.spaceBetweenItems,
+                    ),
+                    Text('2', style: Theme.of(context).textTheme.titleMedium),
+                    const SizedBox(
+                      width: AppSizes.spaceBetweenItems,
+                    ),
+                    AppCircularIcon(
+                      onPressed: () {},
+                      icon: CupertinoIcons.add,
+                      height: 32,
+                      width: 32,
+                      size: AppSizes.iconSm,
+                      color: AppColors.white,
+                      backgroundColor: AppColors.primary,
+                    ),
+                  ],
                 ),
               ],
             ),
