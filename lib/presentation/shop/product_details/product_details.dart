@@ -20,6 +20,7 @@ import '../../../common/widgets/layouts/grid_layout.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../common/widgets/product/product_card/product_card_vertical.dart';
 import '../../../common/widgets/product/ratings/RatingBarIndicator.dart';
+import '../../../common/widgets/scale/scale.dart';
 import '../../../common/widgets/text/section_heading.dart';
 import '../../../domain/entities/entities.dart';
 import '../../../utils/constants/colors.dart';
@@ -28,6 +29,19 @@ import 'widgets/product_description.dart';
 
 class AppProductDetails extends StatelessWidget {
   const AppProductDetails({super.key});
+
+  void _showWeightSelector(BuildContext context) async {
+    final selectedWeight = await showModalBottomSheet<double>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => WeightSelectorBottomSheet(
+          pricePerKg: 1.32), // Replace with actual price per kg
+    );
+    if (selectedWeight != null) {
+      // Handle the selected weight, e.g., add to basket
+      print('Selected weight: $selectedWeight kg');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -178,6 +192,14 @@ class AppProductDetails extends StatelessWidget {
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () => _showWeightSelector(context),
+                      child: const Text('Escolha o peso'),
+                    ),
+                  ),
+
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),

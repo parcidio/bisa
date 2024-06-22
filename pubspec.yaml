@@ -63,6 +63,7 @@ dependencies:
   pattern_formatter: ^3.0.0
   bouncing_widget: ^2.0.0
   fl_chart: ^0.68.0
+  animated_weight_picker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
