@@ -25,41 +25,38 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSizes.sm),
-      child: AppBar(
-        automaticallyImplyLeading: false,
-        leading: showBackArrow
-            ? IconButton(
-                onPressed: () => Get.back(),
-                icon: const Icon(
-                  CupertinoIcons.arrow_left,
-                ))
-            : leadingIcon != null
-                ? IconButton(
-                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
-                : null,
-        title: FadeInRight(
-            duration: const Duration(milliseconds: 500),
-            child: Container(
-                height: 40,
-                margin: const EdgeInsets.only(bottom: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: title)),
-        actions: actions,
-        bottom: showSearchBar
-            ? const PreferredSize(
-                preferredSize: Size.fromHeight(100),
-                child: AppSearchContainer(
-                  text: 'Encontre os ',
-                  secondText: 'melhores precos...',
-                  showBorder: true,
-                  showBackground: true,
-                  padding: EdgeInsets.zero,
-                ),
-              )
-            : null,
-      ),
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
+      leading: showBackArrow
+          ? IconButton(
+              onPressed: () => Get.back(),
+              icon: const Icon(
+                CupertinoIcons.arrow_left,
+              ))
+          : leadingIcon != null
+              ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+              : null,
+      title: FadeInRight(
+          duration: const Duration(milliseconds: 500),
+          child: Container(
+              height: 40,
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: title)),
+      actions: actions,
+      bottom: showSearchBar
+          ? const PreferredSize(
+              preferredSize: Size.fromHeight(100),
+              child: AppSearchContainer(
+                text: 'Encontre os ',
+                secondText: 'melhores precos...',
+                showBorder: true,
+                showBackground: true,
+                padding: EdgeInsets.zero,
+              ),
+            )
+          : null,
     );
   }
 

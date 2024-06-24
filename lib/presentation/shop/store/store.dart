@@ -155,10 +155,10 @@ class StoreScreen extends StatelessWidget {
                               options: CarouselOptions(
                                   viewportFraction: 0.8,
                                   initialPage: 0,
-                                  // animateToClosest: true,
-                                  enableInfiniteScroll: false,
-                                  reverse: false,
-                                  autoPlay: false,
+                                  animateToClosest: true,
+                                  enableInfiniteScroll: true,
+                                  // reverse: true,
+                                  autoPlay: true,
                                   autoPlayInterval: const Duration(seconds: 5),
                                   autoPlayAnimationDuration:
                                       const Duration(milliseconds: 1000),
@@ -168,6 +168,7 @@ class StoreScreen extends StatelessWidget {
                                   pauseAutoPlayInFiniteScroll: true,
                                   pauseAutoPlayOnManualNavigate: true,
                                   pauseAutoPlayOnTouch: true,
+                                  padEnds: true,
                                   enlargeCenterPage: false),
                               items: brands.map((item) {
                                 return Builder(

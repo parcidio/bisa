@@ -52,8 +52,7 @@ class _AppBrandCardHorizontalState extends State<AppBrandCardHorizontal> {
           borderRadius: BorderRadius.circular(
               AppSizes.cardRadiusSm), // Adjust the radius as needed
           child: AppRoundedContainer(
-            backgroundColor:
-                isSelected ? AppColors.primary : Colors.transparent,
+            backgroundColor: isSelected ? AppColors.primary : Colors.white,
             showBorder: widget.showBorder,
             padding: const EdgeInsets.all(AppSizes.sm),
             child: Row(
