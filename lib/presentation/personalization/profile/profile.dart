@@ -16,27 +16,27 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
+              child: const Column(
                 children: [
                   AdvancedAvatar(
                     size: 80,
                     name: 'Parcidio André',
-                    image: const NetworkImage(
+                    image: NetworkImage(
                         'https://avatars.githubusercontent.com/u/44862147?v=4'),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const SizedBox(height: 8.0),
-                  const Text(
+                  SizedBox(height: 8.0),
+                  Text(
                     'Parcidio André',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4.0),
-                  const Text(
+                  SizedBox(height: 4.0),
+                  Text(
                     'parcidioandre@gmail.com',
                     style: TextStyle(
                       color: Colors.grey,

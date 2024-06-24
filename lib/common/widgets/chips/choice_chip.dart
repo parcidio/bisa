@@ -2,7 +2,6 @@ import 'package:dona/common/widgets/custom_shapes/containers/circular_contianer.
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class AppChoiceChip extends StatelessWidget {
   const AppChoiceChip(

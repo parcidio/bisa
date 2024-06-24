@@ -24,8 +24,8 @@ class AppProductPriceText extends StatelessWidget {
       return [money, cents];
     }
 
-    var resultPrice = separateMoneyAndCents(price as double);
-    var resultPriceWas = separateMoneyAndCents(priceWas as double);
+    var resultPrice = separateMoneyAndCents(price);
+    var resultPriceWas = separateMoneyAndCents(priceWas);
     return Column(
       children: [
         Row(

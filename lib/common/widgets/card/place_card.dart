@@ -2,10 +2,8 @@ import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.d
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AppPlaceCard extends StatelessWidget {
   const AppPlaceCard({
@@ -37,8 +35,8 @@ class AppPlaceCard extends StatelessWidget {
               // overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            SizedBox(height: AppSizes.defaultSpace / 2),
-            Container(
+            const SizedBox(height: AppSizes.defaultSpace / 2),
+            SizedBox(
               width: 450,
               height: 100,
               child: ClipRRect(
@@ -46,7 +44,7 @@ class AppPlaceCard extends StatelessWidget {
 
                 // Ensure the container has a fixed height
                 child: FlutterMap(
-                  options: MapOptions(
+                  options: const MapOptions(
                     center: LatLng(
                         -8.8390, 13.2894), // Coordinates for Luanda, Angola
                     zoom: 12.0, // Adjusted zoom level for better focus
@@ -62,7 +60,7 @@ class AppPlaceCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -70,11 +68,11 @@ class AppPlaceCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.placemark,
                       size: AppSizes.iconMd,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       placeName,
                       overflow: TextOverflow.ellipsis,
@@ -86,11 +84,11 @@ class AppPlaceCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.calendar,
                       size: AppSizes.iconMd,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       compras,
                       overflow: TextOverflow.ellipsis,
@@ -102,11 +100,11 @@ class AppPlaceCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.time,
                       size: AppSizes.iconMd,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       horario,
                       overflow: TextOverflow.ellipsis,
@@ -118,11 +116,11 @@ class AppPlaceCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.cube_box,
                       size: AppSizes.iconMd,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       entregas,
                       overflow: TextOverflow.ellipsis,

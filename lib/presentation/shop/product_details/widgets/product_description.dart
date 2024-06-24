@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
@@ -27,7 +26,7 @@ class AppProductDescription extends StatelessWidget {
         lessStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
         moreStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
       ),
-      SizedBox(
+      const SizedBox(
         height: AppSizes.spaceBetweenItems,
       ),
       ClipRRect(
@@ -39,35 +38,35 @@ class AppProductDescription extends StatelessWidget {
             color: AppColors.softGrey,
             child: Table(
               border: TableBorder.symmetric(
-                  inside: BorderSide(width: 1, color: AppColors.darkGrey)),
-              children: [
+                  inside: const BorderSide(width: 1, color: AppColors.darkGrey)),
+              children: const [
                 TableRow(children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('Unidades'),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('24'),
                   )
                 ]),
                 TableRow(children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('Set'),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('Grade'),
                   )
                 ]),
                 TableRow(children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('Peso'),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('12KG'),
                   )
                 ]),

@@ -36,25 +36,25 @@ class AppHomeAppbar extends StatelessWidget {
           )
         ],
       ),
-      actions: [
-        const AppMenuIcon(
+      actions: const [
+        AppMenuIcon(
           icon: Icon(
             CupertinoIcons.add_circled_solid,
             size: AppSizes.iconSm,
           ),
           iconColor: AppColors.primary,
         ),
-        const SizedBox(
+        SizedBox(
           width: AppSizes.spaceBetweenItems,
         ),
-        const AppMenuIcon(
+        AppMenuIcon(
           icon: Icon(
             CupertinoIcons.cart,
             size: AppSizes.iconSm,
           ),
           iconColor: AppColors.black,
         ),
-        const SizedBox(
+        SizedBox(
           width: AppSizes.spaceBetweenItems,
         ),
       ],

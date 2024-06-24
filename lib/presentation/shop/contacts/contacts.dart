@@ -11,7 +11,7 @@ class ContatScreen extends StatefulWidget {
 }
 
 class _ContatScreenState extends State<ContatScreen> {
-  List<dynamic> _contacts = [
+  final List<dynamic> _contacts = [
     {
       'name': 'John',
       'avatar': 'assets/images/avatar-1.png',
@@ -44,28 +44,28 @@ class _ContatScreenState extends State<ContatScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(
+          title: const Text(
             'Contacts',
             style: TextStyle(color: Colors.black),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50),
+            preferredSize: const Size.fromHeight(50),
             child: FadeInDown(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               child: Container(
                 height: 40,
-                margin: EdgeInsets.only(bottom: 10),
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 10),
-                    prefixIcon: Icon(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                    prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.grey,
                     ),
                     hintText: 'Search contacts',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: const TextStyle(color: Colors.grey),
                     filled: true,
                     fillColor: Colors.grey[200],
                     border: OutlineInputBorder(
@@ -82,15 +82,15 @@ class _ContatScreenState extends State<ContatScreen> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               FadeInUp(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 child: Container(
                   width: double.infinity,
                   height: 300,
-                  padding: EdgeInsets.all(90.0),
+                  padding: const EdgeInsets.all(90.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.grey.shade200, width: 1.0),
@@ -101,22 +101,22 @@ class _ContatScreenState extends State<ContatScreen> {
                         AnimChain(
                                 initialDelay: Duration(milliseconds: i.toInt()))
                             .next(
-                              wait: Duration(milliseconds: 1000),
+                              wait: const Duration(milliseconds: 1000),
                               widget: AnimatedAlignPositioned(
                                 dx: 0,
                                 dy: 150,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 rotateDegrees: 0,
                                 touch: Touch.middle,
                                 child: user(0, i),
                               ),
                             )
                             .next(
-                              wait: Duration(seconds: 2),
+                              wait: const Duration(seconds: 2),
                               widget: AnimatedAlignPositioned(
                                 dx: i / 360,
                                 dy: 150,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 rotateDegrees: i,
                                 touch: Touch.middle,
                                 child: user(0, i),
@@ -126,11 +126,11 @@ class _ContatScreenState extends State<ContatScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               FadeInRight(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, bottom: 15.0, top: 10.0),
@@ -145,7 +145,7 @@ class _ContatScreenState extends State<ContatScreen> {
               ),
               Container(
                 height: 90,
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _contacts.length,
@@ -162,7 +162,7 @@ class _ContatScreenState extends State<ContatScreen> {
                                       avatar: _contacts[index]['avatar'])));
                         },
                         child: Container(
-                          margin: EdgeInsets.only(right: 20),
+                          margin: const EdgeInsets.only(right: 20),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -172,12 +172,12 @@ class _ContatScreenState extends State<ContatScreen> {
                                 backgroundImage:
                                     AssetImage(_contacts[index]['avatar']),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Text(
                                 _contacts[index]['name'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w600),
                               ),
                             ],
@@ -188,11 +188,11 @@ class _ContatScreenState extends State<ContatScreen> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               FadeInRight(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, bottom: 15.0, top: 10.0),
@@ -207,15 +207,15 @@ class _ContatScreenState extends State<ContatScreen> {
               ),
               Container(
                 height: MediaQuery.of(context).size.height - 200,
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemCount: _contacts.length,
                   itemBuilder: (context, index) {
                     return FadeInRight(
                       duration: Duration(milliseconds: (index * 100) + 500),
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: const EdgeInsets.only(bottom: 20),
                         child: Row(
                           children: <Widget>[
                             Row(
@@ -226,20 +226,20 @@ class _ContatScreenState extends State<ContatScreen> {
                                   backgroundImage:
                                       AssetImage(_contacts[index]['avatar']),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
                                   _contacts[index]['name'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.arrow_forward_ios,
                                 color: Colors.black,
                                 size: 15,
@@ -259,7 +259,7 @@ class _ContatScreenState extends State<ContatScreen> {
   user(int index, double number) {
     index = number ~/ 60;
     return FadeInRight(
-      delay: Duration(seconds: 1),
+      delay: const Duration(seconds: 1),
       duration: Duration(milliseconds: (index * 100) + 500),
       child: GestureDetector(
         onTap: () {
@@ -271,7 +271,7 @@ class _ContatScreenState extends State<ContatScreen> {
                       avatar: _contacts[index]['avatar'])));
         },
         child: Container(
-          margin: EdgeInsets.only(right: 20),
+          margin: const EdgeInsets.only(right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

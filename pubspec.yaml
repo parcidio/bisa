@@ -55,15 +55,24 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_advanced_avatar: ^1.5.0
   group_button: ^5.3.4  
-  flutter_map: ^6.1.0
-  flutter_map_tile_caching: ^9.0.1
-  latlong2: ^0.9.1
+ 
   align_positioned: ^4.0.1
   animate_do: ^3.3.4
   pattern_formatter: ^3.0.0
   bouncing_widget: ^2.0.0
   fl_chart: ^0.68.0
   animated_weight_picker: ^1.0.3
+  sliding_up_panel: ^2.0.0+1
+  
+  #  # Geolocation packages
+  flutter_map: ^6.1.0
+  flutter_map_cancellable_tile_provider: ^2.0.0
+  geolocator: ^11.0.0
+  latlong2: ^0.9.1
+
+  location: ^5.0.0
+  maplibre_gl: ^0.20.0
+  flutter_slidable: ^3.1.0
 
 dev_dependencies:
   flutter_test:

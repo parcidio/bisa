@@ -31,11 +31,11 @@ class AppRatingShare extends StatelessWidget {
                  itemCount: 5,
                  itemSize: AppSizes.iconSm,
                  ratingWidget: RatingWidget(
-                   full: Icon(CupertinoIcons.star_fill, color: AppColors.secondary),
-                   half: Icon(CupertinoIcons.star_lefthalf_fill, color: AppColors.secondary),
-                   empty: Icon(CupertinoIcons.star, color: AppColors.secondary),
+                   full: const Icon(CupertinoIcons.star_fill, color: AppColors.secondary),
+                   half: const Icon(CupertinoIcons.star_lefthalf_fill, color: AppColors.secondary),
+                   empty: const Icon(CupertinoIcons.star, color: AppColors.secondary),
                  ),
-                 itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                 itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
                  onRatingUpdate: (rating) {
                    print(rating);
                  },

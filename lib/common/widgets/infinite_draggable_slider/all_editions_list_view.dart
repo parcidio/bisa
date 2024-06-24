@@ -15,23 +15,23 @@ class AllEditionsListView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: const Text(
+          child: Text(
             'ALL EDITIONS',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Expanded(
           child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             itemCount: magazines.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               final magazine = magazines[index];
               return Padding(
-                padding: EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.only(right: 12),
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.asset(

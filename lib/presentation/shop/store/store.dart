@@ -8,12 +8,7 @@ import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/custom_shapes/containers/searchbar_container.dart';
-import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
-import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
-import '../../../common/widgets/product/product_card/product_card_vertical.dart';
-import '../../../common/widgets/text/section_heading.dart';
-import '../../../domain/entities/magazine.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../store/widgets/category_tabs.dart';
@@ -149,7 +144,7 @@ class StoreScreen extends StatelessWidget {
                             vertical: AppSizes.defaultSpace / 2),
                         child: Column(
                           children: [
-                            AppSearchContainer(
+                            const AppSearchContainer(
                               text: 'Encontre os ',
                               secondText: 'melhores precos...',
                               showBorder: true,

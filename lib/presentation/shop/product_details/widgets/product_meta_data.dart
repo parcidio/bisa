@@ -24,7 +24,7 @@ class AppProductMetaData extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: AppSizes.spaceBetweenItems / 2,
             ),
             Row(
@@ -73,7 +73,7 @@ class AppProductMetaData extends StatelessWidget {
                             .apply(color: AppColors.black),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: AppSizes.spaceBetweenItems,
                     ),
                     AppRoundedContainer(
@@ -128,7 +128,7 @@ class AppProductMetaData extends StatelessWidget {
           height: AppSizes.spaceBetweenItems / 1.5,
         ),
         //Title
-        AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),
+        const AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 4,
         ),

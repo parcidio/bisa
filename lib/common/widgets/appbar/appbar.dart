@@ -40,11 +40,11 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))
                 : null,
         title: FadeInRight(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             child: Container(
                 height: 40,
-                margin: EdgeInsets.only(bottom: 10),
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: title)),
         actions: actions,
         bottom: showSearchBar

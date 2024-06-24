@@ -1,11 +1,7 @@
-import 'package:dona/common/widgets/icons/circular_icon.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AppBottomAddToCart extends StatelessWidget {
   const AppBottomAddToCart({super.key});
@@ -13,65 +9,60 @@ class AppBottomAddToCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(
-          horizontal: AppSizes.defaultSpace,
-          vertical: AppSizes.defaultSpace / 2),
-      decoration: BoxDecoration(
-        color: isDark ? AppColors.dark : AppColors.light,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              AppCircularIcon(
-                onPressed: () {},
-                icon: CupertinoIcons.minus,
-                height: 35,
-                width: 35,
-                size: AppSizes.iconSm,
-                color: AppColors.white,
-                backgroundColor: AppColors.primary,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Subtotal: \$',
+              style: TextStyle(fontSize: 18),
+            ),
+            // if (_discount > 0)
+            //   Text(
+            //     'Discount: \$',
+            //     style: TextStyle(fontSize: 18),
+            //   ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Total: ',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                width: AppSizes.spaceBetweenItems,
-              ),
-              Text('2', style: Theme.of(context).textTheme.titleMedium),
-              const SizedBox(
-                width: AppSizes.spaceBetweenItems,
-              ),
-              AppCircularIcon(
-                onPressed: () {},
-                icon: CupertinoIcons.add,
-                height: 35,
-                width: 35,
-                size: AppSizes.iconSm,
-                color: AppColors.white,
-                backgroundColor: AppColors.primary,
-              ),
-            ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Validate voucher
+                // _validateVoucher();
+              },
+              child: const Text('Validate Voucher'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        TextFormField(
+          // controller: _voucherController,
+          decoration: const InputDecoration(
+            labelText: 'Enter Voucher Code',
+            suffixIcon: Icon(Icons.check, color: Colors.green),
           ),
-          SizedBox(width: AppSizes.spaceBetweenItems),
-          ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(AppSizes.sm),
-                backgroundColor: AppColors.primary,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    'Adicionar',
-                  ),
-                  SizedBox(width: AppSizes.spaceBetweenItems),
-                  Icon(
-                    CupertinoIcons.bag,
-                  ),
-                ],
-              ))
-        ],
-      ),
+        ),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            // Proceed to checkout
+            Navigator.pushNamed(context, '/checkout');
+          },
+          child: const Text('Proceed to Checkout'),
+        ),
+      ],
     );
   }
 }

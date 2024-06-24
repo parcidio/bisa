@@ -1,9 +1,6 @@
 import 'package:dona/utils/constants/colors.dart';
-import 'package:dona/utils/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../presentation/shop/cart/cart.dart';
 

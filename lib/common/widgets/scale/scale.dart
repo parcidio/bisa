@@ -1,14 +1,11 @@
 // lib/weight_selector_bottom_sheet.dart
 import 'package:animated_weight_picker/animated_weight_picker.dart';
-import 'package:dona/utils/theme/custom_themes/text_theme.dart';
 
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
-import '../product/product_card/product_card_horizontal.dart';
 import '../product/product_card/product_card_simple.dart';
-import '../product/product_card/product_price_text.dart';
 
 class WeightSelectorBottomSheet extends StatefulWidget {
   final double pricePerKg;
@@ -52,7 +49,7 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
                 totalPrice: price,
                 unit: widget.unit,
               ),
-              SizedBox(
+              const SizedBox(
                 height: AppSizes.spaceBetweenSections,
               ),
               SizedBox(

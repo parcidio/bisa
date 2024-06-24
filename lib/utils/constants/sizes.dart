@@ -64,4 +64,7 @@ class AppSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // Panel
+  static const double appPanelHight = 120;
 }

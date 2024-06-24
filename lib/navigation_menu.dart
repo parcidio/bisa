@@ -1,16 +1,10 @@
-import 'package:dona/presentation/personalization/profile/profile.dart';
-import 'package:dona/presentation/personalization/settings/settings.dart';
-import 'package:dona/presentation/shop/home/home.dart';
 import 'package:dona/presentation/shop/map/map.dart';
 import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/colors.dart';
-import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'presentation/shop/contacts/contacts.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -34,9 +28,9 @@ class NavigationMenu extends StatelessWidget {
             // indicatorShape: RoundedRectangleBorder(
             //     borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
-            destinations: [
+            destinations: const [
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(
                     icon: Text('Praça',
                         style: TextStyle(
@@ -63,7 +57,7 @@ class NavigationMenu extends StatelessWidget {
                         ))),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(
                     icon: Text('Explorar',
                         style: TextStyle(

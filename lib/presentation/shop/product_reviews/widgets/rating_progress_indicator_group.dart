@@ -17,7 +17,7 @@ class AppRatingProgressIndicatorGroup extends StatelessWidget {
             style: Theme.of(context).textTheme.displayLarge,
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 2,
           child: Column(
             children: [

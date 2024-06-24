@@ -1,8 +1,6 @@
-import 'package:dona/common/widgets/brand/brand_show_case.dart';
 import 'package:dona/common/widgets/layouts/grid_layout.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_vertical.dart';
 import 'package:dona/common/widgets/text/section_heading.dart';
-import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

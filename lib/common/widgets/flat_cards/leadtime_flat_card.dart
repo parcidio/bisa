@@ -7,7 +7,7 @@ class LeadTimeCard extends StatelessWidget {
   final int dispatchDays;
   final int deliveryDays;
 
-  LeadTimeCard({
+  const LeadTimeCard({super.key, 
     required this.quantity,
     required this.dispatchDays,
     required this.deliveryDays,
@@ -19,10 +19,10 @@ class LeadTimeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Divider(),
+          const Divider(),
           Text('Cronograma de entregas para $quantity items',
               style: Theme.of(context).textTheme.titleSmall),
-          SizedBox(height: AppSizes.spaceBetweenItems / 2),
+          const SizedBox(height: AppSizes.spaceBetweenItems / 2),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -34,7 +34,7 @@ class LeadTimeCard extends StatelessWidget {
                   children: [
                     Text('Despacho',
                         style: Theme.of(context).textTheme.labelLarge),
-                    SizedBox(height: 4.0),
+                    const SizedBox(height: 4.0),
                     Text('$dispatchDays dias',
                         style: Theme.of(context).textTheme.labelMedium),
                   ],
@@ -45,7 +45,7 @@ class LeadTimeCard extends StatelessWidget {
                 children: [
                   Text('Entrega',
                       style: Theme.of(context).textTheme.labelLarge),
-                  SizedBox(height: 4.0),
+                  const SizedBox(height: 4.0),
                   Text('$deliveryDays dias',
                       style: Theme.of(context).textTheme.labelMedium),
                 ],

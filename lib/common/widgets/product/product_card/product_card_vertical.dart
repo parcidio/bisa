@@ -62,7 +62,7 @@ class AppProductCardVertical extends StatelessWidget {
                               .labelMedium!
                               .apply(color: AppColors.black),
                         ),
-                        Icon(
+                        const Icon(
                           CupertinoIcons.arrow_down_right,
                           size: AppSizes.sm,
                         ),
@@ -125,15 +125,15 @@ class AppProductCardVertical extends StatelessWidget {
             ]),
           ),
           // const Spacer(),
-          SizedBox(
+          const SizedBox(
             height: AppSizes.spaceBetweenItems / 2,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSizes.sm),
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.sm),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppProductPriceText(
+                const AppProductPriceText(
                   price: 500.30,
                   isLarge: true,
                   priceWas: 600.50,

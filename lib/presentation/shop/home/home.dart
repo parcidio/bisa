@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {"icon": AppImages.animalIcon, "title": "animals"},
     {"icon": AppImages.cosmeticIcon, "title": "cosmetics"},
   ];
-  List<dynamic> _contacts = [
+  final List<dynamic> _contacts = [
     {
       'name': 'John',
       'avatar': 'assets/users/avatar-1.png',
@@ -162,9 +162,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   flexibleSpace: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    children: [
+                    children: const [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                             vertical: AppSizes.defaultSpace),
                         child: Column(
                           children: [],

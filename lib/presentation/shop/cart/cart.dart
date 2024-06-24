@@ -1,5 +1,12 @@
+import 'package:dona/common/widgets/icons/circular_icon.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_horizontal.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
+import '../product_details/widgets/bottom_add_to_cart.dart';
 
 class AppCartScreen extends StatefulWidget {
   const AppCartScreen({Key? key}) : super(key: key);
@@ -9,98 +16,100 @@ class AppCartScreen extends StatefulWidget {
 }
 
 class _AppCartScreenState extends State<AppCartScreen> {
-  TextEditingController _voucherController = TextEditingController();
+  final TextEditingController _voucherController = TextEditingController();
   bool _voucherValidated = false;
   double _subtotal = 0;
   double _discount = 0;
+  List<CartItem> cartItems = [
+    const CartItem(id: '0', name: 'Product 1', price: 100, quantity: 2),
+    const CartItem(id: '1', name: 'Product 2', price: 50, quantity: 1),
+    const CartItem(id: '2', name: 'Product 3', price: 75, quantity: 3),
+    const CartItem(id: '3', name: 'Product 3', price: 75, quantity: 4),
+  ];
 
   @override
   Widget build(BuildContext context) {
     // Mock data for cart items
-    final List<CartItem> cartItems = [
-      CartItem(name: 'Product 1', price: 100, quantity: 2),
-      CartItem(name: 'Product 2', price: 50, quantity: 1),
-      CartItem(name: 'Product 3', price: 75, quantity: 3),
-      CartItem(name: 'Product 3', price: 75, quantity: 3),
-    ];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: cartItems.length,
-              itemBuilder: (context, index) {
-                final item = cartItems[index];
-                return AppProductCardHorizontal();
-              },
-            ),
-          ),
+        title: const Text('Fazer o Checkout'),
+        actions: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding:
+                const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+            child: AppCircularIcon(
+              icon: cartItems.isEmpty ? null : CupertinoIcons.delete_simple,
+              onPressed: () {},
+            ),
+          )
+        ],
+      ),
+      // bottomNavigationBar: const AppBottomAddToCart(),
+      body: cartItems.isEmpty
+          ? Center(
+              child: Container(
+                  child: Column(
+                children: [
+                  Icon(Icons.low_priority),
+                  Text('Nao ha itens no checkout',
+                      style: Theme.of(context).textTheme.labelLarge)
+                ],
+              )),
+            )
+          : Stack(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Subtotal: \$$_subtotal',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    if (_discount > 0)
-                      Text(
-                        'Discount: \$$_discount',
-                        style: TextStyle(fontSize: 18),
+                ListView.builder(
+                  itemCount: cartItems.length,
+                  itemBuilder: (context, index) {
+                    CartItem item = cartItems[index];
+                    return Dismissible(
+                      key: Key(item.id),
+                      background: Container(
+                        color: AppColors.error,
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Item será descartado',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .apply(color: AppColors.white))
+                            ],
+                          ),
+                        ),
                       ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total: \$${calculateTotal(cartItems)}',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate voucher
-                        _validateVoucher();
+                      onDismissed: (direction) {
+                        // Remove the item from the data source.
+                        setState(() {
+                          cartItems.removeAt(index);
+                        });
+
+                        // Then show a snackbar.
+                        String cartItemName = item.name;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('$cartItemName dismissed')));
                       },
-                      child: Text('Validate Voucher'),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: _voucherController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter Voucher Code',
-                    suffixIcon: _voucherValidated
-                        ? Icon(Icons.check, color: Colors.green)
-                        : null,
-                  ),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Proceed to checkout
-                    Navigator.pushNamed(context, '/checkout');
+                      child: const AppProductCardHorizontal(),
+                    );
                   },
-                  child: Text('Proceed to Checkout'),
+                ),
+                SlidingUpPanel(
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
+                  minHeight: AppSizes.appPanelHight,
+                  maxHeight: AppSizes.appPanelHight * 2.5,
+                  isDraggable: true,
+                  renderPanelSheet: true,
+                  panel: const Padding(
+                    padding: EdgeInsets.all(AppSizes.defaultItems),
+                    child: AppBottomAddToCart(),
+                  ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -141,11 +150,13 @@ class _AppCartScreenState extends State<AppCartScreen> {
 }
 
 class CartItem {
+  final String id;
   final String name;
   final double price;
   final int quantity;
 
   const CartItem({
+    required this.id,
     required this.name,
     required this.price,
     required this.quantity,

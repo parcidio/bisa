@@ -1,30 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dona/common/widgets/appbar/appbar.dart';
-import 'package:dona/presentation/shop/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_attributes.dart';
-import 'package:dona/presentation/shop/product_details/widgets/product_image_slider.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_meta_data.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_rating_share.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
-import 'package:fl_chart/fl_chart.dart';
 
 import '../../../common/widgets/card/place_card.dart';
 import '../../../common/widgets/chart/linechart.dart';
 import '../../../common/widgets/flat_cards/leadtime_flat_card.dart';
 import '../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
 import '../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
-import '../../../common/widgets/layouts/grid_layout.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../common/widgets/product/product_card/product_card_vertical.dart';
-import '../../../common/widgets/product/ratings/RatingBarIndicator.dart';
 import '../../../common/widgets/scale/scale.dart';
 import '../../../common/widgets/text/section_heading.dart';
 import '../../../domain/entities/entities.dart';
 import '../../../utils/constants/colors.dart';
-import '../product_reviews/widgets/rating_progress_indicator_group.dart';
 import 'widgets/product_description.dart';
 
 class AppProductDetails extends StatelessWidget {
@@ -34,7 +27,7 @@ class AppProductDetails extends StatelessWidget {
     await showModalBottomSheet<double>(
       context: context,
       isScrollControlled: true,
-      builder: (context) => WeightSelectorBottomSheet(
+      builder: (context) => const WeightSelectorBottomSheet(
         pricePerKg: 200.05,
         unit: 'kg',
       ),
@@ -283,14 +276,14 @@ class AppProductDetails extends StatelessWidget {
                     ),
                   ),
 
-                  LeadTimeCard(
+                  const LeadTimeCard(
                     deliveryDays: 3,
                     dispatchDays: 0,
                     quantity: 2,
                   ),
 
                   const Divider(),
-                  AppPlaceCard(
+                  const AppPlaceCard(
                     placeName: 'Luanda',
                     compras: 'Segunda - Sexta',
                     entregas: '> 10 itens',
@@ -320,12 +313,12 @@ class AppProductDetails extends StatelessWidget {
 
             LineChartSample3(),
 
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   right: AppSizes.defaultSpace,
                   left: AppSizes.defaultSpace,
                   bottom: AppSizes.defaultSpace),
-              child: const AppSectionHeading(
+              child: AppSectionHeading(
                   title: 'Produtos relacionados',
                   buttonTitle: 'Mais',
                   isSmall: true,
