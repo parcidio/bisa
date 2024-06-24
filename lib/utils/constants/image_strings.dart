@@ -72,4 +72,8 @@ class AppImages {
 
   // Profile
   static const String profile = "assets/images/user/user.jpeg";
+
+  // Cart
+  static const String shoppingList =
+      "assets/images/icons/others/shopping_list.svg";
 }

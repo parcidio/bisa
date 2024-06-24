@@ -1,11 +1,17 @@
 import 'package:dona/common/widgets/icons/circular_icon.dart';
+import 'package:dona/common/widgets/images/rounded_image.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_horizontal.dart';
+import 'package:dona/utils/constants/image_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../../../common/widgets/images/circular_image.dart';
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import '../product_details/widgets/bottom_add_to_cart.dart';
 
 class AppCartScreen extends StatefulWidget {
@@ -29,7 +35,7 @@ class _AppCartScreenState extends State<AppCartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Mock data for cart items
+    final isDark = AppHelperFuncions.isDarkMode(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +57,13 @@ class _AppCartScreenState extends State<AppCartScreen> {
               child: Container(
                   child: Column(
                 children: [
-                  Icon(Icons.low_priority),
+                  AppCircularImage(
+                    image: AppImages.darkAppLogo,
+                    width: 200,
+                    height: 200,
+                    isSvg: false,
+                    overlayColor: isDark ? AppColors.white : AppColors.black,
+                  ),
                   Text('Nao ha itens no checkout',
                       style: Theme.of(context).textTheme.labelLarge)
                 ],
