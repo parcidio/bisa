@@ -27,17 +27,18 @@ class AppCategoryTab extends StatelessWidget {
             child: Column(children: [
               const AppSectionHeading(
                   title: 'Os produtos da praça',
-                  // buttonTitle: 'Mais',
+                  buttonTitle: 'Mais',
                   isSmall: true,
                   textColor: AppColors.darkGrey),
-              const SizedBox(
-                height: AppSizes.spaceBetweenItems,
-              ),
-              // Builder(builder: (context) {
+              // const SizedBox(
+              //   height: AppSizes.spaceBetweenItems,
+              // ),
+              // // Builder(builder: (context) {
               //   return AppProductCardVertical();
               // }),
               AppGridLayout(
                   itemCount: 22,
+                  itemCountRow: 3,
                   itemBuilder: (_, index) => const AppProductCardVertical()),
               const SizedBox(
                 height: AppSizes.spaceBetweenSections,

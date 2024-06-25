@@ -71,12 +71,28 @@ class AppProductCardVertical extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 0,
+                  bottom: 0,
                   right: 0,
                   child: AppCircularIcon(
                     onPressed: () {},
+                    icon: CupertinoIcons.add,
+                    height: 32,
+                    width: 32,
+                    size: AppSizes.iconSm,
+                    color: AppColors.white,
+                    backgroundColor: AppColors.primary,
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: AppCircularIcon(
+                    height: 30,
+                    width: 30,
+                    onPressed: () {},
                     icon: Iconsax.heart5,
                     color: Colors.red,
+                    size: 10,
                   ),
                 )
               ],
@@ -90,7 +106,7 @@ class AppProductCardVertical extends StatelessWidget {
             padding: const EdgeInsets.only(left: AppSizes.sm),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const AppProductTitleText(
@@ -138,17 +154,17 @@ class AppProductCardVertical extends StatelessWidget {
                   isLarge: true,
                   priceWas: 600.50,
                 ),
-                Positioned(
-                  child: AppCircularIcon(
-                    onPressed: () {},
-                    icon: CupertinoIcons.add,
-                    height: 32,
-                    width: 32,
-                    size: AppSizes.iconSm,
-                    color: AppColors.white,
-                    backgroundColor: AppColors.primary,
-                  ),
-                ),
+                // Positioned(
+                //   child: AppCircularIcon(
+                //     onPressed: () {},
+                //     icon: CupertinoIcons.add,
+                //     height: 32,
+                //     width: 32,
+                //     size: AppSizes.iconSm,
+                //     color: AppColors.white,
+                //     backgroundColor: AppColors.primary,
+                //   ),
+                // ),
               ],
             ),
           )
