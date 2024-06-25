@@ -64,6 +64,14 @@ class MapState extends State<BancadaScreen> {
       },
     ];
 
+    const List<Widget> Types = <Widget>[
+      Text('Ofertas'),
+      Text('Demada'),
+    ];
+
+    final List<bool> _selectedType = <bool>[true, false];
+    bool isVertical = false;
+
     List<Map<String, String>> categories = [
       // {"icon": "", "title": "Tudo"},
       {"icon": "👟", "title": "Shoe"},
@@ -140,7 +148,7 @@ class MapState extends State<BancadaScreen> {
             ),
           ]),
       body: SlidingUpPanel(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(AppSizes.cardRadiusSm),
           minHeight: AppSizes.appPanelHight,
           margin: EdgeInsets.all(AppSizes.defaultItems),
           panel: DefaultTabController(length: 3, child: Container()),
@@ -151,13 +159,17 @@ class MapState extends State<BancadaScreen> {
             MapLibreMap(
               styleString: "$styleUrl?key=$apiKey",
               myLocationEnabled: true,
+              compassEnabled: false,
+              dragEnabled: false,
               initialCameraPosition: const CameraPosition(
-                  target: LatLng(-8.838333, 13.234444), zoom: 16),
+                  target: LatLng(-8.838333, 13.234444), zoom: 11),
               trackCameraPosition: true,
             ),
             Positioned(
               // right: AppSizes.defaultItems,
               // bottom: AppSizes.spaceBetweenSections,
+              height: AppSizes.appBarHeight,
+              width: 400,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CarouselSlider(

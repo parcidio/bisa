@@ -46,15 +46,14 @@ class AppProductCardHorizontal extends StatelessWidget {
                 children: [
                   // Thumbnail
                   Container(
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: AppSizes.sm),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: AppSizes.sm),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment
                             .spaceBetween, // Ensures space between item details and item counter
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const AppRoundedImage(
+                          AppRoundedImage(
                             backgroundColor: AppColors.softGrey,
                             width: 60,
                             height: 60,
@@ -63,9 +62,9 @@ class AppProductCardHorizontal extends StatelessWidget {
                           ),
                           // Item details
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: AppSizes.sm),
-                            child: const Column(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: AppSizes.sm),
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -124,7 +123,7 @@ class AppProductCardHorizontal extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),

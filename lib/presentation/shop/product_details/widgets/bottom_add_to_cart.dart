@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
-import 'package:flutter/material.dart';
+
+import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 
 class AppBottomAddToCart extends StatelessWidget {
   const AppBottomAddToCart({super.key});
@@ -9,60 +11,57 @@ class AppBottomAddToCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Subtotal: \$',
-              style: TextStyle(fontSize: 18),
-            ),
-            // if (_discount > 0)
-            //   Text(
-            //     'Discount: \$',
-            //     style: TextStyle(fontSize: 18),
-            //   ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Total: ',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+    List<Map<String, String>> calculations = [
+      {"title": "Total", "amount": "25700.00 kz"},
+      {"title": "Sub Total", "amount": "+25000.00 kz"},
+      {"title": "Entrega", "amount": "+1200.00 kz"},
+      {"title": "Disconto", "amount": "-500.00 kz"},
+      {"title": "Esquebra", "amount": "0.4kg de tomate"},
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ElevatedButton(
+            onPressed: () {},
+            child: Center(
+              child: Text(
+                'Proceguir',
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                // Validate voucher
-                // _validateVoucher();
-              },
-              child: const Text('Validate Voucher'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        TextFormField(
-          // controller: _voucherController,
-          decoration: const InputDecoration(
-            labelText: 'Enter Voucher Code',
-            suffixIcon: Icon(Icons.check, color: Colors.green),
           ),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            // Proceed to checkout
-            Navigator.pushNamed(context, '/checkout');
-          },
-          child: const Text('Proceed to Checkout'),
-        ),
-      ],
+          const SizedBox(height: AppSizes.spaceBetweenSections / 2),
+          Container(
+            height: 160, // Adjust the height as needed
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              itemCount: calculations.length,
+              itemBuilder: (_, index) {
+                final calculation = calculations[index];
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          calculation["title"]!,
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                        Text(calculation["amount"]!,
+                            style: Theme.of(context).textTheme.labelMedium),
+                      ],
+                    ),
+                    Divider()
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

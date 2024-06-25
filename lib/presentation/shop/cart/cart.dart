@@ -39,7 +39,7 @@ class _AppCartScreenState extends State<AppCartScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fazer o Checkout'),
+        title: const Text('A tua sacola'),
         actions: [
           Padding(
             padding:
@@ -51,7 +51,10 @@ class _AppCartScreenState extends State<AppCartScreen> {
           )
         ],
       ),
-      // bottomNavigationBar: const AppBottomAddToCart(),
+      // bottomNavigationBar: Padding(
+      //   padding: EdgeInsets.all(AppSizes.defaultItems),
+      //   child: AppBottomAddToCart(),
+      // ),
       body: cartItems.isEmpty
           ? Center(
               child: Container(
@@ -69,59 +72,51 @@ class _AppCartScreenState extends State<AppCartScreen> {
                 ],
               )),
             )
-          : Stack(
-              children: [
-                ListView.builder(
-                  itemCount: cartItems.length,
-                  itemBuilder: (context, index) {
-                    CartItem item = cartItems[index];
-                    return Dismissible(
-                      key: Key(item.id),
-                      background: Container(
-                        color: AppColors.error,
-                        child: Padding(
-                          padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Item será descartado',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelLarge!
-                                      .apply(color: AppColors.white))
-                            ],
-                          ),
+          : SlidingUpPanel(
+              borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(AppSizes.cardRadiusSm)),
+              isDraggable: true,
+              maxHeight: AppSizes.appPanelHight * 2.5,
+              minHeight: AppSizes.appPanelHight,
+              body: ListView.builder(
+                itemCount: cartItems.length,
+                itemBuilder: (context, index) {
+                  CartItem item = cartItems[index];
+                  return Dismissible(
+                    key: Key(item.id),
+                    background: Container(
+                      color: AppColors.error,
+                      child: Padding(
+                        padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Item será descartado',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .apply(color: AppColors.white))
+                          ],
                         ),
                       ),
-                      onDismissed: (direction) {
-                        // Remove the item from the data source.
-                        setState(() {
-                          cartItems.removeAt(index);
-                        });
+                    ),
+                    onDismissed: (direction) {
+                      // Remove the item from the data source.
+                      setState(() {
+                        cartItems.removeAt(index);
+                      });
 
-                        // Then show a snackbar.
-                        String cartItemName = item.name;
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('$cartItemName dismissed')));
-                      },
-                      child: const AppProductCardHorizontal(),
-                    );
-                  },
-                ),
-                SlidingUpPanel(
-                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
-                  minHeight: AppSizes.appPanelHight,
-                  maxHeight: AppSizes.appPanelHight * 2.5,
-                  isDraggable: true,
-                  renderPanelSheet: true,
-                  panel: const Padding(
-                    padding: EdgeInsets.all(AppSizes.defaultItems),
-                    child: AppBottomAddToCart(),
-                  ),
-                ),
-              ],
-            ),
+                      // Then show a snackbar.
+                      String cartItemName = item.name;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('$cartItemName dismissed')));
+                    },
+                    child: const AppProductCardHorizontal(),
+                  );
+                },
+              ),
+              panel: const AppBottomAddToCart()),
     );
   }
 

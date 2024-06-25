@@ -39,7 +39,7 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
         height: 300,
         padding: const EdgeInsets.all(16.0),
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.transparent,
         ),
         child: Center(
           child: Column(
