@@ -4,6 +4,9 @@ import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
+import '../../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
+import '../../../../domain/entities/magazine.dart';
 import '../../../../utils/constants/colors.dart';
 
 class AppCategoryTab extends StatelessWidget {
@@ -30,9 +33,7 @@ class AppCategoryTab extends StatelessWidget {
                   buttonTitle: 'Mais',
                   isSmall: true,
                   textColor: AppColors.darkGrey),
-              // const SizedBox(
-              //   height: AppSizes.spaceBetweenItems,
-              // ),
+
               // // Builder(builder: (context) {
               //   return AppProductCardVertical();
               // }),

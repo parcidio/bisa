@@ -47,7 +47,7 @@ class StoreScreen extends StatelessWidget {
       },
     ];
     List<Map<String, String>> categories = [
-      {"icon": "", "title": "Tudo"},
+      {"icon": "🔥", "title": "Tudo"},
       {"icon": "👟", "title": "Shoe"},
       {"icon": "👶", "title": "Baby"},
       {"icon": "👗", "title": "Clothes"},

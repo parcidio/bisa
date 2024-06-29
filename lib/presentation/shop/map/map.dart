@@ -1,14 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:logger/logger.dart';
+// import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
+import 'package:vector_map_tiles/vector_map_tiles.dart';
 
 import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/brand/brand_card_category.dart';
-import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -34,8 +36,42 @@ class BancadaScreen extends StatefulWidget {
 }
 
 class MapState extends State<BancadaScreen> {
+  final MapController _controller = MapController();
+  Style? _style;
+  Object? _error;
+
+  get logger => Logger();
+
+  @override
+  void initState() {
+    super.initState();
+    _initStyle();
+  }
+
+  void _initStyle() async {
+    try {
+      _style = await _readStyle();
+    } catch (e, stack) {
+      // ignore: avoid_print
+      print(e);
+      // ignore: avoid_print
+      print(stack);
+      _error = e;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget? children;
+    if (_error != null) {
+      children = Expanded(child: Text(_error!.toString()));
+    } else if (_style == null) {
+      children = const Center(child: CircularProgressIndicator());
+    } else {
+      children = Flexible(child: _map(_style!));
+    }
+
     List<Map<String, String>> brands = [
       {
         "logo": AppImages.greenAppLogo,
@@ -74,6 +110,7 @@ class MapState extends State<BancadaScreen> {
 
     List<Map<String, String>> categories = [
       // {"icon": "", "title": "Tudo"},
+      {"icon": "🔥", "title": "Tudo"},
       {"icon": "👟", "title": "Shoe"},
       {"icon": "👶", "title": "Baby"},
       {"icon": "👗", "title": "Clothes"},
@@ -150,21 +187,22 @@ class MapState extends State<BancadaScreen> {
       body: SlidingUpPanel(
           borderRadius: BorderRadius.circular(AppSizes.cardRadiusSm),
           minHeight: AppSizes.appPanelHight,
-          margin: EdgeInsets.all(AppSizes.defaultItems),
+          margin: const EdgeInsets.all(AppSizes.defaultItems),
           panel: DefaultTabController(length: 3, child: Container()),
           color: AppColors.white,
           parallaxEnabled: true,
           backdropEnabled: true,
           body: Stack(children: [
-            MapLibreMap(
-              styleString: "$styleUrl?key=$apiKey",
-              myLocationEnabled: true,
-              compassEnabled: false,
-              dragEnabled: false,
-              initialCameraPosition: const CameraPosition(
-                  target: LatLng(-8.838333, 13.234444), zoom: 11),
-              trackCameraPosition: true,
-            ),
+            children,
+            // MapLibreMap(
+            //   styleString: "$styleUrl?key=$apiKey",
+            //   myLocationEnabled: true,
+            //   compassEnabled: false,
+            //   dragEnabled: false,
+            //   initialCameraPosition: const CameraPosition(
+            //       target: LatLng(-8.838333, 13.234444), zoom: 11),
+            //   trackCameraPosition: true,
+            // ),
             Positioned(
               // right: AppSizes.defaultItems,
               // bottom: AppSizes.spaceBetweenSections,
@@ -206,4 +244,41 @@ class MapState extends State<BancadaScreen> {
           ])),
     );
   }
+
+  // alternates:
+//   Mapbox - mapbox://styles/mapbox/streets-v12?access_token={key}
+//   Maptiler - https://api.maptiler.com/maps/outdoor/style.json?key={key}
+//   Stadia Maps - https://tiles.stadiamaps.com/styles/outdoors.json?api_key={key}
+  Future<Style> _readStyle() => StyleReader(
+          uri: "$styleUrl?key={key}",
+          apiKey: apiKey,
+          logger: logger.d("Map was loaded successfully"))
+      .read();
+
+  Widget _map(Style style) => FlutterMap(
+        mapController: _controller,
+        options: MapOptions(
+            initialCenter: const LatLng(-8.838333, 13.234444),
+            initialZoom: 10,
+            // maxZoom: 11,
+            backgroundColor: Theme.of(context).canvasColor),
+        children: [
+          VectorTileLayer(
+              tileProviders: style.providers,
+              theme: style.theme,
+              sprites: style.sprites,
+              // maximumZoom: 22,
+              tileOffset: TileOffset.mapbox,
+              layerMode: VectorTileLayerMode.vector)
+        ],
+      );
+
+  Widget _statusText() => Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 8),
+      child: StreamBuilder(
+          stream: _controller.mapEventStream,
+          builder: (context, snapshot) {
+            return Text(
+                'Zoom: ${_controller.camera.zoom.toStringAsFixed(2)} Center: ${_controller.camera.center.latitude.toStringAsFixed(4)},${_controller.camera.center.longitude.toStringAsFixed(4)}');
+          }));
 }

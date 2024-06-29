@@ -18,13 +18,16 @@ class AppGridLayout extends StatelessWidget {
     return GridView.builder(
         itemCount: itemCount,
         shrinkWrap: true,
+        addAutomaticKeepAlives: true,
+        cacheExtent: 10,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: itemCountRow,
-            mainAxisSpacing: AppSizes.gridViewSpacing,
-            crossAxisSpacing: AppSizes.gridViewSpacing,
-            mainAxisExtent: mainAxisExtent),
+          crossAxisCount: itemCountRow,
+          mainAxisSpacing: AppSizes.gridViewSpacing,
+          crossAxisSpacing: AppSizes.gridViewSpacing,
+          mainAxisExtent: mainAxisExtent,
+        ),
         itemBuilder: itemBuilder);
   }
 }

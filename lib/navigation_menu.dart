@@ -5,7 +5,6 @@ import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -59,7 +58,7 @@ class NavigationMenu extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(
-                    icon: Text('Explorar',
+                    icon: Text('Bancadas',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -70,7 +69,7 @@ class NavigationMenu extends StatelessWidget {
                           ],
                         )),
                     label: '',
-                    selectedIcon: Text('Explorar',
+                    selectedIcon: Text('Bancadas',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,

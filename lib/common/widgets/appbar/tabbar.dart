@@ -1,4 +1,5 @@
 import 'package:dona/utils/constants/colors.dart';
+import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/device/device._utility.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,10 @@ class AppTabBar extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       color: isDark ? AppColors.black : AppColors.white,
       child: TabBar(
+          overlayColor: WidgetStateProperty.all(AppColors.softGrey),
+          splashBorderRadius: BorderRadius.circular(AppSizes.cardRadiusXs),
+          tabAlignment: TabAlignment.start,
+          labelPadding: EdgeInsetsDirectional.symmetric(horizontal: 15),
           indicatorColor: AppColors.primary,
           isScrollable: isScrollable,
           unselectedLabelColor: AppColors.darkGrey,
