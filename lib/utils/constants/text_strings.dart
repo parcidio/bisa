@@ -26,9 +26,9 @@ class AppTexts {
       "Enjoy all your monthly shopping analytics in one place and hassle free";
 
   // Authentication Heading Text
-  static const String loginTitle = "Welcome";
+  static const String loginTitle = "Faça login";
   static const String loginSubtitle =
-      "Discover limitless choices and unmatched convinience";
+      "Conecte-se à conveniência ao preço da praça";
   static const String signupTitle = "Let's create an account";
   static const String forgetPasswordTitle = "Forgot Password";
   static const String forgetPasswordSubtitle =
@@ -56,7 +56,9 @@ class AppTexts {
   static const String phoenNo = "Phone Number";
   static const String remenberMe = "Remember me";
   static const String forgotPassword = "Forget password?";
-  static const String signIn = "Sign in";
+  static const String signIn = "Login";
+  static const String signUp = "Inscrever-se";
+  static const String signUpCall = "Não tem uma conta ainda?";
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";

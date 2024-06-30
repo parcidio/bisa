@@ -331,8 +331,8 @@ class AppProductDetails extends StatelessWidget {
                     vertical: AppSizes.spaceBetweenItems),
                 child: CarouselSlider(
                   options: CarouselOptions(
-                      height: 280,
-                      viewportFraction: .4,
+                      height: 300,
+                      viewportFraction: .3,
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,
@@ -352,7 +352,7 @@ class AppProductDetails extends StatelessWidget {
                       builder: (BuildContext context) {
                         return Container(
                           width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),

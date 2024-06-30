@@ -46,7 +46,7 @@ class AppSizes {
   static const double productItemHeight = 160.0;
 
   //Inputfield
-  static const double inputFieldRadius = 14.0;
+  static const double inputFieldRadius = 12.0;
   static const double spaceBetweenInputFields = 14.0;
 
   // Card sizes

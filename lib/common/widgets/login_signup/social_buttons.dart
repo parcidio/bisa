@@ -12,31 +12,35 @@ class SocialButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          padding: const EdgeInsets.all(AppSizes.spaceBetweenItems),
-          decoration: BoxDecoration(
-              border: Border.all(color: AppColors.grey),
-              borderRadius: BorderRadius.circular(100)),
-          child: SvgPicture.asset(
-            AppImages.googleLogo,
-            height: AppSizes.iconMd,
-            width: AppSizes.iconMd,
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.all(AppSizes.spaceBetweenItems),
+            decoration: BoxDecoration(
+                border: Border.all(color: AppColors.grey),
+                borderRadius: BorderRadius.circular(AppSizes.sm)),
+            child: SvgPicture.asset(
+              AppImages.googleLogo,
+              height: AppSizes.iconSm,
+              width: AppSizes.iconSm,
+            ),
           ),
         ),
         const SizedBox(
           width: AppSizes.spaceBetweenItems,
         ),
-        Container(
-          padding: const EdgeInsets.all(AppSizes.spaceBetweenItems),
-          decoration: BoxDecoration(
-              border: Border.all(color: AppColors.grey),
-              borderRadius: BorderRadius.circular(100)),
-          child: SvgPicture.asset(
-            AppImages.facebookLogo,
-            height: AppSizes.iconMd,
-            width: AppSizes.iconMd,
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.all(AppSizes.spaceBetweenItems),
+            decoration: BoxDecoration(
+                border: Border.all(color: AppColors.grey),
+                borderRadius: BorderRadius.circular(AppSizes.sm)),
+            child: SvgPicture.asset(
+              AppImages.facebookLogo,
+              height: AppSizes.iconSm,
+              width: AppSizes.iconSm,
+            ),
           ),
         ),
       ],

@@ -1,12 +1,23 @@
+import 'dart:io';
+
+import 'package:dona/common/widgets/images/circular_image.dart';
+import 'package:dona/common/widgets/login_signup/social_buttons.dart';
 import 'package:dona/navigation_menu.dart';
+import 'package:dona/presentation/authentication/signup/widgets/signup_form.dart';
 import 'package:dona/presentation/password_configuration/forget_password.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/login_signup/form_divider.dart';
+import '../../../../common/widgets/textfield/textfield.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../signup/signup.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -22,40 +33,36 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           // Email
-          TextFormField(
-            decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.direct_right),
-                labelText: AppTexts.email),
-          ),
+
+          AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
           const SizedBox(
-            height: AppSizes.spaceBetweenInputFields,
-          ),
-          // Password
-          TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Iconsax.password_check),
-              labelText: AppTexts.password,
-              suffixIcon: Icon(Iconsax.eye_slash),
-            ),
+            height: AppSizes.spaceBetweenInputFields / 2,
           ),
           const SizedBox(
             height: AppSizes.spaceBetweenInputFields / 2,
           ),
+          // Password
+          AppTextField(
+            hintText: AppTexts.email,
+            icon: CupertinoIcons.lock,
+            iconSuffix: CupertinoIcons.eye_slash,
+          ),
+
           // Remenber me & Forget password
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // Remember me
-              Row(
-                children: [
-                  Checkbox(value: true, onChanged: (value) {}),
-                  const Text(AppTexts.remenberMe)
-                ],
-              ),
               // Forget password
               TextButton(
                   onPressed: () => Get.to(() => const ForgetPasswordScreen()),
-                  child: const Text(AppTexts.forgotPassword)),
+                  child: const Text(
+                    AppTexts.forgotPassword,
+                    style: TextStyle(
+                      fontSize: 12,
+                      decoration: TextDecoration.underline,
+                      color: AppColors.darkGrey,
+                    ),
+                  )),
             ],
           ),
           const SizedBox(height: AppSizes.spaceBetweenSections),
@@ -66,16 +73,35 @@ class LoginForm extends StatelessWidget {
                 onPressed: () => Get.to(() => const NavigationMenu()),
                 child: const Text(AppTexts.signIn)),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                AppTexts.signUpCall,
+                style: TextStyle(
+                  fontSize: 12,
+                  decoration: TextDecoration.none,
+                  color: AppColors.darkGrey,
+                ),
+              ),
+              TextButton(
+                  onPressed: () => Get.to(() => const SignupScreen()),
+                  child: const Text(
+                    AppTexts.signUp,
+                    style: TextStyle(
+                      fontSize: 12,
+                      decoration: TextDecoration.underline,
+                      color: AppColors.primary,
+                    ),
+                  )),
+            ],
+          ),
+
           const SizedBox(height: AppSizes.spaceBetweenItems),
           FormDivider(text: AppTexts.orSignInWith.capitalize!),
           const SizedBox(height: AppSizes.spaceBetweenItems),
           // Create account button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-                onPressed: () => Get.to(() => const NavigationMenu()),
-                child: const Text(AppTexts.createAccount)),
-          ),
+          SocialButtons()
         ],
       ),
     ));

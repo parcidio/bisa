@@ -12,14 +12,17 @@ class LoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Image(
+          fit: BoxFit.cover,
           image: AssetImage(AppImages.greenAppLogo),
-          height: 150,
+          height: 100,
+          width: 100,
         ),
         Text(
           AppTexts.loginTitle,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         const SizedBox(height: AppSizes.sm),
         Text(

@@ -38,7 +38,11 @@ class AppSearchContainer extends StatelessWidget {
           cursorColor: AppColors.black,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 10),
-            prefixIcon: const Icon(CupertinoIcons.search, color: AppColors.darkGrey),
+            prefixIcon: const Icon(
+              CupertinoIcons.search,
+              color: AppColors.darkGrey,
+              size: AppSizes.iconSm,
+            ),
             hintText: '$text $secondText',
             hintStyle: const TextStyle(color: Colors.grey),
             filled: true,

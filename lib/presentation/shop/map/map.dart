@@ -66,8 +66,13 @@ class MapState extends State<BancadaScreen> {
     Widget? children;
     if (_error != null) {
       children = Expanded(child: Text(_error!.toString()));
+      logger.d("Map could not be loaded");
     } else if (_style == null) {
-      children = const Center(child: CircularProgressIndicator());
+      children = const Center(
+          child: CircularProgressIndicator(
+        color: AppColors.primary,
+        strokeWidth: AppSizes.sm,
+      ));
     } else {
       children = Flexible(child: _map(_style!));
     }
@@ -194,15 +199,6 @@ class MapState extends State<BancadaScreen> {
           backdropEnabled: true,
           body: Stack(children: [
             children,
-            // MapLibreMap(
-            //   styleString: "$styleUrl?key=$apiKey",
-            //   myLocationEnabled: true,
-            //   compassEnabled: false,
-            //   dragEnabled: false,
-            //   initialCameraPosition: const CameraPosition(
-            //       target: LatLng(-8.838333, 13.234444), zoom: 11),
-            //   trackCameraPosition: true,
-            // ),
             Positioned(
               // right: AppSizes.defaultItems,
               // bottom: AppSizes.spaceBetweenSections,
@@ -259,8 +255,9 @@ class MapState extends State<BancadaScreen> {
         mapController: _controller,
         options: MapOptions(
             initialCenter: const LatLng(-8.838333, 13.234444),
-            initialZoom: 10,
-            // maxZoom: 11,
+            initialZoom: 14,
+            maxZoom: 18,
+            minZoom: 12,
             backgroundColor: Theme.of(context).canvasColor),
         children: [
           VectorTileLayer(

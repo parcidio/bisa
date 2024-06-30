@@ -18,7 +18,7 @@ class NavigationMenu extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-            height: 50,
+            height: 60,
             elevation: 0,
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) =>
@@ -27,7 +27,7 @@ class NavigationMenu extends StatelessWidget {
             // indicatorShape: RoundedRectangleBorder(
             //     borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
-            destinations: const [
+            destinations: [
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(
@@ -38,7 +38,7 @@ class NavigationMenu extends StatelessWidget {
                           shadows: [
                             Shadow(
                                 color: AppColors.darkGrey,
-                                offset: Offset(0, -10))
+                                offset: Offset(0, -6))
                           ],
                         )),
                     label: '',
@@ -48,7 +48,7 @@ class NavigationMenu extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                                color: AppColors.black, offset: Offset(0, -10))
+                                color: AppColors.black, offset: Offset(0, -6))
                           ],
                           decoration: TextDecoration.underline,
                           decorationColor: AppColors.dark,
@@ -65,7 +65,7 @@ class NavigationMenu extends StatelessWidget {
                           shadows: [
                             Shadow(
                                 color: AppColors.darkGrey,
-                                offset: Offset(0, -10))
+                                offset: Offset(0, -6))
                           ],
                         )),
                     label: '',
@@ -75,7 +75,7 @@ class NavigationMenu extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                                color: AppColors.black, offset: Offset(0, -10))
+                                color: AppColors.black, offset: Offset(0, -6))
                           ],
                           decoration: TextDecoration.underline,
                           decorationColor: AppColors.dark,
