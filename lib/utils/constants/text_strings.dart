@@ -29,7 +29,10 @@ class AppTexts {
   static const String loginTitle = "Faça login";
   static const String loginSubtitle =
       "Conecte-se à conveniência ao preço da praça";
-  static const String signupTitle = "Let's create an account";
+  static const String signupTitle = "Faça a inscrição";
+  static const String signupSubTitle =
+      "Conecte-se à conveniência ao preço da praça";
+
   static const String forgetPasswordTitle = "Forgot Password";
   static const String forgetPasswordSubtitle =
       "don't worry we all forget our passwords once in a while. Enter your emailand we will send you a password reset link.";

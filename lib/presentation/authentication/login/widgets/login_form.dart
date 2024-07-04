@@ -43,7 +43,7 @@ class LoginForm extends StatelessWidget {
           ),
           // Password
           AppTextField(
-            hintText: AppTexts.email,
+            hintText: AppTexts.password,
             icon: CupertinoIcons.lock,
             iconSuffix: CupertinoIcons.eye_slash,
           ),

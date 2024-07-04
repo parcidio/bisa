@@ -8,8 +8,8 @@ import 'package:get/route_manager.dart';
 
 import '../../signup/signup.dart';
 
-class LoginHeader extends StatelessWidget {
-  const LoginHeader({
+class SignupHeader extends StatelessWidget {
+  const SignupHeader({
     super.key,
   });
 
@@ -19,16 +19,18 @@ class LoginHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 30,
-        ),
+        IconButton(
+            onPressed: () => Get.back(),
+            icon: const Icon(
+              CupertinoIcons.arrow_left,
+            )),
         Text(
-          AppTexts.loginTitle,
+          AppTexts.signupTitle,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         const SizedBox(height: AppSizes.sm),
         Text(
-          AppTexts.loginSubtitle,
+          AppTexts.signupSubTitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
