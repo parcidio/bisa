@@ -1,6 +1,7 @@
 import 'package:dona/presentation/shop/map/map.dart';
 import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/colors.dart';
+import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,8 +25,8 @@ class NavigationMenu extends StatelessWidget {
             onDestinationSelected: (index) =>
                 controller.selectedIndex.value = index,
             backgroundColor: backgroundColor,
-            // indicatorShape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(4.0)),
+            indicatorShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
             destinations: [
               Padding(
@@ -46,6 +47,7 @@ class NavigationMenu extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
+                          fontSize: AppSizes.fontSizeMd,
                           shadows: [
                             Shadow(
                                 color: AppColors.black, offset: Offset(0, -6))
@@ -73,6 +75,7 @@ class NavigationMenu extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
+                          fontSize: AppSizes.fontSizeMd,
                           shadows: [
                             Shadow(
                                 color: AppColors.black, offset: Offset(0, -6))
