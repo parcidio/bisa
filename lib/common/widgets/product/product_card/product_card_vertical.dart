@@ -16,7 +16,20 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AppProductCardVertical extends StatelessWidget {
-  const AppProductCardVertical({super.key});
+  const AppProductCardVertical(
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.rate,
+      this.priceWas = 0,
+      this.description = "",
+      this.currencySign = "",
+      this.unit = "",
+      this.place = ""});
+
+  final String name;
+  final double price, priceWas, rate;
+  final String description, currencySign, unit, place;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +37,17 @@ class AppProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.to(() => const AppProductDetails()),
       child: Container(
-        width: 180,
-        padding: const EdgeInsets.all(1),
-        decoration: BoxDecoration(
-            boxShadow: [AppShadowstyle.verticalProductShadow],
-            borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
-            color: isDark ? AppColors.darkGrey : AppColors.white),
+        width: 240,
+        // padding: const EdgeInsets.all(1),
+        // decoration: BoxDecoration(
+        //     boxShadow: [AppShadowstyle.verticalProductShadow],
+        //     borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
+        //     color: isDark ? AppColors.darkGrey : AppColors.white),
         child: Column(children: [
           // Thumbnail
           AppRoundedContainer(
             height: 180,
-            padding: const EdgeInsets.all(AppSizes.sm),
+            // padding: const EdgeInsets.all(AppSizes.xs),
             backgroundColor: isDark ? AppColors.dark : AppColors.white,
             child: Stack(
               children: [
@@ -70,6 +83,26 @@ class AppProductCardVertical extends StatelessWidget {
                     ),
                   ),
                 ),
+                Positioned(
+                    left: 0,
+                    bottom: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          right: AppSizes.spaceBetweenItems),
+                      child: Row(children: [
+                        const Icon(Icons.star,
+                            color: AppColors.secondary, size: AppSizes.iconSm),
+                        const SizedBox(
+                          height: AppSizes.xs,
+                        ),
+                        Text(
+                          rate.toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ]),
+                    )),
                 Positioned(
                   bottom: 0,
                   right: 0,
@@ -107,36 +140,20 @@ class AppProductCardVertical extends StatelessWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppProductTitleText(
-                    title: "Pepsi can set",
+                  AppProductTitleText(
+                    title: name,
                     isSmallSize: true,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: AppSizes.spaceBetweenItems),
-                    child: Row(children: [
-                      const Icon(Icons.star,
-                          color: AppColors.secondary, size: AppSizes.iconSm),
-                      const SizedBox(
-                        height: AppSizes.xs,
-                      ),
-                      Text(
-                        "3,2",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ]),
-                  )
+                  const SizedBox(
+                    height: AppSizes.spaceBetweenItems / 8,
+                  ),
+                  AppBrandTextTitleWithVerticalIcon(
+                    title: description,
+                  ),
                 ],
-              ),
-              const SizedBox(
-                height: AppSizes.spaceBetweenItems / 8,
-              ),
-              const AppBrandTextTitleWithVerticalIcon(
-                title: 'Golf 2',
               ),
             ]),
           ),
@@ -146,26 +163,12 @@ class AppProductCardVertical extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.sm),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const AppProductPriceText(
-                  price: 500.30,
-                  isLarge: true,
-                  priceWas: 600.50,
-                ),
-                // Positioned(
-                //   child: AppCircularIcon(
-                //     onPressed: () {},
-                //     icon: CupertinoIcons.add,
-                //     height: 32,
-                //     width: 32,
-                //     size: AppSizes.iconSm,
-                //     color: AppColors.white,
-                //     backgroundColor: AppColors.primary,
-                //   ),
-                // ),
-              ],
+            child: AppProductPriceText(
+              price: price,
+              unit: unit,
+              currencySign: currencySign,
+              isLarge: true,
+              priceWas: priceWas,
             ),
           )
         ]),

@@ -26,38 +26,41 @@ class SignUpForm extends StatelessWidget {
         child: Column(
           children: [
             // Email
+            AppTextField(
+                hintText: AppTexts.firstName, icon: CupertinoIcons.person),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
+            AppTextField(
+                hintText: AppTexts.lastName, icon: CupertinoIcons.person),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
+            AppTextField(
+                hintText: AppTexts.phoenNo, icon: CupertinoIcons.phone),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
 
             AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
-            const SizedBox(
-              height: AppSizes.spaceBetweenInputFields / 2,
-            ),
-            const SizedBox(
-              height: AppSizes.spaceBetweenInputFields / 2,
-            ),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
+
             // Password
             AppTextField(
-              hintText: AppTexts.email,
+              hintText: AppTexts.password,
               icon: CupertinoIcons.lock,
               iconSuffix: CupertinoIcons.eye_slash,
             ),
 
-            // Remenber me & Forget password
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // Forget password
-                TextButton(
-                    onPressed: () => Get.to(() => const ForgetPasswordScreen()),
-                    child: const Text(
-                      AppTexts.forgotPassword,
-                      style: TextStyle(
-                        fontSize: 12,
-                        decoration: TextDecoration.underline,
-                        color: AppColors.darkGrey,
-                      ),
-                    )),
-              ],
+            //
+            AppTextField(
+              hintText: AppTexts.confirmPassword,
+              icon: CupertinoIcons.lock,
+              iconSuffix: CupertinoIcons.eye_slash,
             ),
+
             const SizedBox(height: AppSizes.spaceBetweenSections),
             // Sign in button
             SizedBox(

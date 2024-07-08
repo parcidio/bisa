@@ -1,7 +1,7 @@
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class AppGridLayout extends StatelessWidget {
+class AppGridLayout extends StatefulWidget {
   const AppGridLayout({
     super.key,
     required this.itemCount,
@@ -13,21 +13,27 @@ class AppGridLayout extends StatelessWidget {
   final int itemCountRow;
   final double? mainAxisExtent;
   final Widget? Function(BuildContext, int) itemBuilder;
+
+  @override
+  State<AppGridLayout> createState() => _AppGridLayoutState();
+}
+
+class _AppGridLayoutState extends State<AppGridLayout> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: itemCount,
+        itemCount: widget.itemCount,
         shrinkWrap: true,
         addAutomaticKeepAlives: true,
         cacheExtent: 10,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: itemCountRow,
+          crossAxisCount: widget.itemCountRow,
           mainAxisSpacing: AppSizes.gridViewSpacing,
           crossAxisSpacing: AppSizes.gridViewSpacing,
-          mainAxisExtent: mainAxisExtent,
+          mainAxisExtent: widget.mainAxisExtent,
         ),
-        itemBuilder: itemBuilder);
+        itemBuilder: widget.itemBuilder);
   }
 }

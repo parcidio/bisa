@@ -15,26 +15,33 @@ class TermsAndConditionCheckBox extends StatelessWidget {
     final isDarkMode = AppHelperFuncions.isDarkMode(context);
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          AppTexts.signUpCall,
-          style: TextStyle(
-            fontSize: 12,
-            decoration: TextDecoration.none,
-            color: AppColors.darkGrey,
-          ),
-        ),
-        TextButton(
-            onPressed: () => Get.to(() => ()),
-            child: const Text(
-              AppTexts.brandingText1,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              AppTexts.iAgreeToo,
               style: TextStyle(
                 fontSize: 12,
-                decoration: TextDecoration.underline,
-                color: AppColors.primary,
+                decoration: TextDecoration.none,
+                color: AppColors.darkGrey,
               ),
-            )),
+            ),
+            TextButton(
+                onPressed: () => Get.to(() => ()),
+                child: const Text(
+                  AppTexts.termsOfUse,
+                  style: TextStyle(
+                    fontSize: 12,
+                    decoration: TextDecoration.underline,
+                    color: AppColors.primary,
+                  ),
+                )),
+          ],
+        ),
       ],
     );
   }

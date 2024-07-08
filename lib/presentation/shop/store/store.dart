@@ -190,7 +190,7 @@ class StoreScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: const TabBarView(
+            body: TabBarView(
               children: [
                 AppCategoryTab(
                   brandIcon: AppImages.adidas,

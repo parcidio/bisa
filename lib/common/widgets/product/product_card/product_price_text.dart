@@ -1,3 +1,4 @@
+import 'package:dona/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppProductPriceText extends StatelessWidget {
@@ -27,6 +28,8 @@ class AppProductPriceText extends StatelessWidget {
     var resultPrice = separateMoneyAndCents(price);
     var resultPriceWas = separateMoneyAndCents(priceWas);
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -34,16 +37,27 @@ class AppProductPriceText extends StatelessWidget {
                 maxLines: maxLines,
                 overflow: TextOverflow.ellipsis,
                 style: isLarge
-                    ? Theme.of(context).textTheme.titleLarge
-                    : Theme.of(context).textTheme.titleMedium),
+                    ? Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .apply(color: AppColors.primary)
+                    : Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .apply(color: AppColors.primary)),
             Text(
+              overflow: TextOverflow.ellipsis,
               resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            Text(
-              unit.trim() == '' ? '' : '/$unit',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
+            Wrap(children: [
+              Text(
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+                unit.trim() == '' ? '' : '/$unit',
+                style: Theme.of(context).textTheme.labelMedium,
+              )
+            ]),
           ],
         ),
         if (priceWas != 0) ...[
@@ -54,13 +68,16 @@ class AppProductPriceText extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: isLarge
                       ? Theme.of(context).textTheme.labelSmall!.apply(
+                          color: AppColors.primary,
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)
                       : Theme.of(context).textTheme.labelSmall!.apply(
+                          color: AppColors.primary,
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)),
               Text(
                 resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
+                overflow: TextOverflow.ellipsis,
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:
@@ -71,6 +88,7 @@ class AppProductPriceText extends StatelessWidget {
               ),
               Text(
                 unit.trim() == '' ? '' : '/$unit',
+                overflow: TextOverflow.ellipsis,
                 style: isLarge
                     ? Theme.of(context).textTheme.labelMedium!.apply(
                         decoration:

@@ -359,7 +359,11 @@ class AppProductDetails extends StatelessWidget {
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(AppSizes
                                   .cardRadiusSm), // Adjust the radius as needed
-                              child: const AppProductCardVertical()),
+                              child: AppProductCardVertical(
+                                name: "Nome de teste",
+                                price: 10,
+                                rate: 1,
+                              )),
                         );
                       },
                     );

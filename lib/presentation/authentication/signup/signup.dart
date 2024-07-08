@@ -7,6 +7,8 @@ import 'package:dona/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'widgets/terms_conditions.dart';
+
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
@@ -26,6 +28,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(
                   height: AppSizes.spaceBetweenInputFields,
                 ),
+                TermsAndConditionCheckBox()
               ],
             )),
       ),

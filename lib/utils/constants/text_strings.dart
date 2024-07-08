@@ -30,8 +30,7 @@ class AppTexts {
   static const String loginSubtitle =
       "Conecte-se à conveniência ao preço da praça";
   static const String signupTitle = "Faça a inscrição";
-  static const String signupSubTitle =
-      "Conecte-se à conveniência ao preço da praça";
+  static const String signupSubTitle = "A praça chegou ao seu celular";
 
   static const String forgetPasswordTitle = "Forgot Password";
   static const String forgetPasswordSubtitle =
@@ -50,10 +49,11 @@ class AppTexts {
       "Your account has been created successfully, unleash the joy of seamless online shopping";
 
   // Authentication Form Text
-  static const String firstName = "First Name";
-  static const String lastName = "Last Name";
-  static const String email = "E-mail";
-  static const String password = "Password";
+  static const String firstName = "Primeiro nome *";
+  static const String lastName = "Ultimo nome *";
+  static const String email = "E-mail *";
+  static const String password = "Palavra passe *";
+  static const String confirmPassword = "Confirme sua senha";
   static const String newPassword = "New Password";
   static const String username = "User name";
   static const String phoenNo = "Phone Number";
@@ -65,9 +65,10 @@ class AppTexts {
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";
-  static const String iAgreeToo = "I agree to";
+  static const String iAgreeToo = "Ao se inscrever você concorda com os ";
   static const String privacyPolicy = "Privacy Policy";
-  static const String termsOfUse = "Terms of use";
+  static const String termsOfUse = "termos de uso";
+
   static const String verificationCode = "Verification code";
   static const String resentEmail = "Resent email";
   static const String resentEmailpIn = "Resend email in";
