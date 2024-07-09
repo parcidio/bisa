@@ -38,11 +38,6 @@ class AppProductCardVertical extends StatelessWidget {
       onTap: () => Get.to(() => const AppProductDetails()),
       child: Container(
         width: 240,
-        // padding: const EdgeInsets.all(1),
-        // decoration: BoxDecoration(
-        //     boxShadow: [AppShadowstyle.verticalProductShadow],
-        //     borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
-        //     color: isDark ? AppColors.darkGrey : AppColors.white),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           // Thumbnail
           AppRoundedContainer(

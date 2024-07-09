@@ -20,271 +20,182 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+class Service {
+  final String name;
+  final String imageURL;
+
+  Service(this.name, this.imageURL);
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   int tabHight = 100;
-  List<Map<String, String>> brands = [
-    {"logo": AppImages.zara, "name": "Congolenses", "details": "504 products"},
-    {
-      "logo": AppImages.dior,
-      "name": "hoji ya henda ",
-      "details": "404 products"
-    },
-    {"logo": AppImages.adidas, "name": "Kikolo", "details": "400 products"},
-    {"logo": AppImages.jordan, "name": "Kikuxi", "details": "102 products"},
-    {"logo": AppImages.jordan, "name": "Trinta", "details": "1402 products"},
+  List<Service> services = [
+    Service('Cleaning',
+        'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-cleaning-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),
+    Service('Plumber',
+        'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-plumber-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),
+    Service('Electrician',
+        'https://img.icons8.com/external-wanicon-flat-wanicon/2x/external-multimeter-car-service-wanicon-flat-wanicon.png'),
+    Service('Painter',
+        'https://img.icons8.com/external-itim2101-flat-itim2101/2x/external-painter-male-occupation-avatar-itim2101-flat-itim2101.png'),
+    Service('Carpenter', 'https://img.icons8.com/fluency/2x/drill.png'),
+    Service('Gardener',
+        'https://img.icons8.com/external-itim2101-flat-itim2101/2x/external-gardener-male-occupation-avatar-itim2101-flat-itim2101.png'),
+    Service('Tailor', 'https://img.icons8.com/fluency/2x/sewing-machine.png'),
+    Service('Maid', 'https://img.icons8.com/color/2x/housekeeper-female.png'),
+    Service('Driver',
+        'https://img.icons8.com/external-sbts2018-lineal-color-sbts2018/2x/external-driver-women-profession-sbts2018-lineal-color-sbts2018.png'),
+    Service('Cook',
+        'https://img.icons8.com/external-wanicon-flat-wanicon/2x/external-cooking-daily-routine-wanicon-flat-wanicon.png'),
   ];
-  List<Map<String, String>> categories = [
-    {"icon": AppImages.shoeIcon, "title": "shoe"},
-    {"icon": AppImages.babyIcon, "title": "baby"},
-    {"icon": AppImages.clothIcon, "title": "clothes"},
-    {"icon": AppImages.foodIcon, "title": "food"},
-    {"icon": AppImages.furnitureIcon, "title": "furniture"},
-    {"icon": AppImages.sportIcon, "title": "sports"},
-    {"icon": AppImages.electronicIcon, "title": "electronics"},
-    {"icon": AppImages.animalIcon, "title": "animals"},
-    {"icon": AppImages.cosmeticIcon, "title": "cosmetics"},
-  ];
-  final List<dynamic> _contacts = [
-    {
-      'name': 'John',
-      'avatar': 'assets/users/avatar-1.png',
-    },
-    {
-      'name': 'Samantha',
-      'avatar': 'assets/users/avatar-2.png',
-    },
-    {
-      'name': 'Mary',
-      'avatar': 'assets/users/avatar-3.png',
-    },
-    {
-      'name': 'Julian',
-      'avatar': 'assets/users/avatar-4.png',
-    },
-    {
-      'name': 'Sara',
-      'avatar': 'assets/users/avatar-5.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/users/avatar-6.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/users/avatar-6.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/users/avatar-6.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/users/avatar-6.png',
-    },
-  ];
+
+  int selectedService = -1;
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: categories.length,
-      child: Scaffold(
-        appBar: AppAppBar(title: const Text('Bancadas'), actions: [
-          const AppMenuIcon(
-            icon: Icon(
-              CupertinoIcons.bag,
-              size: AppSizes.iconSm,
-            ),
-            iconColor: AppColors.black,
-          ),
-          const SizedBox(
-            width: AppSizes.spaceBetweenItems,
-          ),
-          AdvancedAvatar(
-            statusSize: 5,
-            size: AppSizes.iconMd,
-            name: 'Parcidio Andre',
-            image: const NetworkImage(
-                'https://avatars.githubusercontent.com/u/44862147?v=4'),
-            foregroundDecoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 1.0,
+    return Scaffold(
+        appBar: AppAppBar(
+            showSearchBar: false,
+            title: const Text('Serviços'),
+            actions: [
+              const AppMenuIcon(
+                icon: Icon(
+                  CupertinoIcons.bag,
+                  size: AppSizes.iconSm,
+                ),
+                iconColor: AppColors.black,
               ),
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-              shape: BoxShape.circle,
-            ),
-            children: [
-              AlignCircular(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.transparent,
-                      width: 0.5,
-                    ),
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Text(
-                    '1',
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
+              const SizedBox(
+                width: AppSizes.spaceBetweenItems,
+              ),
+              AdvancedAvatar(
+                statusSize: 5,
+                size: AppSizes.iconMd,
+                name: 'Parcidio Andre',
+                image: const NetworkImage(
+                    'https://avatars.githubusercontent.com/u/44862147?v=4'),
+                foregroundDecoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.0,
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            width: AppSizes.spaceBetweenItems,
-          ),
-        ]),
-        body: NestedScrollView(
-            headerSliverBuilder: (_, innerBoxIsScrolled) {
-              return [
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  pinned: true,
-                  floating: true,
-                  snap: true,
-                  backgroundColor: AppHelperFuncions.isDarkMode(context)
-                      ? AppColors.black
-                      : AppColors.white,
-                  expandedHeight: 0,
-                  flexibleSpace: ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: AppSizes.defaultSpace),
-                        child: Column(
-                          children: [],
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                  shape: BoxShape.circle,
+                ),
+                children: [
+                  AlignCircular(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.transparent,
+                          width: 0.5,
+                        ),
+                        color: AppColors.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Text(
+                        '1',
+                        style: TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                  bottom: AppTabBar(tabs: categories),
-                )
-              ];
-            },
-            body: TabBarView(
-              children: [
-                SingleChildScrollView(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      FadeInRight(
-                        duration: const Duration(milliseconds: 500),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 20.0,
-                            bottom: 15.0,
-                          ),
-                          child: Text(
-                            'Todas',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey.shade900,
-                                fontWeight: FontWeight.w500),
-                          ),
+                ],
+              ),
+              const SizedBox(
+                width: AppSizes.spaceBetweenItems,
+              ),
+            ]),
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverToBoxAdapter(
+                  child: Padding(
+                padding: EdgeInsets.only(top: 120.0, right: 20.0, left: 20.0),
+                child: Text(
+                  'Which service \ndo you need?',
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.grey.shade900,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ))
+            ];
+          },
+          body: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.0,
+                          crossAxisSpacing: 20.0,
+                          mainAxisSpacing: 20.0,
                         ),
-                      ),
-                      SingleChildScrollView(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: AppGridLayout(
-                          itemCountRow: 3,
-                          mainAxisExtent: 100,
-                          itemCount: _contacts.length,
-                          itemBuilder: (context, index) {
-                            return FadeInDown(
-                              duration:
-                                  Duration(milliseconds: (index * 100) + 500),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 30,
-                                      backgroundColor: Colors.red[100],
-                                      backgroundImage: AssetImage(
-                                          _contacts[index]['avatar']),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      _contacts[index]['name'],
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ]))
-              ],
-            )),
-      ),
-    );
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: services.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return serviceContainer(services[index].imageURL,
+                              services[index].name, index);
+                        }),
+                  ),
+                ]),
+          ),
+        ));
   }
 
-  user(int index, double number) {
-    index = number ~/ 60;
-    return FadeInRight(
-      delay: const Duration(seconds: 1),
-      duration: Duration(milliseconds: (index * 100) + 500),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => SendMoney(
-                      name: _contacts[index]['name'],
-                      avatar: _contacts[index]['avatar'])));
-        },
-        child: Container(
-          margin: const EdgeInsets.only(right: 20),
-          child: Column(
+  serviceContainer(String image, String name, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          if (selectedService == index)
+            selectedService = -1;
+          else
+            selectedService = index;
+        });
+      },
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: selectedService == index
+              ? AppColors.primary.withOpacity(0.3)
+              : Colors.grey.shade100,
+          border: Border.all(
+            color: selectedService == index
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0),
+            width: 2.0,
+          ),
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Transform.rotate(
-                angle: number / 60 * 5.2,
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.green.shade100,
-                  backgroundImage: AssetImage(_contacts[index]['avatar']),
-                ),
+              Image.network(image, height: 80),
+              SizedBox(
+                height: 20,
               ),
-            ],
-          ),
-        ),
+              Text(
+                name,
+                style: Theme.of(context).textTheme.bodyMedium,
+              )
+            ]),
       ),
     );
-  }
-
-  Container circle(Color color, [double diameter = 50.0]) {
-    return Container(
-        width: diameter,
-        height: diameter,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-        ));
   }
 }

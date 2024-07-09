@@ -1,3 +1,4 @@
+import 'package:dona/presentation/shop/home/home.dart';
 import 'package:dona/presentation/shop/map/map.dart';
 import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/colors.dart';
@@ -28,6 +29,8 @@ class NavigationMenu extends StatelessWidget {
             indicatorShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
+            animationDuration: Durations.extralong1,
+            shadowColor: AppColors.black,
             destinations: const [
               Padding(
                 padding: EdgeInsets.only(top: 20),
@@ -85,33 +88,34 @@ class NavigationMenu extends StatelessWidget {
                           decorationThickness: 4,
                         ))),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 20),
-              //   child: NavigationDestination(
-              //       icon: Text('Bancadas',
-              //           style: TextStyle(
-              //             color: Colors.transparent,
-              //             fontWeight: FontWeight.bold,
-              //             shadows: [
-              //               Shadow(
-              //                   color: AppColors.darkGrey,
-              //                   offset: Offset(0, -10))
-              //             ],
-              //           )),
-              //       label: '',
-              //       selectedIcon: Text('Bancadas',
-              //           style: TextStyle(
-              //             color: Colors.transparent,
-              //             fontWeight: FontWeight.bold,
-              //             shadows: [
-              //               Shadow(
-              //                   color: AppColors.black, offset: Offset(0, -10))
-              //             ],
-              //             decoration: TextDecoration.underline,
-              //             decorationColor: AppColors.dark,
-              //             decorationThickness: 4,
-              //           ))),
-              // ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: NavigationDestination(
+                    icon: Text('Serviços',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.darkGrey,
+                                offset: Offset(0, -6))
+                          ],
+                        )),
+                    label: '',
+                    selectedIcon: Text('Serviços',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AppSizes.fontSizeMd,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.black, offset: Offset(0, -6))
+                          ],
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.dark,
+                          decorationThickness: 4,
+                        ))),
+              ),
             ]),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
@@ -124,6 +128,6 @@ class NavigationController extends GetxController {
   final screens = [
     const StoreScreen(),
     const MapScreen(),
-    // const HomeScreen(),
+    const HomeScreen(),
   ];
 }
