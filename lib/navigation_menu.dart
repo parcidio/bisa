@@ -28,7 +28,7 @@ class NavigationMenu extends StatelessWidget {
             indicatorShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.0)),
             indicatorColor: darkMode ? Colors.transparent : Colors.transparent,
-            destinations: [
+            destinations: const [
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(

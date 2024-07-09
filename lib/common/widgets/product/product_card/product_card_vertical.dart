@@ -43,7 +43,7 @@ class AppProductCardVertical extends StatelessWidget {
         //     boxShadow: [AppShadowstyle.verticalProductShadow],
         //     borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
         //     color: isDark ? AppColors.darkGrey : AppColors.white),
-        child: Column(children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           // Thumbnail
           AppRoundedContainer(
             height: 180,
@@ -162,7 +162,7 @@ class AppProductCardVertical extends StatelessWidget {
             height: AppSizes.spaceBetweenItems / 2,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSizes.sm),
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.xs),
             child: AppProductPriceText(
               price: price,
               unit: unit,

@@ -31,11 +31,11 @@ class AppProductPriceText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text("$currencySign ${resultPrice[0]}",
-                maxLines: maxLines,
-                overflow: TextOverflow.ellipsis,
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: "$currencySign ${resultPrice[0]}",
                 style: isLarge
                     ? Theme.of(context)
                         .textTheme
@@ -44,28 +44,28 @@ class AppProductPriceText extends StatelessWidget {
                     : Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .apply(color: AppColors.primary)),
-            Text(
-              overflow: TextOverflow.ellipsis,
-              resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-            Wrap(children: [
-              Text(
-                overflow: TextOverflow.ellipsis,
-                softWrap: true,
-                unit.trim() == '' ? '' : '/$unit',
+                        .apply(color: AppColors.primary),
+              ),
+              TextSpan(
+                text: resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
                 style: Theme.of(context).textTheme.labelMedium,
-              )
-            ]),
-          ],
+              ),
+              TextSpan(
+                text: unit.trim() == '' ? '' : '/$unit',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ],
+          ),
+          maxLines: maxLines,
+          overflow: TextOverflow.ellipsis,
+          softWrap: true,
         ),
         if (priceWas != 0) ...[
-          Row(
-            children: [
-              Text('$currencySign ${resultPriceWas[0]}',
-                  maxLines: maxLines,
-                  overflow: TextOverflow.ellipsis,
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '$currencySign ${resultPriceWas[0]}',
                   style: isLarge
                       ? Theme.of(context).textTheme.labelSmall!.apply(
                           color: AppColors.primary,
@@ -74,30 +74,34 @@ class AppProductPriceText extends StatelessWidget {
                       : Theme.of(context).textTheme.labelSmall!.apply(
                           color: AppColors.primary,
                           decoration:
-                              lineThrough ? TextDecoration.lineThrough : null)),
-              Text(
-                resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
-                overflow: TextOverflow.ellipsis,
-                style: isLarge
-                    ? Theme.of(context).textTheme.labelMedium!.apply(
-                        decoration:
-                            lineThrough ? TextDecoration.lineThrough : null)
-                    : Theme.of(context).textTheme.labelMedium!.apply(
-                        decoration:
-                            lineThrough ? TextDecoration.lineThrough : null),
-              ),
-              Text(
-                unit.trim() == '' ? '' : '/$unit',
-                overflow: TextOverflow.ellipsis,
-                style: isLarge
-                    ? Theme.of(context).textTheme.labelMedium!.apply(
-                        decoration:
-                            lineThrough ? TextDecoration.lineThrough : null)
-                    : Theme.of(context).textTheme.labelMedium!.apply(
-                        decoration:
-                            lineThrough ? TextDecoration.lineThrough : null),
-              ),
-            ],
+                              lineThrough ? TextDecoration.lineThrough : null),
+                ),
+                TextSpan(
+                  text:
+                      resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
+                  style: isLarge
+                      ? Theme.of(context).textTheme.labelMedium!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null)
+                      : Theme.of(context).textTheme.labelMedium!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null),
+                ),
+                TextSpan(
+                  text: unit.trim() == '' ? '' : '/$unit',
+                  style: isLarge
+                      ? Theme.of(context).textTheme.labelMedium!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null)
+                      : Theme.of(context).textTheme.labelMedium!.apply(
+                          decoration:
+                              lineThrough ? TextDecoration.lineThrough : null),
+                ),
+              ],
+            ),
+            maxLines: maxLines,
+            overflow: TextOverflow.ellipsis,
+            softWrap: true,
           ),
         ],
       ],
