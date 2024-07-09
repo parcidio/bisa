@@ -56,12 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppAppBar(
             showSearchBar: false,
-            title: const Text('Serviços'),
+            title: const Text('Praça'),
             actions: [
               const AppMenuIcon(
                 icon: Icon(
                   CupertinoIcons.bag,
-                  size: AppSizes.iconSm,
+                  size: AppSizes.iconMd,
                 ),
                 iconColor: AppColors.black,
               ),
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               AdvancedAvatar(
                 statusSize: 5,
-                size: AppSizes.iconMd,
+                size: AppSizes.iconLg,
                 name: 'Parcidio Andre',
                 image: const NetworkImage(
                     'https://avatars.githubusercontent.com/u/44862147?v=4'),
@@ -123,10 +123,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                 padding: EdgeInsets.only(top: 120.0, right: 20.0, left: 20.0),
                 child: Text(
-                  'Which service \ndo you need?',
+                  'Qual serviços procuras?',
                   style: TextStyle(
                     fontSize: 40,
-                    color: Colors.grey.shade900,
+                    color: AppColors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -139,13 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                    child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.0,
-                          crossAxisSpacing: 20.0,
-                          mainAxisSpacing: 20.0,
-                        ),
+                    child: ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: services.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -159,43 +153,50 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   serviceContainer(String image, String name, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          if (selectedService == index)
-            selectedService = -1;
-          else
-            selectedService = index;
-        });
-      },
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          color: selectedService == index
-              ? AppColors.primary.withOpacity(0.3)
-              : Colors.grey.shade100,
-          border: Border.all(
-            color: selectedService == index
-                ? AppColors.primary
-                : AppColors.primary.withOpacity(0),
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.network(image, height: 80),
-              SizedBox(
-                height: 20,
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              if (selectedService == index)
+                selectedService = -1;
+              else
+                selectedService = index;
+            });
+          },
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: selectedService == index
+                  ? AppColors.primary.withOpacity(0.3)
+                  : Colors.grey.shade100,
+              border: Border.all(
+                color: selectedService == index
+                    ? AppColors.primary
+                    : AppColors.primary.withOpacity(0),
+                width: 2.0,
               ),
-              Text(
-                name,
-                style: Theme.of(context).textTheme.bodyMedium,
-              )
-            ]),
-      ),
+              borderRadius: BorderRadius.circular(AppSizes.cardRadiusMd),
+            ),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.network(image, height: 40),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    name,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  )
+                ]),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        )
+      ],
     );
   }
 }
