@@ -23,7 +23,7 @@ class AppTabBar extends StatelessWidget implements PreferredSizeWidget {
           overlayColor: WidgetStateProperty.all(AppColors.softGrey),
           splashBorderRadius: BorderRadius.circular(AppSizes.cardRadiusXs),
           tabAlignment: TabAlignment.start,
-          labelPadding: EdgeInsetsDirectional.symmetric(horizontal: 15),
+          labelPadding: const EdgeInsetsDirectional.symmetric(horizontal: 15),
           indicatorColor: AppColors.primary,
           isScrollable: isScrollable,
           unselectedLabelColor: AppColors.darkGrey,

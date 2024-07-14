@@ -1,4 +1,3 @@
-import 'package:dona/common/styles/shadows_styles.dart';
 import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:dona/common/widgets/icons/circular_icon.dart';
 import 'package:dona/common/widgets/images/rounded_image.dart';
@@ -19,24 +18,30 @@ class AppProductCardVertical extends StatelessWidget {
   const AppProductCardVertical(
       {super.key,
       required this.name,
+      required this.productId,
       required this.price,
       required this.rate,
       this.priceWas = 0,
       this.description = "",
       this.currencySign = "",
       this.unit = "",
-      this.place = ""});
+      this.place = "",
+      required this.product});
 
-  final String name;
+  final String name, productId;
   final double price, priceWas, rate;
   final String description, currencySign, unit, place;
+  final Map<String, dynamic> product;
 
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const AppProductDetails()),
-      child: Container(
+      onTap: () => Get.to(() => AppProductDetails(
+            productId: productId,
+            product: product,
+          )),
+      child: SizedBox(
         width: 240,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           // Thumbnail
@@ -162,7 +167,7 @@ class AppProductCardVertical extends StatelessWidget {
               price: price,
               unit: unit,
               currencySign: currencySign,
-              isLarge: true,
+              isSmall: true,
               priceWas: priceWas,
             ),
           )

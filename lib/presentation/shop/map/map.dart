@@ -110,7 +110,7 @@ class MapState extends State<BancadaScreen> {
       Text('Demada'),
     ];
 
-    final List<bool> _selectedType = <bool>[true, false];
+    final List<bool> selectedType = <bool>[true, false];
     bool isVertical = false;
 
     List<Map<String, String>> categories = [

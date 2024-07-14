@@ -1,15 +1,12 @@
 import 'package:dona/common/widgets/icons/circular_icon.dart';
-import 'package:dona/common/widgets/images/rounded_image.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_horizontal.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../common/widgets/images/circular_image.dart';
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../product_details/widgets/bottom_add_to_cart.dart';

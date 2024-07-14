@@ -1,16 +1,11 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:dona/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
-import './send_money.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dona/utils/constants/image_strings.dart';
-import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,23 +25,20 @@ class Service {
 class _HomeScreenState extends State<HomeScreen> {
   int tabHight = 100;
   List<Service> services = [
-    Service('Cleaning',
+    Service('limpeza',
         'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-cleaning-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),
-    Service('Plumber',
+    Service('Alfaiate', 'https://img.icons8.com/fluency/2x/sewing-machine.png'),
+    Service(
+        'Lavandaria', 'https://img.icons8.com/fluency/2x/sewing-machine.png'),
+    Service('Canaliçao',
         'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-plumber-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),
-    Service('Electrician',
+    Service('Electricidade',
         'https://img.icons8.com/external-wanicon-flat-wanicon/2x/external-multimeter-car-service-wanicon-flat-wanicon.png'),
-    Service('Painter',
+    Service('Pinturas',
         'https://img.icons8.com/external-itim2101-flat-itim2101/2x/external-painter-male-occupation-avatar-itim2101-flat-itim2101.png'),
-    Service('Carpenter', 'https://img.icons8.com/fluency/2x/drill.png'),
-    Service('Gardener',
+    Service('Carpintaria', 'https://img.icons8.com/fluency/2x/drill.png'),
+    Service('Jardinagem',
         'https://img.icons8.com/external-itim2101-flat-itim2101/2x/external-gardener-male-occupation-avatar-itim2101-flat-itim2101.png'),
-    Service('Tailor', 'https://img.icons8.com/fluency/2x/sewing-machine.png'),
-    Service('Maid', 'https://img.icons8.com/color/2x/housekeeper-female.png'),
-    Service('Driver',
-        'https://img.icons8.com/external-sbts2018-lineal-color-sbts2018/2x/external-driver-women-profession-sbts2018-lineal-color-sbts2018.png'),
-    Service('Cook',
-        'https://img.icons8.com/external-wanicon-flat-wanicon/2x/external-cooking-daily-routine-wanicon-flat-wanicon.png'),
   ];
 
   int selectedService = -1;
@@ -56,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppAppBar(
             showSearchBar: false,
-            title: const Text('Praça'),
+            title: const Text('Serviços'),
             actions: [
               const AppMenuIcon(
                 icon: Icon(
@@ -118,29 +110,38 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding: EdgeInsets.only(top: 120.0, right: 20.0, left: 20.0),
-                child: Text(
-                  'Qual serviços procuras?',
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ))
+            return [
+              SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  floating: true,
+                  snap: true,
+                  backgroundColor: AppHelperFuncions.isDarkMode(context)
+                      ? AppColors.black
+                      : AppColors.white,
+                  expandedHeight: tabHight + 1,
+                  flexibleSpace: const Padding(
+                    padding:
+                        EdgeInsets.only(top: 10.0, right: 20.0, left: 20.0),
+                    child: Text(
+                      'Quais serviços procuras?',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ))
             ];
           },
           body: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
                     child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: services.length,
                         itemBuilder: (BuildContext context, int index) {
                           return serviceContainer(services[index].imageURL,
@@ -158,15 +159,16 @@ class _HomeScreenState extends State<HomeScreen> {
         GestureDetector(
           onTap: () {
             setState(() {
-              if (selectedService == index)
+              if (selectedService == index) {
                 selectedService = -1;
-              else
+              } else {
                 selectedService = index;
+              }
             });
           },
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 300),
-            padding: EdgeInsets.all(10.0),
+            duration: const Duration(milliseconds: 300),
+            padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               color: selectedService == index
                   ? AppColors.primary.withOpacity(0.3)
@@ -183,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Image.network(image, height: 40),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Text(
@@ -193,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ]),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],

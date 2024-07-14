@@ -10,7 +10,6 @@ import '../../../../common/widgets/login_signup/social_buttons.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../password_configuration/forget_password.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
@@ -26,36 +25,36 @@ class SignUpForm extends StatelessWidget {
         child: Column(
           children: [
             // Email
-            AppTextField(
+            const AppTextField(
                 hintText: AppTexts.firstName, icon: CupertinoIcons.person),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
-            AppTextField(
+            const AppTextField(
                 hintText: AppTexts.lastName, icon: CupertinoIcons.person),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
-            AppTextField(
+            const AppTextField(
                 hintText: AppTexts.phoenNo, icon: CupertinoIcons.phone),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
 
-            AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
+            const AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
 
             // Password
-            AppTextField(
+            const AppTextField(
               hintText: AppTexts.password,
               icon: CupertinoIcons.lock,
               iconSuffix: CupertinoIcons.eye_slash,
             ),
 
             //
-            AppTextField(
+            const AppTextField(
               hintText: AppTexts.confirmPassword,
               icon: CupertinoIcons.lock,
               iconSuffix: CupertinoIcons.eye_slash,
@@ -72,7 +71,7 @@ class SignUpForm extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   AppTexts.signUpCall,
                   style: TextStyle(
                     fontSize: 12,
@@ -97,7 +96,7 @@ class SignUpForm extends StatelessWidget {
             FormDivider(text: AppTexts.orSignInWith.capitalize!),
             const SizedBox(height: AppSizes.spaceBetweenItems),
             // Create account button
-            SocialButtons()
+            const SocialButtons()
           ],
         ),
       ),

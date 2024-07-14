@@ -6,6 +6,7 @@ import 'package:dona/presentation/shop/product_details/widgets/product_rating_sh
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../common/widgets/card/place_card.dart';
 import '../../../common/widgets/chart/linechart.dart';
@@ -21,7 +22,11 @@ import '../../../utils/constants/colors.dart';
 import 'widgets/product_description.dart';
 
 class AppProductDetails extends StatelessWidget {
-  const AppProductDetails({super.key});
+  const AppProductDetails(
+      {super.key, required this.productId, required this.product});
+
+  final String productId;
+  final Map<String, dynamic> product;
 
   void _showWeightSelector(BuildContext context) async {
     await showModalBottomSheet<double>(
@@ -138,6 +143,7 @@ class AppProductDetails extends StatelessWidget {
         "discount": 10.5,
       },
     ];
+
     return Scaffold(
       appBar:
           const AppAppBar(showSearchBar: false, showBackArrow: true, actions: [
@@ -172,7 +178,12 @@ class AppProductDetails extends StatelessWidget {
               child: Column(
                 children: [
                   // Price, Title, Stock and Brand
-                  const AppProductMetaData(),
+                  AppProductMetaData(
+                    name: product['name'],
+                    place: product['mean_description'],
+                    stock: int.parse(product['stock_quantity'].toString()),
+                    price: double.parse(product['price'].toString()),
+                  ),
 
                   // Rating and Share button
                   const AppRatingShare(),
@@ -360,9 +371,11 @@ class AppProductDetails extends StatelessWidget {
                               borderRadius: BorderRadius.circular(AppSizes
                                   .cardRadiusSm), // Adjust the radius as needed
                               child: AppProductCardVertical(
+                                productId: "",
                                 name: "Nome de teste",
                                 price: 10,
                                 rate: 1,
+                                product: {},
                               )),
                         );
                       },

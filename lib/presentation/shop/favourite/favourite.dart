@@ -30,10 +30,12 @@ class FavouriteScreen extends StatelessWidget {
         child: Column(children: [
           AppGridLayout(
               itemCount: 4,
-              itemBuilder: (_, index) => AppProductCardVertical(
+              itemBuilder: (_, index) => const AppProductCardVertical(
+                    productId: "",
                     name: 'Nome de teste',
                     price: 10,
                     rate: 1,
+                    product: {},
                   ))
         ]),
       )),

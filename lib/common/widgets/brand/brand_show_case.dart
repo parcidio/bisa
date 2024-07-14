@@ -30,7 +30,8 @@ class AppBrandShowcase extends StatelessWidget {
         AppBrandCardHorizontal(
           brandIcon: brandIcon,
           brandName: brandName,
-          details: brandDetail,
+          product: brandDetail,
+          demand: '',
           showBorder: false,
         ),
         // Brand top 3 products

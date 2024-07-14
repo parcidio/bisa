@@ -1,11 +1,7 @@
-import 'package:dona/common/widgets/login_signup/form_divider.dart';
-import 'package:dona/common/widgets/login_signup/social_buttons.dart';
 import 'package:dona/presentation/authentication/signup/widgets/signup_form.dart';
 import 'package:dona/presentation/authentication/signup/widgets/signup_header.dart';
 import 'package:dona/utils/constants/sizes.dart';
-import 'package:dona/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'widgets/terms_conditions.dart';
 
@@ -14,18 +10,18 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.all(AppSizes.defaultSpace),
+            padding: EdgeInsets.all(AppSizes.defaultSpace),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //  title
                 SignupHeader(),
                 // Form
-                const SignUpForm(),
-                const SizedBox(
+                SignUpForm(),
+                SizedBox(
                   height: AppSizes.spaceBetweenInputFields,
                 ),
                 TermsAndConditionCheckBox()

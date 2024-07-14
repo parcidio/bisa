@@ -10,13 +10,15 @@ class AppBrandCardHorizontal extends StatefulWidget {
     super.key,
     required this.brandIcon,
     required this.brandName,
-    required this.details,
+    required this.product,
+    required this.demand,
     this.showBorder = true,
     this.selected = false,
   });
 
   final String brandIcon;
-  final String brandName, details;
+  final String brandName, product;
+  final String demand;
   final bool showBorder, selected;
 
   @override
@@ -68,12 +70,34 @@ class _AppBrandCardHorizontalState extends State<AppBrandCardHorizontal> {
                         textColor:
                             isSelected ? AppColors.light : AppColors.dark,
                       ),
-                      Text(
-                        widget.details,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium!.apply(
-                            color:
-                                isSelected ? AppColors.light : AppColors.dark),
+                      Row(
+                        children: [
+                          Text(
+                            widget.product,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(
+                                    color: isSelected
+                                        ? AppColors.light
+                                        : AppColors.dark),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            widget.demand,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(
+                                    color: isSelected
+                                        ? AppColors.light
+                                        : AppColors.dark),
+                          ),
+                        ],
                       ),
                     ],
                   ),

@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:dona/common/widgets/custom_shapes/containers/searchbar_container.dart';
-import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/device/device._utility.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

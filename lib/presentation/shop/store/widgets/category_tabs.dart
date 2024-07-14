@@ -2,14 +2,10 @@ import 'package:dona/common/widgets/layouts/grid_layout.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_vertical.dart';
 import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/utils/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../../../common/widgets/infinite_draggable_slider/infinite_dragable_slider.dart';
-import '../../../../common/widgets/infinite_draggable_slider/magazine_cover_image.dart';
-import '../../../../domain/entities/magazine.dart';
 import '../../../../utils/constants/colors.dart';
 
 class AppCategoryTab extends StatefulWidget {
@@ -28,7 +24,8 @@ class AppCategoryTab extends StatefulWidget {
 }
 
 class _AppCategoryTabState extends State<AppCategoryTab> {
-  final _future = Supabase.instance.client.from('product').select();
+  final _future =
+      Supabase.instance.client.from('product').select().eq('is_active', true);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +48,7 @@ class _AppCategoryTabState extends State<AppCategoryTab> {
                       return const Center(
                           child: CircularProgressIndicator(
                         color: AppColors.primary,
-                        strokeWidth: AppSizes.sm,
+                        strokeWidth: AppSizes.xs,
                       ));
                     }
                     final products = snapshot.data!;
@@ -63,6 +60,7 @@ class _AppCategoryTabState extends State<AppCategoryTab> {
                           Logger logger = Logger();
                           logger.w(product);
                           return AppProductCardVertical(
+                            productId: product["id"],
                             name: product['name'],
                             price: double.parse(product['price'].toString()),
                             rate: product['rating'],
@@ -70,6 +68,7 @@ class _AppCategoryTabState extends State<AppCategoryTab> {
                             priceWas: product['rating'],
                             place: product['tags'],
                             unit: product['unit'],
+                            product: product,
                           );
                         }));
                   }),

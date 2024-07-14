@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:dona/common/widgets/product/product_card/product_price_text.dart';
 import 'package:dona/common/widgets/text/brand_title_text_with_vertical_icon.dart';
@@ -13,10 +15,18 @@ import '../../../../common/widgets/icons/circular_icon.dart';
 class AppProductMetaData extends StatelessWidget {
   const AppProductMetaData({
     super.key,
+    this.name = "",
+    this.place = "",
+    this.price = 0,
+    this.priceWas = 0,
+    this.stock = 0,
   });
-
+  final int stock;
+  final String name, place;
+  final double price, priceWas;
   @override
   Widget build(BuildContext context) {
+    var discount = price / priceWas * 100;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,10 +40,10 @@ class AppProductMetaData extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const AppProductPriceText(
-                  price: 150,
-                  isLarge: true,
-                  priceWas: 200,
+                AppProductPriceText(
+                  price: price,
+                  isSmall: false,
+                  priceWas: priceWas,
                 ),
                 Row(
                   children: [
@@ -60,29 +70,37 @@ class AppProductMetaData extends StatelessWidget {
               children: [
                 Row(
                   children: [
+                    price < priceWas && discount >= 1
+                        ? Row(
+                            children: [
+                              AppRoundedContainer(
+                                radius: AppSizes.sm,
+                                backgroundColor:
+                                    AppColors.secondary.withOpacity(0.8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: AppSizes.sm,
+                                    vertical: AppSizes.xs),
+                                child: Text(
+                                  'Poupe ${discount}%',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .apply(color: AppColors.black),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppSizes.spaceBetweenItems,
+                              ),
+                            ],
+                          )
+                        : SizedBox(),
                     AppRoundedContainer(
                       radius: AppSizes.sm,
                       backgroundColor: AppColors.secondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppSizes.sm, vertical: AppSizes.xs),
                       child: Text(
-                        'Poupe 25%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: AppColors.black),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: AppSizes.spaceBetweenItems,
-                    ),
-                    AppRoundedContainer(
-                      radius: AppSizes.sm,
-                      backgroundColor: AppColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                      child: Text(
-                        'Disponivel',
+                        stock != 0 ? 'Disponivel' : "Indisponivel",
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -128,13 +146,13 @@ class AppProductMetaData extends StatelessWidget {
           height: AppSizes.spaceBetweenItems / 1.5,
         ),
         //Title
-        const AppProductTitleText(title: "Nike Air Max 270 Red Sneaker"),
+        AppProductTitleText(title: name),
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 4,
         ),
         //Supplier
-        const AppBrandTextTitleWithVerticalIcon(
-          title: 'Ojiaenda',
+        AppBrandTextTitleWithVerticalIcon(
+          title: place,
           brandTextSize: TextSizes.medium,
         ),
       ],

@@ -1,22 +1,16 @@
-import 'dart:io';
 
-import 'package:dona/common/widgets/images/circular_image.dart';
 import 'package:dona/common/widgets/login_signup/social_buttons.dart';
 import 'package:dona/navigation_menu.dart';
-import 'package:dona/presentation/authentication/signup/widgets/signup_form.dart';
 import 'package:dona/presentation/password_configuration/forget_password.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/login_signup/form_divider.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../signup/signup.dart';
 
 class LoginForm extends StatelessWidget {
@@ -34,7 +28,7 @@ class LoginForm extends StatelessWidget {
         children: [
           // Email
 
-          AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
+          const AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
           const SizedBox(
             height: AppSizes.spaceBetweenInputFields / 2,
           ),
@@ -42,7 +36,7 @@ class LoginForm extends StatelessWidget {
             height: AppSizes.spaceBetweenInputFields / 2,
           ),
           // Password
-          AppTextField(
+          const AppTextField(
             hintText: AppTexts.password,
             icon: CupertinoIcons.lock,
             iconSuffix: CupertinoIcons.eye_slash,
@@ -76,7 +70,7 @@ class LoginForm extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 AppTexts.signUpCall,
                 style: TextStyle(
                   fontSize: 12,
@@ -101,7 +95,7 @@ class LoginForm extends StatelessWidget {
           FormDivider(text: AppTexts.orSignInWith.capitalize!),
           const SizedBox(height: AppSizes.spaceBetweenItems),
           // Create account button
-          SocialButtons()
+          const SocialButtons()
         ],
       ),
     ));

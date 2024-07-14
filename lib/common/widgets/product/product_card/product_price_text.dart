@@ -9,13 +9,13 @@ class AppProductPriceText extends StatelessWidget {
       this.priceWas = 00,
       this.unit = '',
       this.maxLines = 1,
-      this.isLarge = false,
+      this.isSmall = false,
       this.lineThrough = true});
 
   final String currencySign, unit;
   final double price, priceWas;
   final int maxLines;
-  final bool isLarge, lineThrough;
+  final bool isSmall, lineThrough;
 
   @override
   Widget build(BuildContext context) {
@@ -31,42 +31,47 @@ class AppProductPriceText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: "$currencySign ${resultPrice[0]}",
-                style: isLarge
-                    ? Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .apply(color: AppColors.primary)
-                    : Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .apply(color: AppColors.primary),
-              ),
-              TextSpan(
-                text: resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-              TextSpan(
-                text: unit.trim() == '' ? '' : '/$unit',
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
-          ),
-          maxLines: maxLines,
-          overflow: TextOverflow.ellipsis,
-          softWrap: true,
-        ),
+        price < 0
+            ? RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "$currencySign ${resultPrice[0]}",
+                      style: isSmall
+                          ? Theme.of(context)
+                              .textTheme
+                              .labelSmall!
+                              .apply(color: AppColors.primary)
+                          : Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .apply(color: AppColors.primary),
+                    ),
+                    TextSpan(
+                      text: resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    TextSpan(
+                      text: unit.trim() == '' ? '' : '/$unit',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                  ],
+                ),
+                maxLines: maxLines,
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+              )
+            : Text('Sobre consulta',
+                style: Theme.of(context).textTheme.headlineMedium!.apply(
+                      color: AppColors.primary,
+                    )),
         if (priceWas != 0) ...[
           RichText(
             text: TextSpan(
               children: [
                 TextSpan(
                   text: '$currencySign ${resultPriceWas[0]}',
-                  style: isLarge
+                  style: isSmall
                       ? Theme.of(context).textTheme.labelSmall!.apply(
                           color: AppColors.primary,
                           decoration:
@@ -79,7 +84,7 @@ class AppProductPriceText extends StatelessWidget {
                 TextSpan(
                   text:
                       resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
-                  style: isLarge
+                  style: isSmall
                       ? Theme.of(context).textTheme.labelMedium!.apply(
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)
@@ -89,7 +94,7 @@ class AppProductPriceText extends StatelessWidget {
                 ),
                 TextSpan(
                   text: unit.trim() == '' ? '' : '/$unit',
-                  style: isLarge
+                  style: isSmall
                       ? Theme.of(context).textTheme.labelMedium!.apply(
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null)

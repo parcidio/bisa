@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 
-import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 
 class AppBottomAddToCart extends StatelessWidget {
   const AppBottomAddToCart({super.key});
@@ -26,14 +24,14 @@ class AppBottomAddToCart extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {},
-            child: Center(
+            child: const Center(
               child: Text(
                 'Proceguir',
               ),
             ),
           ),
           const SizedBox(height: AppSizes.spaceBetweenSections / 2),
-          Container(
+          SizedBox(
             height: 160, // Adjust the height as needed
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -54,7 +52,7 @@ class AppBottomAddToCart extends StatelessWidget {
                             style: Theme.of(context).textTheme.labelMedium),
                       ],
                     ),
-                    Divider()
+                    const Divider()
                   ],
                 );
               },

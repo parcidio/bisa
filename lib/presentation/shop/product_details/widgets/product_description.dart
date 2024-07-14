@@ -37,8 +37,8 @@ class AppProductDescription extends StatelessWidget {
             alignment: Alignment.centerLeft,
             color: AppColors.softGrey,
             child: Table(
-              border: TableBorder.symmetric(
-                  inside: const BorderSide(width: 1, color: AppColors.darkGrey)),
+              border: const TableBorder.symmetric(
+                  inside: BorderSide(width: 1, color: AppColors.darkGrey)),
               children: const [
                 TableRow(children: [
                   Padding(

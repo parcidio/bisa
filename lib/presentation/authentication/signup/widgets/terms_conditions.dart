@@ -1,5 +1,4 @@
 import 'package:dona/utils/constants/colors.dart';
-import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class TermsAndConditionCheckBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               AppTexts.iAgreeToo,
               style: TextStyle(
                 fontSize: 12,

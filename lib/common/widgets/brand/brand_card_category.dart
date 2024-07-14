@@ -1,7 +1,5 @@
 import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:dona/common/widgets/text/brand_title_text_with_vertical_icon.dart';
 import 'package:dona/utils/constants/colors.dart';
-import 'package:dona/utils/constants/enums.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
