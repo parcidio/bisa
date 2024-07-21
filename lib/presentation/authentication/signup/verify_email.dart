@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'widgets/otp_form.dart';
+
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
 
@@ -47,7 +49,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   height: AppSizes.spaceBetweenItems,
                 ),
                 Text(
-                  'support@dona.com',
+                  'parcidioandre@gmail.com',
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -62,23 +64,9 @@ class VerifyEmailScreen extends StatelessWidget {
                 const SizedBox(
                   height: AppSizes.spaceBetweenSections,
                 ),
-
+                OTPForm(),
                 // Buttons
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () => Get.to(() => SuccesScreen(
-                          onPressed: () => Get.to(() => const LoginScreen()),
-                          image: AppImages.staticSuccessIllustration,
-                          title: AppTexts.yourAccountCreatedTitle,
-                          subTitle: AppTexts.yourAccountSubtitle,
-                        )),
-                    child: const Text(AppTexts.proceed),
-                  ),
-                ),
-                const SizedBox(
-                  height: AppSizes.spaceBetweenItems,
-                ),
+
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(

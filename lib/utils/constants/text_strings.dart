@@ -38,9 +38,9 @@ class AppTexts {
   static const String changeYourPasswordTitle = "Password reset email sent.";
   static const String changeYourPasswordSubtile =
       "Your account security is our priority! We've sent you are secure link to safely change your password and keep your account protected.";
-  static const String confirmEmailTitle = "Verify your email address!";
+  static const String confirmEmailTitle = "Verifique seu endereço de e-mail!";
   static const String confirmationEmailSubtitle =
-      "Congratulations! your account awaits: verify your email to start shopping and Expirience a world of unrivaled deals and personalized offers";
+      "Digite o OTP enviado para seu celular";
   static const String emailNotReceivedMessage =
       "Didn't get a the email? check your junk/ spam or resent it";
   static const String yourAccountCreatedTitle =
@@ -49,10 +49,9 @@ class AppTexts {
       "Your account has been created successfully, unleash the joy of seamless online shopping";
 
   // Authentication Form Text
-  static const String firstName = "Primeiro nome *";
-  static const String lastName = "Ultimo nome *";
+  static const String Name = "Nome *";
   static const String email = "E-mail *";
-  static const String password = "Palavra passe *";
+  static const String password = "Palavra-passe *";
   static const String confirmPassword = "Confirme sua senha";
   static const String newPassword = "New Password";
   static const String username = "User name";
@@ -62,18 +61,20 @@ class AppTexts {
   static const String signIn = "Login";
   static const String signUp = "Inscrever-se";
   static const String signUpCall = "Não tem uma conta ainda?";
+  static const String signInCall = "Já tem uma conta?";
   static const String createAccount = "Create Account";
-  static const String orSignInWith = "or sign in with";
-  static const String orSignUpWith = "or sign up with";
+  static const String orSignInWith = "ou Faça o login com";
+  static const String orSignUpWith = "ou Inscrever-se com";
   static const String iAgreeToo = "Ao se inscrever você concorda com os ";
-  static const String privacyPolicy = "Privacy Policy";
+  static const String privacyPolicy = "Politicas de privacidade";
   static const String termsOfUse = "termos de uso";
 
   static const String verificationCode = "Verification code";
-  static const String resentEmail = "Resent email";
-  static const String resentEmailpIn = "Resend email in";
+  static const String resentEmail = "Reenviar email";
+  static const String resentEmailIn = "Resend email in";
   static const String and = "and";
   static const String proceed = "Continue";
+  static const String verify = "Verificar";
   static const String submit = "Submit";
   static const String done = "Done";
 

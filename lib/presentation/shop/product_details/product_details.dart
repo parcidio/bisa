@@ -188,16 +188,16 @@ class AppProductDetails extends StatelessWidget {
                   // Rating and Share button
                   const AppRatingShare(),
                   // Description
-                  AppProductDescription(
-                    description: product['long_description'],
-                    otherproperties: [
-                      product['other_properties'] == null
-                          ? {}
-                          : product['other_properties']
-                    ],
-                  ),
+                  // AppProductDescription(
+                  //   description: product['long_description'],
+                  //   otherproperties: [
+                  //     product['other_properties'] == null
+                  //         ? {}
+                  //         : product['other_properties']
+                  //   ],
+                  // ),
                   // Attributes
-                  const AppProductAttribute(),
+                  // const AppProductAttribute(),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
@@ -205,7 +205,7 @@ class AppProductDetails extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () => _showWeightSelector(context),
-                      child: const Text('Escolha o peso'),
+                      child: const Text('Estimativa por peso'),
                     ),
                   ),
 
@@ -213,11 +213,11 @@ class AppProductDetails extends StatelessWidget {
                     height: AppSizes.spaceBetweenItems,
                   ),
                   // Checkout Button
-                  SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Comprar agora"))),
+                  // SizedBox(
+                  //     width: double.infinity,
+                  //     child: ElevatedButton(
+                  //         onPressed: () {},
+                  //         child: const Text("Comprar agora"))),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
                   ),
@@ -226,72 +226,6 @@ class AppProductDetails extends StatelessWidget {
 
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.primary.withOpacity(.2),
-                      border: Border(
-                        top: BorderSide(
-                            color: AppColors.primary.withOpacity(.5),
-                            width: 2.0),
-                        bottom: BorderSide(
-                            color: AppColors.primary.withOpacity(.5),
-                            width: 2.0),
-                      ),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(
-                              CupertinoIcons.cube_box,
-                              color: Colors.black,
-                            ),
-                            const SizedBox(width: 8.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text.rich(TextSpan(children: [
-                                  TextSpan(
-                                      text: ' Frete para ',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .apply(
-                                            color: AppColors.primary,
-                                          )),
-                                  TextSpan(
-                                      text: ' Benguela ',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .apply(
-                                              color: AppColors.primary,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationColor:
-                                                  AppColors.primary)),
-                                ])),
-                                Text(' 5046.65 KZ ',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .apply(
-                                          color: AppColors.primary,
-                                        ))
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Icon(
-                          CupertinoIcons.right_chevron,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
                   ),
 
                   const LeadTimeCard(

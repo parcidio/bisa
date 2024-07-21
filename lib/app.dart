@@ -1,3 +1,4 @@
+import 'package:dona/presentation/authentication/login/login.dart';
 import 'package:dona/presentation/authentication/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:dona/utils/theme/theme.dart';
@@ -14,7 +15,8 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      // home: const OnBoardingScreen(),
+      home: const LoginScreen(),
     );
   }
 }

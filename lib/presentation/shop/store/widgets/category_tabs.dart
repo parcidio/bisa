@@ -2,6 +2,7 @@ import 'package:dona/common/widgets/layouts/grid_layout.dart';
 import 'package:dona/common/widgets/product/product_card/product_card_vertical.dart';
 import 'package:dona/common/widgets/text/section_heading.dart';
 import 'package:dona/utils/constants/sizes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -38,7 +39,8 @@ class _AppCategoryTabState extends State<AppCategoryTab> {
             child: Column(children: [
               const AppSectionHeading(
                   title: 'Os produtos da praça',
-                  buttonTitle: 'Mais',
+                  buttonTitle: 'Filtrar',
+                  buttonIcon: CupertinoIcons.search,
                   isSmall: true,
                   textColor: AppColors.darkGrey),
               FutureBuilder(

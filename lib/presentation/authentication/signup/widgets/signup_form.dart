@@ -1,4 +1,6 @@
+import 'package:dona/presentation/authentication/login/login.dart';
 import 'package:dona/presentation/authentication/signup/signup.dart';
+import 'package:dona/presentation/authentication/signup/verify_email.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,22 +28,19 @@ class SignUpForm extends StatelessWidget {
           children: [
             // Email
             const AppTextField(
-                hintText: AppTexts.firstName, icon: CupertinoIcons.person),
+                hintText: AppTexts.Name, icon: CupertinoIcons.person),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
-            const AppTextField(
-                hintText: AppTexts.lastName, icon: CupertinoIcons.person),
-            // const SizedBox(
-            //   height: AppSizes.spaceBetweenInputFields,
-            // ),
+
             const AppTextField(
                 hintText: AppTexts.phoenNo, icon: CupertinoIcons.phone),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
 
-            const AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
+            const AppTextField(
+                hintText: AppTexts.email, icon: CupertinoIcons.mail),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
@@ -65,8 +64,8 @@ class SignUpForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(() => const NavigationMenu()),
-                  child: const Text(AppTexts.signIn)),
+                  onPressed: () => Get.to(() => const VerifyEmailScreen()),
+                  child: const Text(AppTexts.signUp)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -80,9 +79,9 @@ class SignUpForm extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                    onPressed: () => Get.to(() => const SignupScreen()),
+                    onPressed: () => Get.to(() => const LoginScreen()),
                     child: const Text(
-                      AppTexts.signUp,
+                      AppTexts.signIn,
                       style: TextStyle(
                         fontSize: 12,
                         decoration: TextDecoration.underline,
