@@ -7,8 +7,11 @@ import '../../../../utils/constants/sizes.dart';
 class AppProductDescription extends StatelessWidget {
   const AppProductDescription({
     super.key,
+    required this.description,
+    required this.otherproperties,
   });
-
+  final String description;
+  final List<Object> otherproperties;
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -17,62 +20,47 @@ class AppProductDescription extends StatelessWidget {
       const SizedBox(
         height: AppSizes.spaceBetweenItems / 2,
       ),
-      const ReadMoreText(
-        'This method will save memory by building items once it becomes necessary. This way they won\'t be built if they\'re not currently meant to be visible on screen. It can be used to build different child item widgets related to content or by item index.',
+      ReadMoreText(
+        description,
         trimLines: 2,
         trimMode: TrimMode.Line,
         trimCollapsedText: 'Mais',
         trimExpandedText: 'Menos',
-        lessStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-        moreStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        lessStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        moreStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
       ),
       const SizedBox(
         height: AppSizes.spaceBetweenItems,
       ),
-      ClipRRect(
-        borderRadius: BorderRadius.circular(
-            AppSizes.cardRadiusSm), // Adjust the radius as needed
+      otherproperties.isEmpty == false
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  AppSizes.cardRadiusSm), // Adjust the radius as needed
 
-        child: Container(
-            alignment: Alignment.centerLeft,
-            color: AppColors.softGrey,
-            child: Table(
-              border: const TableBorder.symmetric(
-                  inside: BorderSide(width: 1, color: AppColors.darkGrey)),
-              children: const [
-                TableRow(children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Unidades'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('24'),
-                  )
-                ]),
-                TableRow(children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Set'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Grade'),
-                  )
-                ]),
-                TableRow(children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Peso'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('12KG'),
-                  )
-                ]),
-              ],
-            )),
-      ),
+              child: Container(
+                  alignment: Alignment.centerLeft,
+                  color: AppColors.softGrey,
+                  child: Table(
+                    border: const TableBorder.symmetric(
+                        inside:
+                            BorderSide(width: 1, color: AppColors.darkGrey)),
+                    children: otherproperties
+                        .map(
+                          (property) => const TableRow(children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text("otherproperties[0]"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text('24'),
+                            )
+                          ]),
+                        )
+                        .toList(),
+                  )),
+            )
+          : const SizedBox(),
     ]);
   }
 }

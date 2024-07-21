@@ -188,7 +188,14 @@ class AppProductDetails extends StatelessWidget {
                   // Rating and Share button
                   const AppRatingShare(),
                   // Description
-                  const AppProductDescription(),
+                  AppProductDescription(
+                    description: product['long_description'],
+                    otherproperties: [
+                      product['other_properties'] == null
+                          ? {}
+                          : product['other_properties']
+                    ],
+                  ),
                   // Attributes
                   const AppProductAttribute(),
                   const SizedBox(

@@ -31,7 +31,7 @@ class AppProductPriceText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        price < 0
+        price > 0
             ? RichText(
                 text: TextSpan(
                   children: [
