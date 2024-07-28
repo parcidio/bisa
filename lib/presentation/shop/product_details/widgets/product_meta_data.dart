@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/icons/circular_icon.dart';
+import 'product_rating_share.dart';
 
 class AppProductMetaData extends StatelessWidget {
   const AppProductMetaData({
@@ -161,8 +162,15 @@ class AppProductMetaData extends StatelessWidget {
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 1.5,
         ),
+        // Rating
+        const AppRatingShare(),
         //Title
-        AppProductTitleText(title: name),
+        // AppProductTitleText(title: name),
+        Text(name,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 4,
         ),

@@ -8,11 +8,17 @@ import '../../../utils/constants/sizes.dart';
 import '../product/product_card/product_card_simple.dart';
 
 class WeightSelectorBottomSheet extends StatefulWidget {
-  final double pricePerKg;
+  final double pricePerUnit;
   final String unit;
+  final String name;
+  final String imageUrl;
 
   const WeightSelectorBottomSheet(
-      {Key? key, required this.pricePerKg, required this.unit})
+      {Key? key,
+      required this.pricePerUnit,
+      required this.unit,
+      required this.imageUrl,
+      required this.name})
       : super(key: key);
 
   @override
@@ -29,12 +35,14 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
   @override
   void initState() {
     selectedValue = min.toString();
-    price = widget.pricePerKg;
+    price = widget.pricePerUnit;
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Container(
         height: 300,
         padding: const EdgeInsets.all(16.0),
@@ -45,8 +53,10 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
           child: Column(
             children: [
               AppProductSimpleCard(
-                price: widget.pricePerKg,
+                imageUrl: widget.imageUrl,
+                price: widget.pricePerUnit,
                 totalPrice: price,
+                name: widget.name,
                 unit: widget.unit,
               ),
               const SizedBox(
@@ -56,6 +66,8 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
                 width: 500,
                 child: AnimatedWeightPicker(
                   dialColor: AppColors.primary,
+                  showSuffix: true,
+                  suffixText: widget.unit,
                   suffixTextColor: AppColors.darkGrey,
                   squeeze: 3,
                   division: .1,
@@ -65,7 +77,7 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
                   onChange: (newValue) {
                     setState(() {
                       selectedValue = newValue;
-                      price = widget.pricePerKg * double.parse(selectedValue);
+                      price = widget.pricePerUnit * double.parse(selectedValue);
                     });
                   },
                 ),

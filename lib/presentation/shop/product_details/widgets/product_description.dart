@@ -24,9 +24,9 @@ class AppProductDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: AppSizes.spaceBetweenItems),
-          Text('Descrição', style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: AppSizes.spaceBetweenItems / 2),
+          // const SizedBox(height: AppSizes.spaceBetweenItems),
+          // Text('Descrição', style: Theme.of(context).textTheme.titleMedium),
+          // const SizedBox(height: AppSizes.spaceBetweenItems / 2),
           ReadMoreText(
             description,
             trimLines: 2,

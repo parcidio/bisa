@@ -6,17 +6,18 @@ import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-
 class AppProductSimpleCard extends StatelessWidget {
   const AppProductSimpleCard(
       {Key? key,
       required this.price,
       required this.unit,
-      required this.totalPrice})
+      required this.totalPrice,
+      required this.imageUrl,
+      required this.name})
       : super(key: key);
 
   final double price, totalPrice;
-  final String unit;
+  final String unit, imageUrl, name;
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +32,31 @@ class AppProductSimpleCard extends StatelessWidget {
           child: Row(
             children: [
               // Thumbnail
-              const AppRoundedImage(
-                width: size,
-                height: size,
-                imageUrl: AppImages.productImage3,
-                backgroundColor: AppColors.secondary,
-                applyImageRadius: false,
-              ),
+              imageUrl != ""
+                  ? AppRoundedImage(
+                      width: size,
+                      height: size,
+                      isNetworkImage: true,
+                      imageUrl: imageUrl,
+                      backgroundColor: AppColors.softGrey,
+                      applyImageRadius: false,
+                    )
+                  : const AppRoundedImage(
+                      width: size,
+                      height: size,
+                      // isNetworkImage: false,
+                      imageUrl: AppImages.lightAppLogo,
+                      backgroundColor: AppColors.softGrey,
+                      applyImageRadius: false,
+                    ),
+
               const SizedBox(width: 12),
               // Details
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const AppProductTitleText(
-                    title: "Pepsi can set",
+                  AppProductTitleText(
+                    title: name,
                   ),
                   // const SizedBox(
                   //   height: AppSizes.spaceBetweenItems / 8,
@@ -69,7 +81,7 @@ class AppProductSimpleCard extends StatelessWidget {
             ),
             AppProductPriceText(
               price: totalPrice,
-              unit: 'kg',
+              unit: unit,
             ),
           ],
         ),

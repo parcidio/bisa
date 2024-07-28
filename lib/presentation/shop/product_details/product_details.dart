@@ -32,13 +32,16 @@ class AppProductDetails extends StatelessWidget {
   final String productId;
   final Map<String, dynamic> product;
 
-  void _showWeightSelector(BuildContext context) async {
+  void _showWeightSelector(
+      BuildContext context, Map<String, dynamic> product) async {
     await showModalBottomSheet<double>(
       context: context,
       isScrollControlled: true,
-      builder: (context) => const WeightSelectorBottomSheet(
-        pricePerKg: 200.05,
-        unit: 'kg',
+      builder: (context) => WeightSelectorBottomSheet(
+        imageUrl: product["image_url"]!.first.toString(),
+        pricePerUnit: product['price'],
+        unit: product["unit"],
+        name: product["name"],
       ),
     );
   }
@@ -191,8 +194,6 @@ class AppProductDetails extends StatelessWidget {
                     price: double.parse(product['price'].toString()),
                   ),
 
-                  // Rating and Share button
-                  const AppRatingShare(),
                   // Description
                   AppProductDescription(
                     description: product['long_description'],
@@ -208,7 +209,7 @@ class AppProductDetails extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => _showWeightSelector(context),
+                      onPressed: () => _showWeightSelector(context, product),
                       child: const Text('Estimativa por peso'),
                     ),
                   ),
@@ -233,26 +234,26 @@ class AppProductDetails extends StatelessWidget {
                   // ),
                   // ShippingInfoDetails(),
 
-                  const AppPlaceCard(
-                    placeName: 'Luanda',
-                    compras: 'Segunda - Sexta',
-                    entregas: '> 10 itens',
-                    horario: '6h-16h',
-                  ),
-                  const SizedBox(
-                    height: AppSizes.spaceBetweenItems / 2,
-                  ),
+                  // const AppPlaceCard(
+                  //   placeName: 'Luanda',
+                  //   compras: 'Segunda - Sexta',
+                  //   entregas: '> 10 itens',
+                  //   horario: '6h-16h',
+                  // ),
+                  // const SizedBox(
+                  //   height: AppSizes.spaceBetweenItems / 2,
+                  // ),
 
-                  const AppSectionHeading(
-                      title: 'Histórico de preços',
-                      buttonTitle: '',
-                      isSmall: true,
-                      textColor: AppColors.darkGrey),
+                  // const AppSectionHeading(
+                  //     title: 'Histórico de preços',
+                  //     buttonTitle: '',
+                  //     isSmall: true,
+                  //     textColor: AppColors.darkGrey),
                 ],
               ),
             ),
 
-            LineChartSample3(),
+            // LineChartSample3(),
 
             Padding(
               padding: EdgeInsets.only(
@@ -273,7 +274,6 @@ class AppProductDetails extends StatelessWidget {
                     vertical: AppSizes.spaceBetweenItems),
                 child: CarouselSlider(
                   options: CarouselOptions(
-                      height: 300,
                       viewportFraction: .3,
                       initialPage: 0,
                       enableInfiniteScroll: true,
