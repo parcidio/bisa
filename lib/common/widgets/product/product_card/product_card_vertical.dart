@@ -13,6 +13,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:logger/logger.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AppProductCardVertical extends StatelessWidget {
   const AppProductCardVertical(
@@ -26,9 +28,10 @@ class AppProductCardVertical extends StatelessWidget {
       this.currencySign = "",
       this.unit = "",
       this.place = "",
-      required this.product});
+      required this.product,
+      this.imageUrl = ""});
 
-  final String name, productId;
+  final String name, imageUrl, productId;
   final double price, priceWas, rate;
   final String description, currencySign, unit, place;
   final Map<String, dynamic> product;
@@ -36,6 +39,14 @@ class AppProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFuncions.isDarkMode(context);
+    final supabase = Supabase.instance.client;
+    final asset = supabase.storage
+        .from('products')
+        .getPublicUrl('detergent-removebg-preview.png');
+
+    Logger logger = Logger();
+    logger.i(product);
+
     return GestureDetector(
       onTap: () => Get.to(() => AppProductDetails(
             productId: productId,
@@ -43,66 +54,67 @@ class AppProductCardVertical extends StatelessWidget {
           )),
       child: SizedBox(
         width: 240,
+        height: 200,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           // Thumbnail
           AppRoundedContainer(
-            height: 180,
+            height: 130,
             // padding: const EdgeInsets.all(AppSizes.xs),
             backgroundColor: isDark ? AppColors.dark : AppColors.white,
             child: Stack(
               children: [
                 // product image
-                const AppRoundedImage(
-                  width: 180,
-                  imageUrl: AppImages.productImage3,
-                  applyImageRadius: true,
-                ),
+                imageUrl != ""
+                    ? AppRoundedImage(
+                        width: 180,
+                        height: 100,
+                        isNetworkImage: true,
+                        imageUrl: imageUrl,
+                        applyImageRadius: true,
+                      )
+                    : const AppRoundedImage(
+                        width: 180,
+                        height: 100,
+                        isNetworkImage: false,
+                        imageUrl: AppImages.greenAppLogo,
+                        applyImageRadius: true,
+                      ),
                 // sales tag
-                Positioned(
-                  top: 8,
-                  left: 8,
-                  child: AppRoundedContainer(
-                    radius: AppSizes.sm,
-                    backgroundColor: AppColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                    child: Row(
-                      children: [
-                        Text(
-                          '2%',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(color: AppColors.black),
-                        ),
-                        const Icon(
-                          CupertinoIcons.arrow_down_right,
-                          size: AppSizes.sm,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                    left: 0,
-                    bottom: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          right: AppSizes.spaceBetweenItems),
-                      child: Row(children: [
-                        const Icon(Icons.star,
-                            color: AppColors.secondary, size: AppSizes.iconSm),
-                        const SizedBox(
-                          height: AppSizes.xs,
-                        ),
-                        Text(
-                          rate.toString(),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                      ]),
-                    )),
+                // Positioned(
+                //   top: 8,
+                //   left: 8,
+                //   child: AppRoundedContainer(
+                //     radius: AppSizes.lg,
+                //     backgroundColor: AppColors.error.withOpacity(0.6),
+                //     padding: const EdgeInsets.symmetric(
+                //         horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                //     child: const Icon(
+                //       Icons.verified_outlined,
+                //       size: AppSizes.md,
+                //       color: AppColors.error,
+                //     ),
+                //   ),
+                // ),white
+                // Positioned(
+                //     left: 0,
+                //     bottom: 0,
+                //     child: Padding(
+                //       padding: const EdgeInsets.only(
+                //           right: AppSizes.spaceBetweenItems),
+                //       child: Row(children: [
+                //         const Icon(Icons.star,
+                //             color: AppColors.secondary, size: AppSizes.iconSm),
+                //         const SizedBox(
+                //           height: AppSizes.xs,
+                //         ),
+                //         Text(
+                //           rate.toString(),
+                //           maxLines: 1,
+                //           overflow: TextOverflow.ellipsis,
+                //           style: Theme.of(context).textTheme.labelMedium,
+                //         ),
+                //       ]),
+                //     )),
                 Positioned(
                   bottom: 0,
                   right: 0,
@@ -116,18 +128,18 @@ class AppProductCardVertical extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                   ),
                 ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: AppCircularIcon(
-                    height: 30,
-                    width: 30,
-                    onPressed: () {},
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
-                    size: 10,
-                  ),
-                )
+                // Positioned(
+                //   top: 0,
+                //   right: 0,
+                //   child: AppCircularIcon(
+                //     height: 30,
+                //     width: 30,
+                //     onPressed: () {},
+                //     icon: Iconsax.heart5,
+                //     color: Colors.red,
+                //     size: 10,
+                //   ),
+                // )
               ],
             ),
           ),
@@ -147,20 +159,20 @@ class AppProductCardVertical extends StatelessWidget {
                     title: name,
                     isSmallSize: true,
                   ),
-                  const SizedBox(
-                    height: AppSizes.spaceBetweenItems / 8,
-                  ),
-                  AppBrandTextTitleWithVerticalIcon(
-                    title: description,
-                  ),
+                  // const SizedBox(
+                  //   height: AppSizes.spaceBetweenItems / 8,
+                  // ),
+                  // AppBrandTextTitleWithVerticalIcon(
+                  //   title: description,
+                  // ),
                 ],
               ),
             ]),
           ),
           // const Spacer(),
-          const SizedBox(
-            height: AppSizes.spaceBetweenItems / 2,
-          ),
+          // const SizedBox(
+          //   height: AppSizes.spaceBetweenItems / 2,
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.xs),
             child: AppProductPriceText(

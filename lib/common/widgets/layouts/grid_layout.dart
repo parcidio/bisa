@@ -5,7 +5,7 @@ class AppGridLayout extends StatefulWidget {
   const AppGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent = 288,
+    this.mainAxisExtent = 230,
     this.itemCountRow = 2,
     required this.itemBuilder,
   });

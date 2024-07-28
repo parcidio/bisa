@@ -8,6 +8,7 @@ class Magazine {
   final String id;
   final String assetImage;
   final String description;
+
   static final List<Magazine> fakeMagazinesValues = List.generate(
     13,
     (index) => Magazine(

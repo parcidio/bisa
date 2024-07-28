@@ -14,6 +14,7 @@ import '../../../common/widgets/custom_shapes/containers/searchbar_container.dar
 import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
+import '../product/product_form.dart';
 import '../store/widgets/category_tabs.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -120,9 +121,9 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
           child: FloatingActionButton.extended(
             foregroundColor: AppColors.white,
             backgroundColor: AppColors.primary,
-            onPressed: () {
-              // Add your onPressed code here!
-            },
+            onPressed: () => Get.to(() => ProductFormScreen(
+                  productId: 'f5b123a1-537d-4d11-9c01-7d16fdd7bb70',
+                )),
             label: Text(
               'Adicionar produto',
               style: Theme.of(context)
@@ -142,13 +143,13 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
         showSearchBar: false,
         title: const Text('Praça'),
         actions: [
-          const AppMenuIcon(
-            icon: Icon(
-              CupertinoIcons.cube_box,
-              size: AppSizes.iconMd,
-            ),
-            iconColor: AppColors.black,
-          ),
+          // const AppMenuIcon(
+          //   icon: Icon(
+          //     CupertinoIcons.cube_box,
+          //     size: AppSizes.iconMd,
+          //   ),
+          //   iconColor: AppColors.black,
+          // ),
           const AppMenuIcon(
             icon: Icon(
               CupertinoIcons.bag,

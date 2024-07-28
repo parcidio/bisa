@@ -31,7 +31,7 @@ class AppPlaceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Detalhes de entregas",
+              "Localização",
               // overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleMedium,
             ),
@@ -60,76 +60,76 @@ class AppPlaceCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.placemark,
-                      size: AppSizes.iconMd,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      placeName,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.calendar,
-                      size: AppSizes.iconMd,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      compras,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.time,
-                      size: AppSizes.iconMd,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      horario,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.cube_box,
-                      size: AppSizes.iconMd,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      entregas,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            const SizedBox(height: 4),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         const Icon(
+            //           CupertinoIcons.placemark,
+            //           size: AppSizes.iconMd,
+            //         ),
+            //         const SizedBox(width: 4),
+            //         Text(
+            //           placeName,
+            //           overflow: TextOverflow.ellipsis,
+            //           style: Theme.of(context).textTheme.labelMedium,
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         const Icon(
+            //           CupertinoIcons.calendar,
+            //           size: AppSizes.iconMd,
+            //         ),
+            //         const SizedBox(width: 4),
+            //         Text(
+            //           compras,
+            //           overflow: TextOverflow.ellipsis,
+            //           style: Theme.of(context).textTheme.labelMedium,
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         const Icon(
+            //           CupertinoIcons.time,
+            //           size: AppSizes.iconMd,
+            //         ),
+            //         const SizedBox(width: 4),
+            //         Text(
+            //           horario,
+            //           overflow: TextOverflow.ellipsis,
+            //           style: Theme.of(context).textTheme.labelMedium,
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [
+            //         const Icon(
+            //           CupertinoIcons.cube_box,
+            //           size: AppSizes.iconMd,
+            //         ),
+            //         const SizedBox(width: 4),
+            //         Text(
+            //           entregas,
+            //           overflow: TextOverflow.ellipsis,
+            //           style: Theme.of(context).textTheme.labelMedium,
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

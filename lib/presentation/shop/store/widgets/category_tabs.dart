@@ -25,60 +25,83 @@ class AppCategoryTab extends StatefulWidget {
 }
 
 class _AppCategoryTabState extends State<AppCategoryTab> {
-  final _future =
-      Supabase.instance.client.from('product').select().eq('is_active', true);
+  final _future = Supabase.instance.client
+      .from('product')
+      .select('*')
+      .eq('is_active', true);
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(AppSizes.defaultSpace),
-            child: Column(children: [
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+          child: Column(
+            children: [
               const AppSectionHeading(
-                  title: 'Os produtos da praça',
-                  buttonTitle: 'Filtrar',
-                  buttonIcon: CupertinoIcons.search,
-                  isSmall: true,
-                  textColor: AppColors.darkGrey),
+                title: 'Os produtos da praça',
+                buttonTitle: 'Filtrar',
+                buttonIcon: CupertinoIcons.search,
+                isSmall: true,
+                textColor: AppColors.darkGrey,
+              ),
               FutureBuilder(
-                  future: _future,
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const Center(
-                          child: CircularProgressIndicator(
+                future: _future,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(
                         color: AppColors.primary,
                         strokeWidth: AppSizes.xs,
-                      ));
-                    }
-                    final products = snapshot.data!;
-                    return AppGridLayout(
-                        itemCount: products.length,
-                        itemCountRow: 3,
-                        itemBuilder: ((context, index) {
-                          final product = products[index];
-                          Logger logger = Logger();
-                          logger.w(product);
-                          return AppProductCardVertical(
-                            productId: product["id"],
-                            name: product['name'],
-                            price: double.parse(product['price'].toString()),
-                            rate: product['rating'],
-                            description: product['mean_description'],
-                            priceWas: product['rating'],
-                            place: product['tags'],
-                            unit: product['unit'],
-                            product: product,
-                          );
-                        }));
-                  }),
+                      ),
+                    );
+                  }
+                  Logger logger = Logger();
+                  final products = snapshot.data as List<dynamic>;
+
+                  logger.i("===============================================");
+                  logger.i(products);
+
+                  return AppGridLayout(
+                    itemCount: products.length,
+                    itemCountRow: 3,
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+
+                      // Extract the first image URL from the array
+                      final imageUrls = product['image_url'] as List<dynamic>?;
+                      final firstImageUrl = imageUrls?.isNotEmpty == true
+                          ? imageUrls!.first.toString()
+                          : '';
+
+                      logger.i('Product: ${product['name']}');
+                      logger.i('First Image URL: $firstImageUrl');
+
+                      return AppProductCardVertical(
+                        productId: product["id"],
+                        name: product['name'],
+                        price: double.parse(product['price'].toString()),
+                        rate: product['rating'],
+                        description: product['mean_description'],
+                        priceWas: product['rating'],
+                        place: product['tags'],
+                        unit: product['unit'],
+                        imageUrl: firstImageUrl, // Use the first image URL
+                        product: product,
+                      );
+                    },
+                  );
+                },
+              ),
               const SizedBox(
                 height: AppSizes.spaceBetweenSections,
               ),
-            ]),
+            ],
           ),
-        ]);
+        ),
+      ],
+    );
   }
 }

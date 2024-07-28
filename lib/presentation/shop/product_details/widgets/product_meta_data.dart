@@ -107,6 +107,22 @@ class AppProductMetaData extends StatelessWidget {
                             .apply(color: AppColors.black),
                       ),
                     ),
+                    SizedBox(
+                      width: AppSizes.spaceBetweenItems * .2,
+                    ),
+                    AppRoundedContainer(
+                      radius: AppSizes.sm,
+                      backgroundColor: AppColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                      child: Text(
+                        stock != 0 ? 'Entrega' : "Indisponivel",
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: AppColors.black),
+                      ),
+                    ),
                   ],
                 ),
                 Row(
@@ -151,10 +167,10 @@ class AppProductMetaData extends StatelessWidget {
           height: AppSizes.spaceBetweenItems / 4,
         ),
         //Supplier
-        AppBrandTextTitleWithVerticalIcon(
-          title: place,
-          brandTextSize: TextSizes.medium,
-        ),
+        // AppBrandTextTitleWithVerticalIcon(
+        //   title: place,
+        //   brandTextSize: TextSizes.medium,
+        // ),
       ],
     );
   }

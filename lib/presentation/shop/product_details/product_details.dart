@@ -3,9 +3,12 @@ import 'package:dona/common/widgets/appbar/appbar.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_attributes.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_meta_data.dart';
 import 'package:dona/presentation/shop/product_details/widgets/product_rating_share.dart';
+import 'package:dona/presentation/shop/product_details/widgets/shipping_info_details.dart';
+import 'package:dona/presentation/shop/store/store.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../common/widgets/card/place_card.dart';
@@ -20,6 +23,7 @@ import '../../../common/widgets/text/section_heading.dart';
 import '../../../domain/entities/entities.dart';
 import '../../../utils/constants/colors.dart';
 import 'widgets/product_description.dart';
+import 'widgets/product_image_slider.dart';
 
 class AppProductDetails extends StatelessWidget {
   const AppProductDetails(
@@ -161,11 +165,13 @@ class AppProductDetails extends StatelessWidget {
           children: [
             // promo slider
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
+              padding: const EdgeInsets.only(top: 10, bottom: 80),
               child: InfiniteDragableSlider(
-                iteamCount: Magazine.fakeMagazinesValues.length,
+                iteamCount: product["image_url"]?.length ?? 1,
                 itemBuilder: (context, index) => MagazineCoverImage(
-                    magazine: Magazine.fakeMagazinesValues[index]),
+                  image: product["image_url"][index],
+                  height: 300,
+                ),
               ),
             ),
             // const AppProductImageSlider(),
@@ -179,8 +185,8 @@ class AppProductDetails extends StatelessWidget {
                 children: [
                   // Price, Title, Stock and Brand
                   AppProductMetaData(
-                    name: product['name'],
-                    place: product['mean_description'],
+                    name: product['mean_description'],
+                    // place: product['tags'],
                     stock: int.parse(product['stock_quantity'].toString()),
                     price: double.parse(product['price'].toString()),
                   ),
@@ -188,15 +194,13 @@ class AppProductDetails extends StatelessWidget {
                   // Rating and Share button
                   const AppRatingShare(),
                   // Description
-                  // AppProductDescription(
-                  //   description: product['long_description'],
-                  //   otherproperties: [
-                  //     product['other_properties'] == null
-                  //         ? {}
-                  //         : product['other_properties']
-                  //   ],
-                  // ),
-                  // Attributes
+                  AppProductDescription(
+                    description: product['long_description'],
+                    otherproperties: product['other_properties'] == null
+                        ? {}
+                        : product['other_properties'],
+                  ),
+                  // Attributes,
                   // const AppProductAttribute(),
                   const SizedBox(
                     height: AppSizes.spaceBetweenItems,
@@ -218,23 +222,17 @@ class AppProductDetails extends StatelessWidget {
                   //     child: ElevatedButton(
                   //         onPressed: () {},
                   //         child: const Text("Comprar agora"))),
-                  const SizedBox(
-                    height: AppSizes.spaceBetweenItems,
-                  ),
+                  // const SizedBox(
+                  //   height: AppSizes.spaceBetweenItems,
+                  // ),
 
                   // Description
 
-                  const SizedBox(
-                    height: AppSizes.spaceBetweenItems,
-                  ),
+                  // const SizedBox(
+                  //   height: AppSizes.spaceBetweenItems,
+                  // ),
+                  // ShippingInfoDetails(),
 
-                  const LeadTimeCard(
-                    deliveryDays: 3,
-                    dispatchDays: 0,
-                    quantity: 2,
-                  ),
-
-                  const Divider(),
                   const AppPlaceCard(
                     placeName: 'Luanda',
                     compras: 'Segunda - Sexta',
@@ -245,17 +243,8 @@ class AppProductDetails extends StatelessWidget {
                     height: AppSizes.spaceBetweenItems / 2,
                   ),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Mais informacoes",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ],
-                  ),
                   const AppSectionHeading(
-                      title: 'Produtos relacionados',
+                      title: 'Histórico de preços',
                       buttonTitle: '',
                       isSmall: true,
                       textColor: AppColors.darkGrey),
@@ -265,14 +254,15 @@ class AppProductDetails extends StatelessWidget {
 
             LineChartSample3(),
 
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(
                   right: AppSizes.defaultSpace,
                   left: AppSizes.defaultSpace,
                   bottom: AppSizes.defaultSpace),
               child: AppSectionHeading(
                   title: 'Produtos relacionados',
-                  buttonTitle: 'Mais',
+                  // buttonTitle: 'Mais',
+                  // onPressed: () => Get.to(() => const StoreScreen()),
                   isSmall: true,
                   textColor: AppColors.darkGrey),
             ),

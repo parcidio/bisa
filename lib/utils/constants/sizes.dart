@@ -63,7 +63,7 @@ class AppSizes {
   static const double loadingINdicatorSize = 36.0;
 
   // Grid view spacing
-  static const double gridViewSpacing = 16.0;
+  static const double gridViewSpacing = 1.0;
 
   // Panel
   static const double appPanelHight = 120;

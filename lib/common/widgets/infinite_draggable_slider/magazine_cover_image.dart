@@ -1,15 +1,16 @@
+import 'package:dona/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/magazine.dart';
 
 class MagazineCoverImage extends StatelessWidget {
   const MagazineCoverImage({
-    required this.magazine,
     super.key,
     this.height,
+    required this.image,
   });
 
-  final Magazine magazine;
+  final String image;
   final double? height;
 
   @override
@@ -20,15 +21,16 @@ class MagazineCoverImage extends StatelessWidget {
         aspectRatio: .75,
         child: DecoratedBox(
           decoration: BoxDecoration(
+            color: AppColors.white,
             image: DecorationImage(
-              image: AssetImage(magazine.assetImage),
+              image: NetworkImage(image),
               fit: BoxFit.cover,
             ),
             boxShadow: const [
               BoxShadow(
                 color: Colors.black54,
-                blurRadius: 40,
-                offset: Offset(-20, 20),
+                blurRadius: 20,
+                offset: Offset(-10, 20),
               )
             ],
           ),

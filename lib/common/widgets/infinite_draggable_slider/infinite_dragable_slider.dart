@@ -105,28 +105,62 @@ class _InfiniteDragableSliderState extends State<InfiniteDragableSlider>
     return AnimatedBuilder(
         animation: controller,
         builder: (context, _) {
-          return Stack(
-            children: List.generate(
-              4,
-              (stackIndex) {
-                final modIndex = (index + 3 - stackIndex) % widget.iteamCount;
-                return Transform.translate(
-                  offset: getOffser(stackIndex),
-                  child: Transform.scale(
-                    scale: getScal(stackIndex),
-                    child: Transform.rotate(
-                      angle: getAngle(stackIndex),
-                      child: DragableWidget(
-                        onSlideOut: onSlideOut,
-                        isEnableDrag: stackIndex == 3,
-                        child: widget.itemBuilder(context, modIndex),
-                      ),
-                    ),
+          return widget.iteamCount > 2
+              ? Stack(
+                  children: List.generate(
+                    4,
+                    (stackIndex) {
+                      final modIndex =
+                          (index + 3 - stackIndex) % widget.iteamCount;
+                      return Transform.translate(
+                        offset: getOffser(stackIndex),
+                        child: Transform.scale(
+                          scale: getScal(stackIndex),
+                          child: Transform.rotate(
+                            angle: getAngle(stackIndex),
+                            child: DragableWidget(
+                              onSlideOut: onSlideOut,
+                              isEnableDrag: stackIndex == 3,
+                              child: widget.itemBuilder(context, modIndex),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          );
+                )
+              : widget.iteamCount == 2
+                  ? Stack(
+                      children: List.generate(
+                      2,
+                      (stackIndex) {
+                        final modIndex =
+                            (index + 3 - stackIndex) % widget.iteamCount;
+                        return Transform.translate(
+                          offset: getOffser(stackIndex + 2),
+                          child: Transform.scale(
+                            scale: getScal(stackIndex + 1),
+                            child: Transform.rotate(
+                              angle: getAngle(stackIndex + 2),
+                              child: DragableWidget(
+                                onSlideOut: onSlideOut,
+                                isEnableDrag: stackIndex == 1,
+                                child: widget.itemBuilder(context, modIndex),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ))
+                  : Stack(
+                      children: List.generate(
+                      1,
+                      (stackIndex) {
+                        final modIndex =
+                            (index + 3 - stackIndex) % widget.iteamCount;
+                        return widget.itemBuilder(context, modIndex);
+                      },
+                    ));
         });
   }
 }
