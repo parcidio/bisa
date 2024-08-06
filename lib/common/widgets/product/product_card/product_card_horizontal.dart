@@ -27,101 +27,103 @@ class AppProductCardHorizontal extends StatelessWidget {
             product: {},
           )),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.spaceBetweenSections),
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
         child: Container(
-          height: 85,
+          height: 75,
           padding: const EdgeInsets.symmetric(vertical: AppSizes.xs),
           margin: const EdgeInsets.symmetric(vertical: AppSizes.xs),
           decoration: BoxDecoration(
             boxShadow: [AppShadowstyle.verticalProductShadow],
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Thumbnail
                   Container(
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppSizes.sm),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment
-                            .spaceBetween, // Ensures space between item details and item counter
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          AppRoundedImage(
-                            backgroundColor: AppColors.softGrey,
-                            width: 60,
-                            height: 60,
-                            imageUrl: AppImages.productImage3,
-                            applyImageRadius: true,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment
+                          .spaceBetween, // Ensures space between item details and item counter
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppRoundedImage(
+                          backgroundColor: AppColors.accent,
+                          width: 60,
+                          height: 40,
+                          imageUrl: AppImages.productImage3,
+                          applyImageRadius: true,
+                        ),
+                        // Item details
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: AppSizes.sm),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              AppProductTitleText(
+                                title: "Pepsi can set",
+                                isSmallSize: true,
+                              ),
+                              AppBrandTextTile(
+                                title: "Grade de 24 itens",
+                                maxLines: 1,
+                                brandTextSize: TextSizes.small,
+                              ),
+                              AppProductPriceText(
+                                price: 500,
+                                isSmall: true,
+                              ),
+                            ],
                           ),
-                          // Item details
-                          Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: AppSizes.sm),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                AppProductTitleText(
-                                  title: "Pepsi can set",
-                                  isSmallSize: true,
-                                ),
-                                AppBrandTextTile(
-                                  title: "Grade de 24 itens",
-                                  maxLines: 1,
-                                  brandTextSize: TextSizes.small,
-                                ),
-                                AppProductPriceText(
-                                  price: 500,
-                                  isSmall: true,
-                                ),
-                              ],
-                            ),
-                          ),
-                          // Item count
-                        ],
-                      ),
+                        ),
+                        // Item count
+                      ],
                     ),
                   ),
                   Container(
-                    child: Row(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        AppCircularIcon(
-                          onPressed: () {},
-                          icon: CupertinoIcons.minus,
-                          size: AppSizes.iconXs,
-                          height: 32,
-                          width: 32,
-                          color: AppColors.white,
-                          backgroundColor: AppColors.primary,
-                        ),
-                        const SizedBox(
-                          width: AppSizes.sm,
-                        ),
-                        Text('2',
-                            style: Theme.of(context).textTheme.titleMedium),
-                        const SizedBox(
-                          width: AppSizes.sm,
-                        ),
-                        AppCircularIcon(
-                          onPressed: () {},
-                          size: AppSizes.iconXs,
-                          icon: CupertinoIcons.add,
-                          height: 32,
-                          width: 32,
-                          color: AppColors.white,
-                          backgroundColor: AppColors.primary,
+                        Row(
+                          children: [
+                            AppCircularIcon(
+                              onPressed: () {},
+                              icon: CupertinoIcons.minus,
+                              size: AppSizes.iconXs,
+                              height: 32,
+                              width: 32,
+                              color: AppColors.white,
+                              backgroundColor: AppColors.primary,
+                            ),
+                            const SizedBox(
+                              width: AppSizes.sm,
+                            ),
+                            Text('2',
+                                style: Theme.of(context).textTheme.titleMedium),
+                            const SizedBox(
+                              width: AppSizes.sm,
+                            ),
+                            AppCircularIcon(
+                              onPressed: () {},
+                              size: AppSizes.iconXs,
+                              icon: CupertinoIcons.add,
+                              height: 32,
+                              width: 32,
+                              color: AppColors.white,
+                              backgroundColor: AppColors.primary,
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              const Divider(),
             ],
           ),
         ),

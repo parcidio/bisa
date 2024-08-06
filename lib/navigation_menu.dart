@@ -6,6 +6,7 @@ import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -91,7 +92,7 @@ class NavigationMenu extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: NavigationDestination(
-                    icon: Text('Serviços',
+                    icon: Text('Aluguéis',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,
@@ -102,7 +103,35 @@ class NavigationMenu extends StatelessWidget {
                           ],
                         )),
                     label: '',
-                    selectedIcon: Text('Serviços',
+                    selectedIcon: Text('Aluguéis',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AppSizes.fontSizeMd,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.black, offset: Offset(0, -6))
+                          ],
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.dark,
+                          decorationThickness: 4,
+                        ))),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: NavigationDestination(
+                    icon: Text('Trocas',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: AppColors.darkGrey,
+                                offset: Offset(0, -6))
+                          ],
+                        )),
+                    label: '',
+                    selectedIcon: Text('Trocas',
                         style: TextStyle(
                           color: Colors.transparent,
                           fontWeight: FontWeight.bold,

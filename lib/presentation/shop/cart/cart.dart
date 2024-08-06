@@ -35,17 +35,18 @@ class _AppCartScreenState extends State<AppCartScreen> {
     final isDark = AppHelperFuncions.isDarkMode(context);
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text('A tua sacola'),
         actions: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
-            child: AppCircularIcon(
-              icon: cartItems.isEmpty ? null : CupertinoIcons.delete_simple,
-              onPressed: () {},
-            ),
-          )
+          // Padding(
+          //   padding:
+          //       const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+          //   child: AppCircularIcon(
+          //     icon: cartItems.isEmpty ? null : CupertinoIcons.delete_simple,
+          //     onPressed: () {},
+          //   ),
+          // )
         ],
       ),
       // bottomNavigationBar: Padding(

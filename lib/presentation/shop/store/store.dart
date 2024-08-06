@@ -9,6 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/appbar/tabbar.dart';
+import '../../../common/widgets/avatar/avatar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/custom_shapes/containers/searchbar_container.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
@@ -125,7 +126,7 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
                   productId: 'f5b123a1-537d-4d11-9c01-7d16fdd7bb70',
                 )),
             label: Text(
-              'Adicionar produto',
+              'Fazer um pedido',
               style: Theme.of(context)
                   .textTheme
                   .labelSmall!
@@ -160,50 +161,8 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
           const SizedBox(
             width: AppSizes.spaceBetweenItems,
           ),
-          AdvancedAvatar(
-            statusSize: 5,
-            size: AppSizes.iconLg,
-            name: 'Parcidio Andre',
-            image: const NetworkImage(
-                'https://avatars.githubusercontent.com/u/44862147?v=4'),
-            foregroundDecoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 1.0,
-              ),
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-              shape: BoxShape.circle,
-            ),
-            children: [
-              AlignCircular(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.transparent,
-                      width: 0.5,
-                    ),
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Text(
-                    '1',
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          AvatarWidget(),
+
           const SizedBox(
             width: AppSizes.spaceBetweenItems,
           ),

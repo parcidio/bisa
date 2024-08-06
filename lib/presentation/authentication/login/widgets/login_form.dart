@@ -1,4 +1,3 @@
-
 import 'package:dona/common/widgets/login_signup/social_buttons.dart';
 import 'package:dona/navigation_menu.dart';
 import 'package:dona/presentation/password_configuration/forget_password.dart';
@@ -28,7 +27,8 @@ class LoginForm extends StatelessWidget {
         children: [
           // Email
 
-          const AppTextField(hintText: AppTexts.email, icon: CupertinoIcons.mail),
+          const AppTextField(
+              hintText: AppTexts.email, icon: CupertinoIcons.mail),
           const SizedBox(
             height: AppSizes.spaceBetweenInputFields / 2,
           ),

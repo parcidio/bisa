@@ -81,7 +81,7 @@ class _AppCategoryTabState extends State<AppCategoryTab> {
 
                       return AppProductCardVertical(
                         productId: product["id"],
-                        name: product['name'],
+                        name: product['mean_description'],
                         price: double.parse(product['price'].toString()),
                         rate: product['rating'],
                         description: product['mean_description'],

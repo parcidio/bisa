@@ -115,6 +115,7 @@ class AppProductCardVertical extends StatelessWidget {
                 //         ),
                 //       ]),
                 //     )),
+
                 Positioned(
                   bottom: 0,
                   right: 0,

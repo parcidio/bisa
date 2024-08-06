@@ -1,4 +1,4 @@
-package com.example.dona
+package com.parcidio.dona
 
 import io.flutter.embedding.android.FlutterActivity
 
