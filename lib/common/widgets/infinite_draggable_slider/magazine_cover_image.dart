@@ -18,7 +18,7 @@ class MagazineCoverImage extends StatelessWidget {
     return SizedBox(
       height: height,
       child: AspectRatio(
-        aspectRatio: .75,
+        aspectRatio: .80,
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: AppColors.white,
@@ -28,10 +28,10 @@ class MagazineCoverImage extends StatelessWidget {
             ),
             boxShadow: const [
               BoxShadow(
-                color: Colors.black54,
+                color: AppColors.black,
                 blurRadius: 20,
-                offset: Offset(-10, 20),
-              )
+                offset: Offset(0, 10),
+              ),
             ],
           ),
         ),

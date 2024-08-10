@@ -173,7 +173,7 @@ class AppProductDetails extends StatelessWidget {
                 iteamCount: product["image_url"]?.length ?? 1,
                 itemBuilder: (context, index) => MagazineCoverImage(
                   image: product["image_url"][index],
-                  height: 300,
+                  height: 380,
                 ),
               ),
             ),

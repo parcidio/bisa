@@ -2,9 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
+import 'package:logger/logger.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 import '../../../common/widgets/appbar/appbar.dart';
@@ -13,6 +15,7 @@ import '../../../common/widgets/avatar/avatar.dart';
 import '../../../common/widgets/brand/brand_card_horizontal.dart';
 import '../../../common/widgets/custom_shapes/containers/searchbar_container.dart';
 import '../../../common/widgets/product/cart/menu_icon.dart';
+import '../../../common/widgets/progress_bar/circular_progress.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../product/product_form.dart';
@@ -27,15 +30,22 @@ class StoreScreen extends StatelessWidget {
 
     final supabase = Supabase.instance.client;
 
-    Future<List<Map<String, String>>> fetchCategories() async {
-      final response =
-          await supabase.from('category').select().eq('is_active', true);
-      List<Map<String, String>> categories = response.map((item) {
+    Future<List<Map<String, dynamic>>> fetchCategories() async {
+      final response = await supabase
+          .from('category')
+          .select('*, product(*)')
+          .eq('is_active', true)
+          .not('product', 'is', null);
+
+      List<Map<String, dynamic>> categories = response.map((item) {
         return {
           "title": item['title'].toString(),
           "icon": item['icon'].toString(),
+          "products": item['product'],
         };
       }).toList();
+      Logger logger = Logger();
+      logger.e(response);
       return categories;
     }
 
@@ -53,11 +63,12 @@ class StoreScreen extends StatelessWidget {
       return brands;
     }
 
-    return FutureBuilder<List<Map<String, String>>>(
+    return FutureBuilder<List<Map<String, dynamic>>>(
       future: fetchCategories(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return Scaffold(
+              body: const Center(child: AppCircularProgressIndicator()));
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -78,7 +89,7 @@ class StoreScreen extends StatelessWidget {
 }
 
 class StoreScreenBody extends StatefulWidget {
-  final List<Map<String, String>> categories;
+  final List<Map<String, dynamic>> categories;
   final int tabHeight;
 
   StoreScreenBody({required this.categories, required this.tabHeight});
@@ -203,10 +214,7 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
                               return const Center(
-                                  child: CircularProgressIndicator(
-                                color: AppColors.primary,
-                                strokeWidth: AppSizes.xs,
-                              ));
+                                  child: AppCircularProgressIndicator());
                             } else if (snapshot.hasError) {
                               return Center(
                                   child: Text('Error: ${snapshot.error}'));
@@ -260,10 +268,8 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
         },
         body: TabBarView(
           children: widget.categories.map((category) {
-            return const AppCategoryTab(
-              brandIcon: AppImages.adidas,
-              brandName: "",
-              brandDetail: "504 products",
+            return AppCategoryTab(
+              products: category['products'],
             );
           }).toList(),
         ),

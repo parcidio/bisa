@@ -40,16 +40,12 @@ class AppProductPriceText extends StatelessWidget {
                       style: isSmall
                           ? Theme.of(context)
                               .textTheme
-                              .labelSmall!
+                              .titleMedium!
                               .apply(color: AppColors.primary)
                           : Theme.of(context)
                               .textTheme
                               .headlineMedium!
                               .apply(color: AppColors.primary),
-                    ),
-                    TextSpan(
-                      text: resultPrice[1] != 0 ? ',${resultPrice[1]}' : ',00',
-                      style: Theme.of(context).textTheme.labelMedium,
                     ),
                     TextSpan(
                       text: unit.trim() == '' ? '' : '/$unit',
@@ -78,17 +74,6 @@ class AppProductPriceText extends StatelessWidget {
                               lineThrough ? TextDecoration.lineThrough : null)
                       : Theme.of(context).textTheme.labelSmall!.apply(
                           color: AppColors.primary,
-                          decoration:
-                              lineThrough ? TextDecoration.lineThrough : null),
-                ),
-                TextSpan(
-                  text:
-                      resultPriceWas[1] != 0 ? ',${resultPriceWas[1]}' : ',00',
-                  style: isSmall
-                      ? Theme.of(context).textTheme.labelMedium!.apply(
-                          decoration:
-                              lineThrough ? TextDecoration.lineThrough : null)
-                      : Theme.of(context).textTheme.labelMedium!.apply(
                           decoration:
                               lineThrough ? TextDecoration.lineThrough : null),
                 ),
