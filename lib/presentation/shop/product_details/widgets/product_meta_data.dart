@@ -1,16 +1,22 @@
+import 'dart:ffi';
+
+import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:dona/common/widgets/product/product_card/product_price_text.dart';
+import 'package:dona/common/widgets/text/brand_title_text_with_vertical_icon.dart';
+import 'package:dona/common/widgets/text/product_title_text.dart';
+import 'package:dona/utils/constants/colors.dart';
+import 'package:dona/utils/constants/enums.dart';
+import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:dona/common/widgets/product/product_card/product_price_text.dart';
-import 'package:dona/utils/constants/colors.dart';
-import 'package:dona/utils/constants/sizes.dart';
-import 'package:dona/common/widgets/icons/circular_icon.dart';
-// import 'package:dona/common/widgets/product/product_rating_share.dart';
-import 'item_count_controller.dart'; // Import your ItemController
+
+import '../../../../common/widgets/icons/circular_icon.dart';
+import '../product_controller.dart';
+import 'product_rating_share.dart';
 
 class AppProductMetaData extends StatelessWidget {
-  const AppProductMetaData({
+  AppProductMetaData({
     super.key,
     this.name = "",
     this.place = "",
@@ -19,16 +25,14 @@ class AppProductMetaData extends StatelessWidget {
     this.stock = 0,
   });
 
+  // final ProductController _controller = Get.put(ProductController());
+  final ProductController _controller = Get.find();
   final int stock;
   final String name, place;
   final double price, priceWas;
-
   @override
   Widget build(BuildContext context) {
-    final ItemCountController itemController = Get.find<ItemCountController>();
-
     var discount = price / priceWas * 100;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,7 +87,7 @@ class AppProductMetaData extends StatelessWidget {
                                     horizontal: AppSizes.sm,
                                     vertical: AppSizes.xs),
                                 child: Text(
-                                  'Poupe ${discount.toStringAsFixed(0)}%',
+                                  'Poupe ${discount}%',
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge!
@@ -130,7 +134,7 @@ class AppProductMetaData extends StatelessWidget {
                 Row(
                   children: [
                     AppCircularIcon(
-                      onPressed: itemController.decreaseCount,
+                      onPressed: _controller.decrementQuantity,
                       icon: CupertinoIcons.minus,
                       height: 32,
                       width: 32,
@@ -141,15 +145,13 @@ class AppProductMetaData extends StatelessWidget {
                     const SizedBox(
                       width: AppSizes.spaceBetweenItems,
                     ),
-                    Obx(() => Text(
-                          '${itemController.itemCount}',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        )),
+                    Obx(() => Text('${_controller.quantity}',
+                        style: Theme.of(context).textTheme.titleMedium)),
                     const SizedBox(
                       width: AppSizes.spaceBetweenItems,
                     ),
                     AppCircularIcon(
-                      onPressed: itemController.increaseCount,
+                      onPressed: _controller.incrementQuantity,
                       icon: CupertinoIcons.add,
                       height: 32,
                       width: 32,
@@ -158,7 +160,7 @@ class AppProductMetaData extends StatelessWidget {
                       backgroundColor: AppColors.primary,
                     ),
                   ],
-                ),
+                )
               ],
             ),
           ],
@@ -168,7 +170,8 @@ class AppProductMetaData extends StatelessWidget {
         ),
         // Rating
         // const AppRatingShare(),
-        // Title
+        //Title
+        // AppProductTitleText(title: name),
         Text(name,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
@@ -177,7 +180,7 @@ class AppProductMetaData extends StatelessWidget {
         const SizedBox(
           height: AppSizes.spaceBetweenItems / 4,
         ),
-        // Supplier
+        //Supplier
         // AppBrandTextTitleWithVerticalIcon(
         //   title: place,
         //   brandTextSize: TextSizes.medium,

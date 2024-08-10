@@ -1,9 +1,12 @@
+import 'package:dona/presentation/shop/product_details/product_controller.dart';
+import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:dona/app.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Get.put(ProductController());
 
   await Supabase.initialize(
     url: 'https://adsbxntehzvwtmzharuq.supabase.co',
