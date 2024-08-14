@@ -1,4 +1,5 @@
-import 'package:dona/presentation/shop/product_details/product_controller.dart';
+import 'package:dona/controllers/favourite_controller.dart';
+import 'package:dona/controllers/product_controller.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:dona/app.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(ProductController());
+  Get.put(FavouriteController());
 
   await Supabase.initialize(
     url: 'https://adsbxntehzvwtmzharuq.supabase.co',

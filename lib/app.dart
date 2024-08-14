@@ -1,3 +1,4 @@
+import 'package:dona/navigation_menu.dart';
 import 'package:dona/presentation/authentication/login/login.dart';
 import 'package:dona/presentation/authentication/onboarding/onboarding.dart';
 import 'package:dona/presentation/authentication/signup/signup_test.dart';
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       // home: const OnBoardingScreen(),
       // home: const LoginScreen(),
-      home: const StoreScreen(),
+      home: const NavigationMenu(),
       //   home: supabase.auth.currentSession == null
       //       ? const SignupPage()
       //       : const AccountPage(),

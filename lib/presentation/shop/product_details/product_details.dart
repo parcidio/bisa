@@ -267,54 +267,54 @@ class AppProductDetails extends StatelessWidget {
                   isSmall: true,
                   textColor: AppColors.darkGrey),
             ),
-            Container(
-              color: AppColors.light,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: AppSizes.spaceBetweenItems),
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                      viewportFraction: .3,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 5),
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 1000),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeFactor: 0,
-                      scrollDirection: Axis.horizontal,
-                      pauseAutoPlayInFiniteScroll: true,
-                      pauseAutoPlayOnManualNavigate: true,
-                      pauseAutoPlayOnTouch: true,
-                      enlargeCenterPage: false),
-                  items: products.map((item) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 2),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(AppSizes
-                                  .cardRadiusSm), // Adjust the radius as needed
-                              child: AppProductCardVertical(
-                                productId: "",
-                                name: "Nome de teste",
-                                price: 10,
-                                rate: 1,
-                                product: {},
-                              )),
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
+            // Container(
+            //   color: AppColors.light,
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(
+            //         vertical: AppSizes.spaceBetweenItems),
+            //     child: CarouselSlider(
+            //       options: CarouselOptions(
+            //           viewportFraction: .3,
+            //           initialPage: 0,
+            //           enableInfiniteScroll: true,
+            //           reverse: false,
+            //           autoPlay: true,
+            //           autoPlayInterval: const Duration(seconds: 5),
+            //           autoPlayAnimationDuration:
+            //               const Duration(milliseconds: 1000),
+            //           autoPlayCurve: Curves.fastOutSlowIn,
+            //           enlargeFactor: 0,
+            //           scrollDirection: Axis.horizontal,
+            //           pauseAutoPlayInFiniteScroll: true,
+            //           pauseAutoPlayOnManualNavigate: true,
+            //           pauseAutoPlayOnTouch: true,
+            //           enlargeCenterPage: false),
+            //       items: products.map((item) {
+            //         return Builder(
+            //           builder: (BuildContext context) {
+            //             return Container(
+            //               width: MediaQuery.of(context).size.width,
+            //               margin: const EdgeInsets.symmetric(horizontal: 2),
+            //               decoration: const BoxDecoration(
+            //                 shape: BoxShape.circle,
+            //               ),
+            //               child: ClipRRect(
+            //                   borderRadius: BorderRadius.circular(AppSizes
+            //                       .cardRadiusSm), // Adjust the radius as needed
+            //                   child: AppProductCardVertical(
+            //                     productId: "",
+            //                     name: "Nome de teste",
+            //                     price: 10,
+            //                     rate: 1,
+            //                     product: {},
+            //                   )),
+            //             );
+            //           },
+            //         );
+            //       }).toList(),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

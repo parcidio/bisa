@@ -80,6 +80,8 @@ dependencies:
   pin_code_fields: ^8.0.1
   image_picker: ^1.1.2
   google_sign_in: ^6.2.1
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:

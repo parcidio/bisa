@@ -1,9 +1,11 @@
 import 'dart:ffi';
 
 import 'package:dona/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:dona/common/widgets/icons/favourite_button.dart';
 import 'package:dona/common/widgets/product/product_card/product_price_text.dart';
 import 'package:dona/common/widgets/text/brand_title_text_with_vertical_icon.dart';
 import 'package:dona/common/widgets/text/product_title_text.dart';
+import 'package:dona/controllers/favourite_controller.dart';
 import 'package:dona/utils/constants/colors.dart';
 import 'package:dona/utils/constants/enums.dart';
 import 'package:dona/utils/constants/sizes.dart';
@@ -11,8 +13,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/widgets/button_group/button_product_quantity.dart';
 import '../../../../common/widgets/icons/circular_icon.dart';
-import '../product_controller.dart';
+import '../../../../controllers/product_controller.dart';
 import 'product_rating_share.dart';
 
 class AppProductMetaData extends StatelessWidget {
@@ -25,8 +28,10 @@ class AppProductMetaData extends StatelessWidget {
     this.stock = 0,
   });
 
-  // final ProductController _controller = Get.put(ProductController());
-  final ProductController _controller = Get.find();
+  // final ProductController _productController = Get.put(ProductController());
+  final ProductController _productController = Get.find();
+  final FavouriteController _favouriteController = Get.find();
+
   final int stock;
   final String name, place;
   final double price, priceWas;
@@ -54,11 +59,7 @@ class AppProductMetaData extends StatelessWidget {
                 Row(
                   children: [
                     // Share button
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(CupertinoIcons.heart,
-                          size: AppSizes.iconMd),
-                    ),
+                    FavouriteButton(),
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(CupertinoIcons.share,
@@ -122,7 +123,7 @@ class AppProductMetaData extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppSizes.sm, vertical: AppSizes.xs),
                       child: Text(
-                        stock != 0 ? 'Entrega' : "Indisponivel",
+                        'Entrega',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -131,36 +132,7 @@ class AppProductMetaData extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    AppCircularIcon(
-                      onPressed: _controller.decrementQuantity,
-                      icon: CupertinoIcons.minus,
-                      height: 32,
-                      width: 32,
-                      size: AppSizes.iconSm,
-                      color: AppColors.white,
-                      backgroundColor: AppColors.primary,
-                    ),
-                    const SizedBox(
-                      width: AppSizes.spaceBetweenItems,
-                    ),
-                    Obx(() => Text('${_controller.quantity}',
-                        style: Theme.of(context).textTheme.titleMedium)),
-                    const SizedBox(
-                      width: AppSizes.spaceBetweenItems,
-                    ),
-                    AppCircularIcon(
-                      onPressed: _controller.incrementQuantity,
-                      icon: CupertinoIcons.add,
-                      height: 32,
-                      width: 32,
-                      size: AppSizes.iconSm,
-                      color: AppColors.white,
-                      backgroundColor: AppColors.primary,
-                    ),
-                  ],
-                )
+                ButtonProductQuantity()
               ],
             ),
           ],

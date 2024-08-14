@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../button_group/button_product_quantity.dart';
 import '../../icons/circular_icon.dart';
 import '../../text/brand_text_tile.dart';
 import '../../text/product_title_text.dart';
@@ -84,44 +85,7 @@ class AppProductCardHorizontal extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Row(
-                          children: [
-                            AppCircularIcon(
-                              onPressed: () {},
-                              icon: CupertinoIcons.minus,
-                              size: AppSizes.iconXs,
-                              height: 32,
-                              width: 32,
-                              color: AppColors.white,
-                              backgroundColor: AppColors.primary,
-                            ),
-                            const SizedBox(
-                              width: AppSizes.sm,
-                            ),
-                            Text('2',
-                                style: Theme.of(context).textTheme.titleMedium),
-                            const SizedBox(
-                              width: AppSizes.sm,
-                            ),
-                            AppCircularIcon(
-                              onPressed: () {},
-                              size: AppSizes.iconXs,
-                              icon: CupertinoIcons.add,
-                              height: 32,
-                              width: 32,
-                              color: AppColors.white,
-                              backgroundColor: AppColors.primary,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  Container(child: ButtonProductQuantity()),
                 ],
               ),
             ],
