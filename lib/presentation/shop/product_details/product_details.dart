@@ -170,10 +170,10 @@ class AppProductDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 80),
               child: InfiniteDragableSlider(
-                iteamCount: product["image_url"]?.length ?? 1,
+                iteamCount: 1,
                 itemBuilder: (context, index) => MagazineCoverImage(
                   image: product["image_url"][index],
-                  height: 380,
+                  height: 350,
                 ),
               ),
             ),
@@ -255,18 +255,18 @@ class AppProductDetails extends StatelessWidget {
 
             // LineChartSample3(),
 
-            Padding(
-              padding: EdgeInsets.only(
-                  right: AppSizes.defaultSpace,
-                  left: AppSizes.defaultSpace,
-                  bottom: AppSizes.defaultSpace),
-              child: AppSectionHeading(
-                  title: 'Produtos relacionados',
-                  // buttonTitle: 'Mais',
-                  // onPressed: () => Get.to(() => const StoreScreen()),
-                  isSmall: true,
-                  textColor: AppColors.darkGrey),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //       right: AppSizes.defaultSpace,
+            //       left: AppSizes.defaultSpace,
+            //       bottom: AppSizes.defaultSpace),
+            //   child: AppSectionHeading(
+            //       title: 'Produtos relacionados',
+            //       // buttonTitle: 'Mais',
+            //       // onPressed: () => Get.to(() => const StoreScreen()),
+            //       isSmall: true,
+            //       textColor: AppColors.darkGrey),
+            // ),
             // Container(
             //   color: AppColors.light,
             //   child: Padding(

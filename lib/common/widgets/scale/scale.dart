@@ -44,7 +44,7 @@ class _WeightSelectorBottomSheetState extends State<WeightSelectorBottomSheet> {
     BuildContext context,
   ) {
     return Container(
-        height: 300,
+        height: 250,
         padding: const EdgeInsets.all(16.0),
         decoration: const BoxDecoration(
           color: Colors.transparent,

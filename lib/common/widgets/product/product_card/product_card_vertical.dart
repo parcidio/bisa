@@ -79,42 +79,6 @@ class AppProductCardVertical extends StatelessWidget {
                         imageUrl: AppImages.greenAppLogo,
                         applyImageRadius: true,
                       ),
-                // sales tag
-                // Positioned(
-                //   top: 8,
-                //   left: 8,
-                //   child: AppRoundedContainer(
-                //     radius: AppSizes.lg,
-                //     backgroundColor: AppColors.error.withOpacity(0.6),
-                //     padding: const EdgeInsets.symmetric(
-                //         horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                //     child: const Icon(
-                //       Icons.verified_outlined,
-                //       size: AppSizes.md,
-                //       color: AppColors.error,
-                //     ),
-                //   ),
-                // ),white
-                // Positioned(
-                //     left: 0,
-                //     bottom: 0,
-                //     child: Padding(
-                //       padding: const EdgeInsets.only(
-                //           right: AppSizes.spaceBetweenItems),
-                //       child: Row(children: [
-                //         const Icon(Icons.star,
-                //             color: AppColors.secondary, size: AppSizes.iconSm),
-                //         const SizedBox(
-                //           height: AppSizes.xs,
-                //         ),
-                //         Text(
-                //           rate.toString(),
-                //           maxLines: 1,
-                //           overflow: TextOverflow.ellipsis,
-                //           style: Theme.of(context).textTheme.labelMedium,
-                //         ),
-                //       ]),
-                //     )),
 
                 Positioned(
                   bottom: 0,
@@ -129,18 +93,6 @@ class AppProductCardVertical extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                   ),
                 ),
-                // Positioned(
-                //   top: 0,
-                //   right: 0,
-                //   child: AppCircularIcon(
-                //     height: 30,
-                //     width: 30,
-                //     onPressed: () {},
-                //     icon: Iconsax.heart5,
-                //     color: Colors.red,
-                //     size: 10,
-                //   ),
-                // )
               ],
             ),
           ),

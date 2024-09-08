@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dona/common/widgets/icons/circular_icon.dart';
 import 'package:dona/utils/constants/image_strings.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import 'package:logger/logger.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 import '../../../common/widgets/appbar/appbar.dart';
@@ -18,6 +20,7 @@ import '../../../common/widgets/product/cart/menu_icon.dart';
 import '../../../common/widgets/progress_bar/circular_progress.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
+import '../cart/cart.dart';
 import '../product/product_form.dart';
 import '../store/widgets/category_tabs.dart';
 
@@ -101,6 +104,7 @@ class StoreScreenBody extends StatefulWidget {
 class _StoreScreenBodyState extends State<StoreScreenBody> {
   final ScrollController _scrollController = ScrollController();
   bool _isVisible = true;
+  bool _isOpen = false;
 
   @override
   void initState() {
@@ -122,35 +126,13 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
     super.dispose();
   }
 
+  void setCartItemToMinimal(bool state) {
+    _isOpen = state;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: AnimatedOpacity(
-        duration: Duration(milliseconds: 300),
-        opacity: _isVisible ? 1.0 : 0.0,
-        child: SizedBox(
-          height: 35,
-          child: FloatingActionButton.extended(
-            foregroundColor: AppColors.white,
-            backgroundColor: AppColors.primary,
-            onPressed: () => Get.to(() => ProductFormScreen(
-                  productId: 'f5b123a1-537d-4d11-9c01-7d16fdd7bb70',
-                )),
-            label: Text(
-              'Fazer um pedido',
-              style: Theme.of(context)
-                  .textTheme
-                  .labelSmall!
-                  .apply(color: AppColors.white),
-            ),
-            icon: const Icon(
-              CupertinoIcons.add_circled_solid,
-              size: AppSizes.iconSm,
-              color: AppColors.white,
-            ),
-          ),
-        ),
-      ),
       appBar: AppAppBar(
         showSearchBar: false,
         title: const Text('Praça'),
@@ -164,7 +146,7 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
           // ),
           const AppMenuIcon(
             icon: Icon(
-              CupertinoIcons.bag,
+              CupertinoIcons.location_north_line,
               size: AppSizes.iconMd,
             ),
             iconColor: AppColors.black,
@@ -266,12 +248,64 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
             ),
           ];
         },
-        body: TabBarView(
-          children: widget.categories.map((category) {
-            return AppCategoryTab(
-              products: category['products'],
-            );
-          }).toList(),
+        body: Stack(
+          children: [
+            TabBarView(
+              children: widget.categories.map((category) {
+                return AppCategoryTab(
+                  products: category['products'],
+                );
+              }).toList(),
+            ),
+            AnimatedOpacity(
+                duration: Duration(milliseconds: 300),
+                opacity: _isVisible ? 1.0 : 0.0,
+                child: SlidingUpPanel(
+                    borderRadius: BorderRadius.circular(AppSizes.cardRadiusSm),
+                    minHeight: AppSizes.appPanelHight / 2,
+                    margin: const EdgeInsets.all(AppSizes.defaultItems),
+                    color: AppColors.primary,
+                    parallaxEnabled: false,
+                    backdropEnabled: false,
+                    onPanelClosed: () => setCartItemToMinimal(false),
+                    onPanelOpened: () => setCartItemToMinimal(true),
+                    collapsed: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    for (int i = 0; i < 3; i++)
+                                      const Align(
+                                        widthFactor: 0.3,
+                                        child: CircleAvatar(
+                                          backgroundColor: AppColors.white,
+                                          radius: 60,
+                                          child: CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage: AssetImage(
+                                                AppImages.productImage1,
+                                              )),
+                                        ),
+                                      )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: AppSizes.spaceBetweenSections,
+                                ),
+                                AppCircularIcon(
+                                  onPressed: () {},
+                                  icon: CupertinoIcons.bag_fill,
+                                ),
+                              ],
+                            ),
+                          ]),
+                    ),
+                    panel: AppCartScreen())),
+          ],
         ),
       ),
     );
@@ -279,6 +313,7 @@ class _StoreScreenBodyState extends State<StoreScreenBody> {
 
   Future<List<Map<String, String>>> fetchBrands() async {
     final supabase = Supabase.instance.client;
+
     final response =
         await supabase.from('market_location').select().eq('is_active', true);
     List<Map<String, String>> brands = response.map((item) {

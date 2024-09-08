@@ -9,13 +9,12 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets/login_signup/form_divider.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
+import '../../../../controllers/login_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../signup/signup.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({
-    super.key,
-  });
+  final SignupController _controller = Get.put(SignupController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +26,11 @@ class LoginForm extends StatelessWidget {
         children: [
           // Email
 
-          const AppTextField(
-              hintText: AppTexts.email, icon: CupertinoIcons.mail),
+          AppTextField(
+            hintText: AppTexts.email,
+            icon: CupertinoIcons.mail,
+            onChanged: (value) => _controller.updateEmail(value),
+          ),
           const SizedBox(
             height: AppSizes.spaceBetweenInputFields / 2,
           ),
@@ -36,10 +38,12 @@ class LoginForm extends StatelessWidget {
             height: AppSizes.spaceBetweenInputFields / 2,
           ),
           // Password
-          const AppTextField(
+          AppTextField(
             hintText: AppTexts.password,
             icon: CupertinoIcons.lock,
             iconSuffix: CupertinoIcons.eye_slash,
+            isObscure: true,
+            onChanged: (value) => _controller.updatePassword(value),
           ),
 
           // Remenber me & Forget password
@@ -62,11 +66,11 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: AppSizes.spaceBetweenSections),
           // Sign in button
           SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-                onPressed: () => Get.to(() => const NavigationMenu()),
-                child: const Text(AppTexts.signIn)),
-          ),
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () async => await _controller.login(),
+                  child: const Text(AppTexts.signIn))),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

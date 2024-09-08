@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
+import 'presentation/shop/trocas/trocas.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -89,62 +91,6 @@ class NavigationMenu extends StatelessWidget {
                           decorationThickness: 4,
                         ))),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: NavigationDestination(
-                    icon: Text('Aluguéis',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.darkGrey,
-                                offset: Offset(0, -6))
-                          ],
-                        )),
-                    label: '',
-                    selectedIcon: Text('Aluguéis',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: AppSizes.fontSizeMd,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.black, offset: Offset(0, -6))
-                          ],
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppColors.dark,
-                          decorationThickness: 4,
-                        ))),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: NavigationDestination(
-                    icon: Text('Trocas',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.darkGrey,
-                                offset: Offset(0, -6))
-                          ],
-                        )),
-                    label: '',
-                    selectedIcon: Text('Trocas',
-                        style: TextStyle(
-                          color: Colors.transparent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: AppSizes.fontSizeMd,
-                          shadows: [
-                            Shadow(
-                                color: AppColors.black, offset: Offset(0, -6))
-                          ],
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppColors.dark,
-                          decorationThickness: 4,
-                        ))),
-              ),
             ]),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
@@ -157,6 +103,5 @@ class NavigationController extends GetxController {
   final screens = [
     const StoreScreen(),
     const MapScreen(),
-    const HomeScreen(),
   ];
 }

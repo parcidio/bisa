@@ -1,5 +1,4 @@
 import 'package:dona/presentation/authentication/login/login.dart';
-import 'package:dona/presentation/authentication/signup/signup.dart';
 import 'package:dona/presentation/authentication/signup/verify_email.dart';
 import 'package:dona/utils/constants/sizes.dart';
 import 'package:dona/utils/constants/text_strings.dart';
@@ -10,13 +9,11 @@ import 'package:get/get.dart';
 import '../../../../common/widgets/login_signup/form_divider.dart';
 import '../../../../common/widgets/login_signup/social_buttons.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
-import '../../../../navigation_menu.dart';
+import '../../../../controllers/signup_controller.dart';
 import '../../../../utils/constants/colors.dart';
 
 class SignUpForm extends StatelessWidget {
-  const SignUpForm({
-    super.key,
-  });
+  final SignupController _controller = Get.put(SignupController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,45 +23,62 @@ class SignUpForm extends StatelessWidget {
             const EdgeInsets.symmetric(vertical: AppSizes.spaceBetweenSections),
         child: Column(
           children: [
+            // Name
+            AppTextField(
+              hintText: AppTexts.Name,
+              icon: CupertinoIcons.person,
+              onChanged: (value) => _controller.updateName(value),
+            ),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
+
+            // Phone Number
+            AppTextField(
+              hintText: AppTexts.phoenNo,
+              icon: CupertinoIcons.phone,
+              onChanged: (value) => _controller.updatePhoneNumber(value),
+            ),
+            // const SizedBox(
+            //   height: AppSizes.spaceBetweenInputFields,
+            // ),
+
             // Email
-            const AppTextField(
-                hintText: AppTexts.Name, icon: CupertinoIcons.person),
-            // const SizedBox(
-            //   height: AppSizes.spaceBetweenInputFields,
-            // ),
-
-            const AppTextField(
-                hintText: AppTexts.phoenNo, icon: CupertinoIcons.phone),
-            // const SizedBox(
-            //   height: AppSizes.spaceBetweenInputFields,
-            // ),
-
-            const AppTextField(
-                hintText: AppTexts.email, icon: CupertinoIcons.mail),
+            AppTextField(
+              hintText: AppTexts.email,
+              icon: CupertinoIcons.mail,
+              onChanged: (value) => _controller.updateEmail(value),
+            ),
             // const SizedBox(
             //   height: AppSizes.spaceBetweenInputFields,
             // ),
 
             // Password
-            const AppTextField(
+            AppTextField(
               hintText: AppTexts.password,
               icon: CupertinoIcons.lock,
+              isObscure: true,
               iconSuffix: CupertinoIcons.eye_slash,
+              onChanged: (value) => _controller.updatePassword(value),
             ),
 
-            //
-            const AppTextField(
+            // Confirm Password
+            AppTextField(
               hintText: AppTexts.confirmPassword,
+              isObscure: true,
               icon: CupertinoIcons.lock,
               iconSuffix: CupertinoIcons.eye_slash,
+              onChanged: (value) => _controller.updateConfirmPassword(value),
             ),
 
             const SizedBox(height: AppSizes.spaceBetweenSections),
-            // Sign in button
+            // Sign up button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(() => const VerifyEmailScreen()),
+                  onPressed: () async {
+                    await _controller.signup();
+                  },
                   child: const Text(AppTexts.signUp)),
             ),
             Row(
@@ -79,7 +93,7 @@ class SignUpForm extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                    onPressed: () => Get.to(() => const LoginScreen()),
+                    onPressed: () => _controller.signup,
                     child: const Text(
                       AppTexts.signIn,
                       style: TextStyle(
